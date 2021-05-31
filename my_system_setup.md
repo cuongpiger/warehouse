@@ -45,3 +45,13 @@ sudo mv $PHANTOM_JS /usr/local/share
 sudo ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/local/bin
 phantomjs --version
 ```
+
+# 4. Sử dụng `pimg` để lưu hình chụp màn hình từ clipboard
+* Trước tiên cần install, ghõ lệnh
+```
+pip3 install pimg
+```
+* Sau khi chụp màn hình và lưu vào clipboard, có thể dùng lệnh dưới đây để lưu hình, giả sử cần lưu hình vào đường dẫn `~/Downloads/image.png` thì làm như sau:
+```
+pimg ~/Downloads/image.png
+```
