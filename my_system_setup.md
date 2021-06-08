@@ -77,12 +77,13 @@ pimg ~/Downloads/image.png
     * **LƯU Ý**: <mark>phải đặt password cho thật mạnh, vừa chữ vừa số in hoa kí tự đặc biệt các kiểu dài trên 13 kí tự nếu ko là mấy bước sau setup cực kì mệt.</mark>
 
 * **Bước 3**:
-  * Ghõ lệnh `docker ps -a` xem **STATUS** của container `sql1` là `Up` chưa, nếu exit thì xóa cái container `sql1` đi, build cái container khác và setup password mạnh lên.
+  * Ghõ lệnh `docker ps -a` xem **STATUS** của container `sql1` là `Up` chưa, nếu `Exit` thì xóa cái container `sql1` đi, build cái container khác và setup password mạnh lên.
 
 * **Bước 4**:
   * Kết nối đến MS-SQL:
   ```
-  sudo docker exec -it sql1 "bash"
+  docker exec -it sql1 "bash"
+  /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "Cuong*0902902209"
   ```
 
   * Tạo database thử nghiệm:
@@ -106,7 +107,7 @@ pimg ~/Downloads/image.png
     SELECT * FROM Inventory WHERE quantity > 152;
     GO
     ```
-    * Tại đây, nếu ra hai dòng vừa insert vào thì thành công.
+    * Tại đây, nếu ra một dòng vừa insert vào có `quantity > 152` thì thành công.
 
 * **Bước 5**:
   * Ghõ lệnh:
