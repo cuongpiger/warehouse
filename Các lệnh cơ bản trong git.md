@@ -1,4 +1,17 @@
 ﻿# Các lệnh cơ bản trong Git
+
+|Chức năng|Lệnh|Ghi chú|
+|-|-|-|
+|Tạo nhánh mới và chuyển nhánh|`git checkout -b <branch name>`||
+|Tạo nhánh mới nhưng ko chuyển nhánh|`git branch <branch name>`||
+|Chuyển sang một nhánh nào đó|`git checkout <branch name>`||
+|Đẩy nhánh mới lên host|`git push origin <branch name>`||
+|Liệt kê các nhánh đang có|`git branch -a`|Nhấn `q` để thoát|
+|Xem lịch sử commit|`git log`|Nhấn `q` để thoát|
+|Xem lịch sử commit (bản tóm tắt)|`git log --oneline`|Nhấn `q` để thoát|
+|Xem lịch sử `n` commit cuối cùng|`git log -<n>`|Nhấn `q` để thoát|
+
+
 ##### Chú ý khi nhập không nhập cặp dấu '' trong các cú pháp
 |**Chức năng**|**Ý nghĩa**|**Cú pháp**|
 |:---:|:---:|:---:|
@@ -24,6 +37,7 @@
 |Kiểm tra xem tại một commit id ta đã sửa đổi hay làm gì||git checkout 'commit id'|
 |Gộp file vào một commit trước đó||1. git add .<br>2. git status<br>3. git commit --amend<br>4. Chỉnh your describe<br>5. Ctrl + X => Y or N => Enter|
 |Đẩy lên web||git push|
+
 
 
 
