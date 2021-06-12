@@ -160,3 +160,24 @@ pimg ~/Downloads/image.png
 
   * Ghõ lệnh `python3 test.py` mà ra như vầy thi okla
   ![](images/my_system_setup_00.png)
+
+# 6. Alias cho chuổi lệnh github
+* Mở file `.zshrc` lên và bỏ vào dòng này:
+  ```
+  alias gitdone='f(){ git add . && git commit -m "$@" && git push; unset -f f; }; f'
+  ```
+* Sau đó save lại và mở terminal ghõ lệnh:
+  ```
+  source ~/.zshrc
+  ```
+
+* Từ này thay vì sài combo lệnh:
+  ```
+  git add .
+  git commit -m "đây là một commit"
+  git push
+  ```
+  thì có thể nhẹ nhàng hơn bằng lệnh này:
+  ```
+  gitdone "đây là một commit"
+  ```
