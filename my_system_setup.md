@@ -181,3 +181,25 @@ pimg ~/Downloads/image.png
   ```
   gitdone "đây là một commit"
   ```
+
+# 7. Cài đặt Fake Ip
+* Ghõ lệnh:
+  ```
+  sudo apt-get install tor
+  sudo apt-get install privoxy
+  ```
+
+* Tạo thư mục `aut`:
+  ```
+  cd ~/usr/share/
+  sudo mkdir aut
+  ```
+
+* Clone repo này về [https://github.com/FDX100/Auto_Tor_IP_changer](https://github.com/FDX100/Auto_Tor_IP_changer) và ghõ lệnh
+  ```
+  cd ~
+  cd Auto_Tor_IP_changer
+  sudo python3 install.py
+  ```
+
+* Từ nay về sau, chỉ cần mở terminal lên ghõ lệnh `aut` là chạy.
