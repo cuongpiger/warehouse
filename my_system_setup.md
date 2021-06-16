@@ -202,4 +202,4 @@ pimg ~/Downloads/image.png
   sudo python3 install.py
   ```
 
-* Từ nay về sau, chỉ cần mở terminal lên ghõ lệnh `aut` là chạy.
+* Từ nay về sau, chỉ cần mở terminal lên ghõ lệnh `sudo aut` là chạy.
