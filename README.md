@@ -4,3 +4,4 @@
 |[books_url.md](./books_url.md)|các trang web để download sách lậu|
 |[sua_loi_grub.md](./sua_loi_grub.md)|dùng để sửa lỗi boot grub khi cài Ubuntu|
 |[git_command.md](./git_command.md)|các lệnh git hay dùng|
+|[install_robomongo.md](./install_robomongo.md)|Hướng dẫn cài đặt robomongo trên Ubuntu 20.04|
