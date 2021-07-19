@@ -6,3 +6,4 @@
 |[git_command.md](./git_command.md)|các lệnh git hay dùng|
 |[install_robomongo.md](./install_robomongo.md)|Hướng dẫn cài đặt robomongo trên Ubuntu 20.04|
 |[install_r.md](./install_r.md)|Cài đặt R và tích hợp chạy trên Jupyter-lab cho Ubuntu 20.04|
+|**vscode cmake**|Chứa folder **.vscode** chứa các cấu hình cần thiết để chạy ứng dụng C++ - OpenCV|
