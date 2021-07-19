@@ -1,0 +1,69 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "build & debug file",
+        "type": "shell",
+        "command": "g++",
+        "args": [
+          "-std=c++11",
+          "-g",
+          "-o",
+          "${fileBasenameNoExtension}",
+          "${file}",
+          "`pkg-config",
+          "--cflags",
+          "--libs",
+          "opencv`"
+        ],
+        "problemMatcher":{
+          "owner": "cpp",
+          "fileLocation":["relative","${workspaceFolder}"],
+          "pattern":{
+            "regexp": "^([^\\\\s].*)\\\\((\\\\d+,\\\\d+)\\\\):\\\\s*(.*)$",
+            "file": 1,
+            "line":2,
+            "column":3,
+            "severity": 4,
+            "location": 2,
+            "message": 5
+          }
+        },
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      },
+      {
+        "label": "build & run file",
+        "type": "shell",
+        "command": "g++",
+        "args": [
+          "-o",
+          "${fileBasenameNoExtension}",
+          "${file}",
+          "`pkg-config",
+          "--cflags",
+          "--libs",
+          "opencv`"
+        ],
+        "problemMatcher":{
+          "owner": "cpp",
+          "fileLocation":["relative","${workspaceFolder}"],
+          "pattern":{
+            "regexp": "^([^\\\\s].*)\\\\((\\\\d+,\\\\d+)\\\\):\\\\s*(.*)$",
+            "file": 1,
+            "line":2,
+            "column":3,
+            "severity": 4,
+            "location": 2,
+            "message": 5
+          }
+        },
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      }
+    ]
+  }
