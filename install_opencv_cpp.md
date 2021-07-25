@@ -1,3 +1,5 @@
+[http://techawarey.com/programming/install-opencv-c-c-in-ubuntu-18-04-lts-step-by-step-guide/](http://techawarey.com/programming/install-opencv-c-c-in-ubuntu-18-04-lts-step-by-step-guide/)
+
 # 1. Install
 ```
 # Install minimal prerequisites (Ubuntu 18.04 as reference)
