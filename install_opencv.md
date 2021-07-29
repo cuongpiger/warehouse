@@ -43,6 +43,9 @@ alias ocvr='f(){ g++ "$@" -o $@:t:r -lopencv_core -lopencv_highgui -lopencv_imgp
   ```
 
 # 🔸Option 2
+## 1. Link
+* [http://techawarey.com/programming/install-opencv-c-c-in-ubuntu-18-04-lts-step-by-step-guide/](http://techawarey.com/programming/install-opencv-c-c-in-ubuntu-18-04-lts-step-by-step-guide/)
+## 2. Cài đặt
 * **Step 1**: Update the Ubuntu System packages
   ```shell
   sudo apt-get update && sudo apt-get upgrade
@@ -118,3 +121,7 @@ alias ocvr='f(){ g++ "$@" -o $@:t:r -lopencv_core -lopencv_highgui -lopencv_imgp
     # Build xong run luôn
     alias ocvr='f(){ g++ "$@" -o $@:t:r -std=c++11 `pkg-config --cflags --libs opencv` && ./$@:t:r; unset -f f; }; f'
     ```
+
+# 🔸Option 3 _(install with GPU-CUDA)_
+## 1. Link
+* [https://gist.github.com/raulqf/f42c718a658cddc16f9df07ecc627be7](https://gist.github.com/raulqf/f42c718a658cddc16f9df07ecc627be7)
