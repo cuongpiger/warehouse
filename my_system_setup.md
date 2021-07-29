@@ -163,40 +163,40 @@ pimg ~/Downloads/image.png
 
 # 6. Alias cho chuổi lệnh github
 * Mở file `.zshrc` lên và bỏ vào dòng này:
-  ```
-  alias gitdone='f(){ git add . && git commit -m "$@" && git push; unset -f f; }; f'
+  ```shell
+  alias gd='f(){ git add . && git commit -m "$@" && git push; unset -f f; }; f'
   ```
 * Sau đó save lại và mở terminal ghõ lệnh:
-  ```
+  ```shell
   source ~/.zshrc
   ```
 
 * Từ này thay vì sài combo lệnh:
-  ```
+  ```shell
   git add .
   git commit -m "đây là một commit"
   git push
   ```
   thì có thể nhẹ nhàng hơn bằng lệnh này:
-  ```
+  ```shell
   gitdone "đây là một commit"
   ```
 
 # 7. Cài đặt Fake Ip
 * Ghõ lệnh:
-  ```
+  ```shell
   sudo apt-get install tor
   sudo apt-get install privoxy
   ```
 
 * Tạo thư mục `aut`:
-  ```
+  ```shell
   cd ~/usr/share/
   sudo mkdir aut
   ```
 
 * Clone repo này về [https://github.com/FDX100/Auto_Tor_IP_changer](https://github.com/FDX100/Auto_Tor_IP_changer) và ghõ lệnh
-  ```
+  ```shell
   cd ~
   cd Auto_Tor_IP_changer
   sudo python3 install.py
