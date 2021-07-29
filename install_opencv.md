@@ -1,4 +1,4 @@
-# Option 1
+# 🔸Option 1
 ## 1. Install
 ```shell
 # Install minimal prerequisites (Ubuntu 18.04 as reference)
@@ -42,7 +42,7 @@ alias ocvr='f(){ g++ "$@" -o $@:t:r -lopencv_core -lopencv_highgui -lopencv_imgp
   ocvr main.cpp
   ```
 
-## Option 2
+# 🔸Option 2
 * **Step 1**: Update the Ubuntu System packages
   ```shell
   sudo apt-get update && sudo apt-get upgrade
