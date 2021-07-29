@@ -44,7 +44,7 @@ alias ocvr='f(){ g++ "$@" -o $@:t:r -lopencv_core -lopencv_highgui -lopencv_imgp
 
 ## Option 2
 * **Step 1**: Update the Ubuntu System packages
-```zsh
+```bash
 sudo apt-get update && sudo apt-get upgrade
 sudo apt install software-properties-common
 sudo apt install apt-file
