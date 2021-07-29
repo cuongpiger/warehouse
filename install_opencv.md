@@ -105,6 +105,18 @@ alias ocvr='f(){ g++ "$@" -o $@:t:r -lopencv_core -lopencv_highgui -lopencv_imgp
     ls /usr/local/lib/pkgconfig/
     sudo cp /usr/local/lib/pkgconfig/opencv4.pc  /usr/lib/x86_64-linux-gnu/pkgconfig/opencv.pc
     ```
+  
+  * **Step 5.a** _(optional)_: Configure OpenGL
+    * Configure
+      ```shell
+      sudo apt-get install mesa-common-dev libgl1-mesa-dev libglu1-mesa-dev freeglut3-dev
+      ```
+    * Alias `.zshrc`
+      ```shell
+      alias cvgl='f(){ g++ "$@" -o $@:t:r -lGL -lGLU -lglut -std=c++11 `pkg-config --cflags --libs opencv`; unset -f f; }; f'
+
+      alias cvglr='f(){ g++ "$@" -o $@:t:r -lGL -lGLU -lglut -std=c++11 `pkg-config --cflags --libs opencv` && ./$@:t:r; unset -f f; }; f'
+      ```
 
 * **Step 6**: Alias
   * Giả sử có file `main.cpp`, nếu muốn "chạy cực" thì dùng lệnh này:
@@ -116,10 +128,10 @@ alias ocvr='f(){ g++ "$@" -o $@:t:r -lopencv_core -lopencv_highgui -lopencv_imgp
   * Còn nếu muốn "sướng", thì cần alias:
     ```shell
     # Chỉ build thôi
-    alias ocv='f(){ g++ "$@" -o $@:t:r -std=c++11 `pkg-config --cflags --libs opencv`; unset -f f; }; f'
+    alias cv='f(){ g++ "$@" -o $@:t:r -std=c++11 `pkg-config --cflags --libs opencv`; unset -f f; }; f'
 
     # Build xong run luôn
-    alias ocvr='f(){ g++ "$@" -o $@:t:r -std=c++11 `pkg-config --cflags --libs opencv` && ./$@:t:r; unset -f f; }; f'
+    alias cvr='f(){ g++ "$@" -o $@:t:r -std=c++11 `pkg-config --cflags --libs opencv` && ./$@:t:r; unset -f f; }; f'
     ```
 
 # 🔸Option 3 _(install with GPU-CUDA)_
