@@ -7,4 +7,4 @@
 |[install_robomongo.md](./install_robomongo.md)|Hướng dẫn cài đặt robomongo trên Ubuntu 20.04|
 |[install_r.md](./install_r.md)|Cài đặt R và tích hợp chạy trên Jupyter-lab cho Ubuntu 20.04|
 |**vscode cmake**|Chứa folder **.vscode** chứa các cấu hình cần thiết để chạy ứng dụng C++ - OpenCV|
-|[install_opencv_cpp.md](./install_opencv_cpp.md)| Cài đặt OpenCV cho C++ + Ubuntu|
+|[install_opencv.md](./install_opencv.md)| Cài đặt OpenCV cho Ubuntu 20.04|
