@@ -2,9 +2,9 @@
 
 |Syntax|Display|
 |-|-|
-|$\boldsymbol{text}$||
-|$\mathbf{text}$||
-|$\mathit{text}$||
+|$\boldsymbol{Boldsymbol}$||
+|$\mathbf{Mathbf}$||
+|$\mathit{Mathit}$||
 
 
 
