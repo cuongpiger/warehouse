@@ -2,7 +2,7 @@
 
 |Syntax|Display|
 |-|-|
-|$\boldsymbol{BOLD-symbol}$|<pre xml:lang="latex">\sqrt{2}</pre>|
+|$\boldsymbol{BOLD-symbol}$|<img src="https://latex.codecogs.com/gif.latex?\boldsymbol{BOLD-symbol}" /> |
 |$\mathbf{MATH-bf}$||
 |$\mathit{MATH-it}$||
 |$\mathrm{MATH-rm}$||
