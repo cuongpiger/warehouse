@@ -17,4 +17,4 @@
 |\textsl{TEXT sl}|<img src="https://latex.codecogs.com/gif.latex?\textsl{TEXT sl}"/>|
 |\textsc{TEXT sc}|<img src="https://latex.codecogs.com/gif.latex?\textsc{TEXT sc}"/>|
 |\emph{EM ph}|<img src="https://latex.codecogs.com/gif.latex?\emph{EM ph}"/>|
-|\,, \:, \;, \!|các dấu khoảng trắng thin, medium, thick, negative space|
+|$\,, \:, \;, \!$|các dấu khoảng trắng thin, medium, thick, negative space|
