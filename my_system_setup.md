@@ -203,3 +203,9 @@ pimg ~/Downloads/image.png
   ```
 
 * Từ nay về sau, chỉ cần mở terminal lên ghõ lệnh `sudo aut` là chạy.
+
+# 8. Phần mềm quay màn hình tạo ảnh gif Peek
+  ```shell
+  sudo apt update
+  sudo apt install peek
+  ```
