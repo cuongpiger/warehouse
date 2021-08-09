@@ -8,3 +8,4 @@
 |[install_r.md](./install_r.md)|Cài đặt R và tích hợp chạy trên Jupyter-lab cho Ubuntu 20.04|
 |**vscode cmake**|Chứa folder **.vscode** chứa các cấu hình cần thiết để chạy ứng dụng C++ - OpenCV|
 |[install_opencv.md](./install_opencv.md)| Cài đặt OpenCV cho Ubuntu 20.04|
+|[utils.md](./utils.md)|Các tiện tích, tool hack, mẹo xàm xí đú|
