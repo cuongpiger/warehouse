@@ -4,6 +4,7 @@
 |Lệnh|Giải thích|
 |-|-|
 |`convert <image_1>.jpg <image_2>.png`| chuyển `image_1` sang file `*.png`|
+|`convert -resize 20% source.png dest.png`|scale image theo tỉ lệ |
 |`mogrify -format png *.jpg`| chuyển tất cả file `*.jpg` sang `*.png`|
 
 # 4. Sử dụng `pimg` để lưu hình chụp màn hình từ clipboard
