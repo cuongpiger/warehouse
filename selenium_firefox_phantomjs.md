@@ -42,3 +42,15 @@ sudo mv $PHANTOM_JS /usr/local/share
 sudo ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/local/bin
 phantomjs --version
 ```
+
+# 3. [Optional] Cài đặt Chrome webdriver + Selenium + Python
+* Lên trang dưới đây để tải chrome webdriver phù hợp với version hiện tại của chrome trện máy:
+  [https://sites.google.com/a/chromium.org/chromedriver/downloads](https://sites.google.com/a/chromium.org/chromedriver/downloads)
+* Giải nén ra, vào trong thư mục vừa giải nén và chạy lệnh:
+  ```shell
+  sudo mv chromedriver /usr/local/bin
+  ```
+* Tiếp theo ghõ lệnh:
+  ```shell
+  export PATH=$PATH:/usr/local/bin/chromedriver*
+  ```

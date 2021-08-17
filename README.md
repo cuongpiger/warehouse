@@ -9,4 +9,4 @@
 |**vscode cmake**|Chứa folder **.vscode** chứa các cấu hình cần thiết để chạy ứng dụng C++ - OpenCV|
 |[install_opencv.md](./install_opencv.md)| Cài đặt OpenCV cho Ubuntu 20.04|
 |[utils.md](./utils.md)|Các tiện tích, tool hack, mẹo xàm xí đú|
-|[selenium_firefox_phantomjs.md](./selenium_firefox_phantomjs.md)|Cài đặt Selenium + FireFox driver, PhantomJS _(ver 2.1.1)_ cho Python|
+|[selenium_firefox_phantomjs.md](./selenium_firefox_phantomjs.md)|Cài đặt Selenium + FireFox driver, Chrome driver, PhantomJS _(ver 2.1.1)_ cho Python|
