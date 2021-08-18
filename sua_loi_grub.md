@@ -1,3 +1,4 @@
+* Clip hướng dẫn chi tiết: [https://youtu.be/HcCouXSpZOY](https://youtu.be/HcCouXSpZOY)
 * Mở command prompt lên bằng quyền admin và ghõ từ khóa:
 ```
 diskpart
