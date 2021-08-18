@@ -1,4 +1,4 @@
-﻿# Các lệnh cơ bản trong Git
+﻿# 1. Các lệnh cơ bản trong Git
 
 |Chức năng|Lệnh|Ghi chú|
 |-|-|-|
@@ -11,3 +11,6 @@
 |Xem lịch sử commit (bản tóm tắt)|`git log --oneline`|Nhấn `q` để thoát|
 |Xem lịch sử `n` commit cuối cùng|`git log -<n>`|Nhấn `q` để thoát|
 |Đặt nhánh hiện tại làm default|`git branch --set-upstream-to origin/<branch name>`||
+
+# Hướng dẫn làm README.md github profile 
+* 2. Clip hướng dẫn: [https://youtu.be/ECuqb5Tv9qI](https://youtu.be/ECuqb5Tv9qI)
