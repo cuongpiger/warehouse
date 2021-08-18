@@ -7,6 +7,8 @@
 |`convert -resize 20% source.png dest.png`|scale image theo tỉ lệ |
 |`mogrify -format png *.jpg`| chuyển tất cả file `*.jpg` sang `*.png`|
 
+# 2. Các lỗi trong quá trình cài Ubuntu
+* Lỗi RST khi cài đặt: [https://youtu.be/rSn34Gv3-D4](https://youtu.be/rSn34Gv3-D4)
 # 4. Sử dụng `pimg` để lưu hình chụp màn hình từ clipboard
 * Trước tiên cần install, ghõ lệnh
 ```
