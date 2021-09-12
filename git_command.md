@@ -13,4 +13,7 @@
 |Đặt nhánh hiện tại làm default|`git branch --set-upstream-to origin/<branch name>`||
 
 # Hướng dẫn làm README.md github profile 
-* 2. Clip hướng dẫn: [https://youtu.be/ECuqb5Tv9qI](https://youtu.be/ECuqb5Tv9qI)
+* Clip hướng dẫn: [https://youtu.be/ECuqb5Tv9qI](https://youtu.be/ECuqb5Tv9qI)
+
+# Sửa lỗi đẩy file lớn lên git
+![](images/git_00.png)
