@@ -10,3 +10,4 @@
 |[install_opencv.md](./install_opencv.md)| Cài đặt OpenCV cho Ubuntu 20.04|
 |[utils.md](./utils.md)|Các tiện tích, tool hack, mẹo xàm xí đú|
 |[selenium_firefox_phantomjs.md](./selenium_firefox_phantomjs.md)|Cài đặt Selenium + FireFox driver, Chrome driver, PhantomJS _(ver 2.1.1)_ cho Python|
+|[conda_commands.md](./conda_commands.md)|Các lệnh hay sử dụng trong Anaconda.|
