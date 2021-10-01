@@ -197,7 +197,7 @@ class MainWindow(QMainWindow):
     def translate(self):
         trans_text = ''
         text = self.raw_text.toPlainText().strip()
-        text = re.sub("\s+", " ", re.sub("[^a-zA-Z0-9?!'()\.,\s]", " ", text)).strip()
+        text = re.sub("\s+", " ", re.sub(self.pattern, " ", text)).strip()
         
         if text == "" or (re.match("^(https://|http://|x-special/nautilus-clipboard).*", text)) is not None:
             return
@@ -222,14 +222,17 @@ class MainWindow(QMainWindow):
 
         with open(self.ctx.cleaner, 'r', encoding='utf-8') as rd:
             line = rd.readline().strip()
+            self.pattern = line
 
             while line:
+                line = rd.readline().strip()
+                if line == "": break
+                
+                content.append(tuple(line.split('|')))
+                
                 line = line.replace('[', '')
                 line = line.replace(']', '')
                 line = line.replace('\\n', '\n')
-
-                content.append(tuple(line.split('|')))
-                line = rd.readline().strip()
 
         return content
 
