@@ -182,6 +182,9 @@ class MainWindow(QMainWindow):
     def get_raw_text(self):
         if self.config['active']:
             text = QApplication.clipboard().text()
+            if text[0] != '$': return
+            
+            text = text[1:]
             self.raw_text.setPlainText(text)
             text = self.raw_text.toPlainText()
 
@@ -194,6 +197,7 @@ class MainWindow(QMainWindow):
     def translate(self):
         trans_text = ''
         text = self.raw_text.toPlainText().strip()
+        text = re.sub("\s+", " ", re.sub("[^a-zA-Z0-9?!'()\.,\s]", " ", text)).strip()
         
         if text == "" or (re.match("^(https://|http://|x-special/nautilus-clipboard).*", text)) is not None:
             return
@@ -201,7 +205,7 @@ class MainWindow(QMainWindow):
         try:
             cmd = """
                 trans -e google -s {} -t {} -show-original y -show-original-phonetics n -show-translation y -no-ansi -show-translation-phonetics n -show-prompt-message n -show-languages y -show-original-dictionary n -show-dictionary n -show-alternatives n "{}"
-                """.format(self.config['swap'][0], self.config['swap'][1], self.raw_text.toPlainText())
+                """.format(self.config['swap'][0], self.config['swap'][1], text)
                 
             subprocess_ = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
             trans_text = subprocess_.stdout.read().decode('utf-8').split("\n\n")[1]

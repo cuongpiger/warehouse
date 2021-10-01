@@ -1,9 +1,7 @@
 from pynput import mouse
 from pynput import keyboard
-from pynput.keyboard import Key, Controller
-
-controller = Controller()
-
+import os
+import pyperclip
 
 class ListenerMouse():
     def __init__(self):
@@ -12,10 +10,9 @@ class ListenerMouse():
 
     def on_click(self, x, y, button, pressed):
         if button == mouse.Button.middle and pressed:
-            controller.press(Key.ctrl)
-            controller.press('c')
-            controller.release('c')
-            controller.release(Key.ctrl)
+            os.system("xclip -out -selection primary | xclip -in -selection clipboard")
+            pyperclip.copy("$" + pyperclip.paste())
+            
 
 
 class ListenerKeyBoard():
@@ -25,9 +22,16 @@ class ListenerKeyBoard():
         self.switch = True
         self.hotkey = keyboard.HotKey(
             keyboard.HotKey.parse('<ctrl>+<cmd>'), self.on_activate)
+        
+        self.hotkey2 = keyboard.HotKey(
+            keyboard.HotKey.parse('<ctrl>+<alt>'), self.ctrl_alt_pressed)
         self.keyboard = keyboard.Listener(on_press=self.for_canonical(self.hotkey.press),
                                           on_release=self.for_canonical(self.hotkey.release))
         self.keyboard.start()
+        
+        self.keyboard2 = keyboard.Listener(on_press=self.for_canonical(self.hotkey2.press),
+                                          on_release=self.for_canonical(self.hotkey2.release))
+        self.keyboard2.start()
 
     def on_activate(self):
         if self.switch:
@@ -38,6 +42,11 @@ class ListenerKeyBoard():
             self.window.hide()
 
         self.switch = not self.switch
+        
+    def ctrl_alt_pressed(self):
+        os.system("xclip -out -selection primary | xclip -in -selection clipboard")
+        pyperclip.copy("$" + pyperclip.paste())
 
     def for_canonical(self, f):
         return lambda k: f(self.keyboard.canonical(k))
+    
