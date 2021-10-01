@@ -1,6 +1,6 @@
 from listener import ListenerMouse, ListenerKeyBoard
 from PySide2.QtCore import Qt, QSize
-from PySide2.QtWidgets import QAction, QApplication, QCheckBox, QHBoxLayout, QMainWindow, QMenu, QPlainTextEdit, QPushButton, QShortcut, QSizePolicy, QSpacerItem, QStatusBar, QSystemTrayIcon, QToolBar, QVBoxLayout, QWidget
+from PySide2.QtWidgets import QLabel, QAction, QApplication, QCheckBox, QHBoxLayout, QMainWindow, QMenu, QPlainTextEdit, QPushButton, QShortcut, QSizePolicy, QSpacerItem, QStatusBar, QSystemTrayIcon, QToolBar, QVBoxLayout, QWidget
 from PySide2.QtGui import QIcon, QKeySequence
 
 import sys
@@ -131,10 +131,14 @@ class MainWindow(QMainWindow):
         toolbar.addAction(btn_config)
         toolbar.addSeparator()
         toolbar.addAction(self.btn_swap)
-        toolbar.addSeparator()
-        toolbar.addWidget(self.chb_active)
+        # toolbar.addSeparator()
+        # toolbar.addWidget(self.chb_active)
         toolbar.addSeparator()
         toolbar.addWidget(chb_hide)
+        toolbar.addSeparator()
+        toolbar.addSeparator()
+        toolbar.addWidget(QLabel("Copyright (c) by Duong Manh Cuong"))
+        
 
         self.addToolBar(toolbar)
         self.setStatusBar(QStatusBar(self))
@@ -182,11 +186,13 @@ class MainWindow(QMainWindow):
     def get_raw_text(self):
         if self.config['active']:
             text = QApplication.clipboard().text()
-            if text[0] != '$': return
+            
+            if text == "" or text[0] != '$': return
             
             text = text[1:]
-            self.raw_text.setPlainText(text)
-            text = self.raw_text.toPlainText()
+            text = re.sub("\s+", " ", re.sub(self.pattern, " ", text)).strip()
+            # self.raw_text.setPlainText(text)
+            # text = self.raw_text.toPlainText()
 
             for broom in self.cleaner:
                 text = text.replace(broom[0], broom[1])
@@ -197,7 +203,6 @@ class MainWindow(QMainWindow):
     def translate(self):
         trans_text = ''
         text = self.raw_text.toPlainText().strip()
-        text = re.sub("\s+", " ", re.sub(self.pattern, " ", text)).strip()
         
         if text == "" or (re.match("^(https://|http://|x-special/nautilus-clipboard).*", text)) is not None:
             return
