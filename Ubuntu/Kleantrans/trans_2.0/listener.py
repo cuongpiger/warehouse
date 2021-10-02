@@ -27,10 +27,10 @@ class ListenerKeyBoard():
         self.window_pos = (self.window.pos().x(), self.window.pos().y())
         self.switch = True
         self.hotkey = keyboard.HotKey(
-            keyboard.HotKey.parse('<ctrl>+<cmd>'), self.on_activate)
+            keyboard.HotKey.parse('<ctrl>+<shift>'), self.on_activate)
         
         self.hotkey2 = keyboard.HotKey(
-            keyboard.HotKey.parse('<ctrl>+<alt>'), self.ctrl_alt_pressed)
+            keyboard.HotKey.parse('<ctrl>+<cmd>'), self.ctrl_alt_pressed)
         self.keyboard = keyboard.Listener(on_press=self.for_canonical(self.hotkey.press),
                                           on_release=self.for_canonical(self.hotkey.release))
         self.keyboard.start()

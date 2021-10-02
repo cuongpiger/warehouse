@@ -137,7 +137,7 @@ class MainWindow(QMainWindow):
         toolbar.addWidget(chb_hide)
         toolbar.addSeparator()
         toolbar.addSeparator()
-        toolbar.addWidget(QLabel("Copyright (c) by Duong Manh Cuong"))
+        toolbar.addWidget(QLabel("Copyright © by Manh Cuong"))
         
 
         self.addToolBar(toolbar)
@@ -313,7 +313,7 @@ def run():
     quit.triggered.connect(app.quit)
 
     menu = QMenu()
-    action = QAction(ctx.images['window'], 'Ctrl+Super: hide/show')
+    action = QAction(ctx.images['window'], 'Ctrl+Shift: hide/show')
     menu.addAction(action)
     menu.addAction(quit)
 
