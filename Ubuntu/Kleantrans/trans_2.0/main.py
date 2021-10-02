@@ -313,7 +313,7 @@ def run():
     quit.triggered.connect(app.quit)
 
     menu = QMenu()
-    action = QAction(ctx.images['window'], 'Ctrl+Shift: hide/show')
+    action = QAction(ctx.images['window'], 'Shift+Tab: hide/show')
     menu.addAction(action)
     menu.addAction(quit)
 
