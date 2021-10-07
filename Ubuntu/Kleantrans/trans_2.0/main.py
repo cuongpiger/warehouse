@@ -214,6 +214,7 @@ class MainWindow(QMainWindow):
                 
             subprocess_ = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
             trans_text = subprocess_.stdout.read().decode('utf-8').split("\n\n")[1]
+            trans_text = re.sub("(u200b)", "", trans_text)
             self.for_text.setPlainText(trans_text)
         except:
             pass
@@ -313,7 +314,7 @@ def run():
     quit.triggered.connect(app.quit)
 
     menu = QMenu()
-    action = QAction(ctx.images['window'], 'Shift+Tab: hide/show')
+    action = QAction(ctx.images['window'], 'Shift+Cmd: hide/show')
     menu.addAction(action)
     menu.addAction(quit)
 
