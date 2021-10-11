@@ -85,6 +85,8 @@ class MainWindow(QMainWindow):
 
         submit_shorcut = QShortcut(QKeySequence('Ctrl+Return'), self)
         submit_shorcut.activated.connect(self._submitAnswer)
+        update_shorcut = QShortcut(QKeySequence('Ctrl+S'), self)
+        update_shorcut.activated.connect(self._updateButtonSubmit)
 
         iframe = QWidget()
         iframe.setLayout(layout)
@@ -169,6 +171,7 @@ class MainWindow(QMainWindow):
                                                   self.ihint.toPlainText().strip(),
                                                   "|".join(self.ivietnamese_sentence.toPlainText().strip().split("\n")),
                                                   int(self.ierror.text().strip())]
+            self.iprocess.setText("Saved!")
             self.ianswer.setFocus()
         elif self.ibutton.text() == "Refresh":
             self._loadLesson()
