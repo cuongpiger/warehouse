@@ -3,222 +3,261 @@ import sys
 import json
 import pandas as pd
 import random
+from PySide2.QtCore import Qt
 from PySide2.QtGui import QKeySequence, QIcon
 from PySide2.QtWidgets import QApplication, QGridLayout, QLineEdit, QMainWindow, QPushButton, QShortcut, QTextEdit, QLabel, QWidget
 
 
 PATH = "/home/manhcuong/Documents/English/data"
+VOCAS = "/vocas.csv"
+REVIEW = "/review.json"
+IS_SEN = 0
+IS_WORD = 1
+WRONG_WORD = 2
+WRONG_SEN = 3
+COMPLETE = 4
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowIcon(QIcon('logo.png'))
         self.setWindowTitle("Vocastudy")
+        self.iwidgets = {}
         
-        self.iprocess = QLabel()
-        self.iprocess.setStyleSheet("font-weight: bold; font-size: 16px");
+        self.iwidgets['process'] = QLabel()
+        self.iwidgets['process'].setStyleSheet("font-weight: bold; font-size: 16px");
         
-        self.ivoca = QLineEdit()
-        self.ivoca.setObjectName("ivoca")
-        self.ivoca.setMinimumWidth(250)
+        self.iwidgets['word'] = QLineEdit()
+        self.iwidgets['word'].setMinimumWidth(250)
         
-        self.itype = QLineEdit()
-        self.itype.setObjectName("itype")
-        self.itype.setMaximumWidth(100)
+        self.iwidgets['type'] = QLineEdit()
+        self.iwidgets['type'].setMaximumWidth(100)
         
-        self.ierror = QLineEdit()
-        self.ierror.setObjectName("ierror")
-        self.ierror.setMaximumWidth(100)
+        self.iwidgets['error'] = QLineEdit()
+        self.iwidgets['error'].setMaximumWidth(100)
         
-        self.imeaning = QLineEdit()
-        self.imeaning.setObjectName("imeaning")
-        self.imeaning.setMinimumWidth(300)
+        self.iwidgets['meaning'] = QLineEdit()
+        self.iwidgets['meaning'].setMinimumWidth(300)
         
-        self.ispelling = QLineEdit()
-        self.ispelling.setObjectName("ispelling")
-        self.ispelling.setMinimumWidth(250)
+        self.iwidgets['spelling'] = QLineEdit()
+        self.iwidgets['spelling'].setMinimumWidth(250)
         
-        self.ihint =  QTextEdit()
-        self.ihint.setObjectName("ihint")
-        self.ihint.setMaximumHeight(50)
-        self.ihint.setTabChangesFocus(True)
+        self.iwidgets['hint'] = QTextEdit()
+        self.iwidgets['hint'].setMaximumHeight(50)
+        self.iwidgets['hint'].setTabChangesFocus(True)
         
-        self.ienglish_sentence = QTextEdit()
-        self.ienglish_sentence.setObjectName("ienglish_sentence")
-        self.ienglish_sentence.setMaximumHeight(70)
-        self.ienglish_sentence.setTabChangesFocus(True)
+        self.iwidgets['english'] = QTextEdit()
+        self.iwidgets['english'].setMaximumHeight(70)
+        self.iwidgets['english'].setTabChangesFocus(True)
         
-        self.ivietnamese_sentence = QTextEdit()
-        self.ivietnamese_sentence.setObjectName("ivietname_sentence")
-        self.ivietnamese_sentence.setMaximumHeight(70)
-        self.ivietnamese_sentence.setTabChangesFocus(True)
+        self.iwidgets['vietnamese'] = QTextEdit()
+        self.iwidgets['vietnamese'].setMaximumHeight(70)
+        self.iwidgets['vietnamese'].setTabChangesFocus(True)
         
-        self.ianswer = QTextEdit()
-        self.ianswer.setObjectName("ianswer")
-        self.ianswer.setMaximumHeight(100)
-        self.ianswer.setTabChangesFocus(True)
+        self.iwidgets['answer'] = QTextEdit()
+        self.iwidgets['answer'].setMaximumHeight(100)
+        self.iwidgets['answer'].setTabChangesFocus(True)
         
-        self.ibutton = QPushButton("Update")
-        self.ibutton.clicked.connect(self._updateButtonSubmit)
+        self.iwidgets['button'] = QPushButton("Update")
+        self.iwidgets['button'].clicked.connect(self._updateButton)
         
         layout = QGridLayout()
-        layout.addWidget(self.iprocess, 0, 4, 1, 4)
+        layout.addWidget(self.iwidgets['process'], 0, 0, 1, 10, alignment=Qt.AlignCenter)
         layout.addWidget(QLabel("Word:"), 1, 0)
-        layout.addWidget(self.ivoca, 1, 1, 1, 3)
+        layout.addWidget(self.iwidgets['word'], 1, 1, 1, 3)
         layout.addWidget(QLabel("Type:"), 1, 4)
-        layout.addWidget(self.itype, 1, 5)
+        layout.addWidget(self.iwidgets['type'], 1, 5)
         layout.addWidget(QLabel("Error:"), 1, 6)
-        layout.addWidget(self.ierror, 1, 7)
-        layout.addWidget(self.ibutton, 1, 8, 1, 2)
+        layout.addWidget(self.iwidgets['error'], 1, 7)
+        layout.addWidget(self.iwidgets['button'], 1, 8, 1, 2)
         layout.addWidget(QLabel("Spelling:"), 2, 0)
-        layout.addWidget(self.ispelling, 2, 1, 1, 3)
+        layout.addWidget(self.iwidgets['spelling'], 2, 1, 1, 3)
         layout.addWidget(QLabel("Meaning:"), 2, 4)
-        layout.addWidget(self.imeaning, 2, 5, 1, 5)
+        layout.addWidget(self.iwidgets['meaning'], 2, 5, 1, 5)
         layout.addWidget(QLabel("Hint:"), 3, 0)
-        layout.addWidget(self.ihint, 3, 1, 1, 9)
+        layout.addWidget(self.iwidgets['hint'], 3, 1, 1, 9)
         layout.addWidget(QLabel("Vietnamese\nsentence:"), 4, 0)
-        layout.addWidget(self.ivietnamese_sentence, 4, 1, 1, 9)
+        layout.addWidget(self.iwidgets['vietnamese'], 4, 1, 1, 9)
         layout.addWidget(QLabel("English\nsentence:"), 5, 0)
-        layout.addWidget(self.ienglish_sentence, 5, 1, 1, 9)
+        layout.addWidget(self.iwidgets['english'], 5, 1, 1, 9)
         layout.addWidget(QLabel("Your\nanswer:"), 6, 0)
-        layout.addWidget(self.ianswer, 6, 1, 1, 9)
+        layout.addWidget(self.iwidgets['answer'], 6, 1, 1, 9)
 
         submit_shorcut = QShortcut(QKeySequence('Ctrl+Return'), self)
         submit_shorcut.activated.connect(self._submitAnswer)
         update_shorcut = QShortcut(QKeySequence('Ctrl+S'), self)
-        update_shorcut.activated.connect(self._updateButtonSubmit)
+        update_shorcut.activated.connect(self._updateButton)
 
-        iframe = QWidget()
-        iframe.setLayout(layout)
-        self.setCentralWidget(iframe)
+        frame = QWidget()
+        frame.setLayout(layout)
+        self.setCentralWidget(frame)
         self._loadLesson()
         self._updateFrame()
-        self.wrong = False
         
     def closeEvent(self, event):
-        if self.current_id >= 0:
-            with open(PATH + "/review.json", 'w') as writer:
+        if self.state != COMPLETE:
+            with open(PATH + REVIEW, 'w') as writer:
                 json.dump(self.indexes, writer)
             
-        self.vocas.to_csv(PATH + "/vocas.csv", index=False)
+        self.vocas.to_csv(PATH + VOCAS, index=False)
         
-    def _judge(self):
-        answer = self.ianswer.toPlainText().strip()
-        correct = '\n'.join(self.vocas.loc[self.current_id, 'english'].strip().split('|'))
+    def _saveData(self):
+        self.vocas.to_csv(PATH + VOCAS, index=False)
+        if os.path.exists(PATH + REVIEW): os.remove(PATH + REVIEW)
+        
+        
+    def _judge(self, panswer, pcorrect):
+        panswer = '\n'.join(panswer.strip().split('|'))
+        pcorrect = '\n'.join(pcorrect.strip().split('|'))
+        answer = panswer.lower()
+        correct = pcorrect.lower()
         
         for i in range(min(len(answer), len(correct))):
             if answer[i] != correct[i]:
-                new_answer = '{}<span style="color: red">{}</span>'.format(answer[:i], answer[i:])
-                new_correct = '{}<span style="color: green">{}</span>'.format(correct[:i], correct[i:])
+                new_answer = '{}<span style="color: red">{}</span>'.format(panswer[:i], panswer[i:])
+                new_correct = '{}<span style="color: green">{}</span>'.format(pcorrect[:i], pcorrect[i:])
                 
                 return new_answer, new_correct
             
-        return answer, correct
+        i = min(len(answer), len(correct))
+        new_answer = '{}<span style="color: red">{}</span>'.format(panswer[:i], panswer[i:])
+        new_correct = '{}<span style="color: green">{}</span>'.format(pcorrect[:i], pcorrect[i:])
+        return new_answer, new_correct
+    
+    def _getNewWord(self):
+        if len(self.indexes) > 0: return random.choice(self.indexes)
+        return -1
         
     def _submitAnswer(self):
-        if self.current_id == -1 or self.current_id == -2:
-            return
-        
-        if self.wrong:
-            self.current_id = random.choice(self.indexes) if len(self.indexes) != 0 else -1
-            self._updateFrame()
-            self.wrong = False
-            return
-        
-        text = '|'.join(self.ianswer.toPlainText().strip().split('\n'))
-        if self.vocas.loc[self.current_id, 'english'].strip() == "":
-            if self.vocas.loc[self.current_id, 'word'].strip() == text:
+        if self.state == IS_WORD:
+            answer = self.iwidgets['answer'].toPlainText().strip()
+            correct = self.vocas.loc[self.current_id, 'word'].strip()
+            
+            if answer == correct:
                 self.vocas.loc[self.current_id, 'error'] += 1
-                self._updateFrame(True)
                 self.indexes.remove(self.current_id)
-                self.wrong = True
+                self.current_id = self._getNewWord()
+                self.state = self._updateState()
             else:
                 self.vocas.loc[self.current_id, 'error'] -= 1
-                self.ivoca.setText(self.vocas['word'][self.current_id].strip())
-                self.ispelling.setText(self.vocas['spelling'][self.current_id].strip())
-                self.wrong = True
-                self.ianswer.setText(self.ianswer.toPlainText().strip())
-        elif text == self.vocas['english'][self.current_id].strip():
-            self.indexes.remove(self.current_id)
-            self.vocas.loc[self.current_id, 'error'] += 1
-            self.wrong = False
-            self.current_id = random.choice(self.indexes) if len(self.indexes) != 0 else -1
-            self._updateFrame()
-        else:
-            self.vocas.loc[self.current_id, 'error'] -= 1
-            self.ienglish_sentence.setText(self.vocas['english'][self.current_id].strip())
-            self.wrong = True
-            new_answer, new_correct = self._judge()
-            self.ianswer.setHtml(new_answer)
-            self.ienglish_sentence.setHtml(new_correct)
+                self.state = WRONG_WORD
             
-        if self.current_id == -1:
             self._updateFrame()
-            self.current_id = -2
-            self.vocas.to_csv(PATH + "/vocas.csv", index=False)
+        elif self.state == IS_SEN:
+            answer = "|".join(self.iwidgets['answer'].toPlainText().strip().lower().split("\n"))
+            correct = self.vocas.loc[self.current_id, 'english'].strip().lower().strip()
             
-            if os.path.exists(PATH + "/review.json"):
-                os.remove(PATH + "/review.json")
+            if answer == correct:
+                self.vocas.loc[self.current_id, 'error'] += 1
+                self.indexes.remove(self.current_id)
+                self.current_id = self._getNewWord()
+                self.state = self._updateState()
+            else:
+                self.vocas.loc[self.current_id, 'error'] -= 1
+                self.state = WRONG_SEN
+            
+            self._updateFrame()
+        elif self.state in (WRONG_WORD, WRONG_SEN):
+            self.current_id = self._getNewWord()
+            self.state = self._updateState()
+            self._updateFrame()
         
-    def _updateButtonSubmit(self):
-        if self.ibutton.text() == "Update" and self.wrong:
-            # word,spelling,type,meaning,english,hint,vietnamese,error,path,id
-            self.vocas.iloc[self.current_id, 0:8] = [self.ivoca.text().strip(), 
-                                                  self.ispelling.text().strip(), 
-                                                  self.itype.text().strip(), 
-                                                  self.imeaning.text().strip(), 
-                                                  "|".join(self.ienglish_sentence.toPlainText().strip().split("\n")),
-                                                  self.ihint.toPlainText().strip(),
-                                                  "|".join(self.ivietnamese_sentence.toPlainText().strip().split("\n")),
-                                                  int(self.ierror.text().strip())]
-            self.iprocess.setText("Saved!")
-            self.ianswer.setFocus()
-        elif self.ibutton.text() == "Refresh":
+    def _updateButton(self):
+        if self.state in (WRONG_WORD, WRONG_SEN):
+            self.vocas.iloc[self.current_id, 0:8] = [
+                self.iwidgets['word'].text().strip().lower(), 
+                self.iwidgets['spelling'].text().strip(), 
+                self.iwidgets['type'].text().strip().lower(), 
+                self.iwidgets['meaning'].text().strip(), 
+                "|".join(self.iwidgets['english'].toPlainText().strip().lower().split("\n")),
+                "|".join(self.iwidgets['hint'].toPlainText().strip().lower().split("\n")),
+                "|".join(self.iwidgets['vietnamese'].toPlainText().strip().lower().split("\n")),
+                int(self.iwidgets['error'].text().strip())
+            ]
+            
+            self.current_id = self._getNewWord()
+            self.state = self._updateState()
+            self._updateFrame()
+        elif self.state == COMPLETE:
+            self._setText({'button':'Update'})
             self._loadLesson()
-            self._updateFrame()
-            self.wrong = False
-            self.ibutton.setText("Update")
             
+    def _setText(self, pdict_widgets):
+        for name, value in pdict_widgets.items():
+            self.iwidgets[name].setText(value)
         
-    def _updateFrame(self, flag=False):
-        if self.current_id == -2:
-            return
+    def _setHtml(self, pdict_widgets):
+        for name, value in pdict_widgets.items():
+            self.iwidgets[name].setHtml(value)       
         
-        if self.current_id == -1:
-            self.iprocess.setText("Process: 00/00\n")
-            self.ivoca.clear()
-            self.itype.clear()
-            self.ierror.clear()
-            self.ispelling.clear()
-            self.imeaning.clear()
-            self.ivietnamese_sentence.clear()
-            self.ihint.clear()
-            self.ianswer.clear()
-            self.ienglish_sentence.clear()
-            self.ibutton.setText("Refresh")
-            return
+    def _clearFrame(self, plst_widgets = None):
+        if plst_widgets is None: [self.iwidgets[wn].clear() for wn in ['process', 'word', 'type', 'error', 'spelling', 'meaning', 'english', 'vietnamese', 'hint', 'answer']]
+        else: [self.iwidgets[wn].clear() for wn in plst_widgets]
+            
+    def _updateFrame(self):
+        self.iwidgets['button'].setEnabled(True)
+        if self.state in (IS_WORD, IS_SEN):
+            args_dict = {
+                'process': f"Process: {len(self.indexes):02d}/{self.amount_vocas:02d}\n",
+                'word': self.vocas.loc[self.current_id, 'word'].strip(),
+                'spelling': self.vocas.loc[self.current_id, 'spelling'].strip(),
+                'type': self.vocas.loc[self.current_id, 'type'].strip(),
+                'meaning': self.vocas.loc[self.current_id, 'meaning'].strip(),
+                'hint': "\n".join(self.vocas.loc[self.current_id, 'hint'].strip().split("|")),
+                'vietnamese': "\n".join(self.vocas.loc[self.current_id, 'vietnamese'].strip().split('|')),
+                'error': str(self.vocas.loc[self.current_id, 'error'])
+            }
+            
+            if self.state == IS_WORD: [args_dict.update({wn:""}) for wn in ['word', 'spelling']]
+            
+            self._setText(args_dict)
+            self._clearFrame(('english', 'answer'))
+            self.iwidgets['button'].setEnabled(False)
+        elif self.state == WRONG_WORD:
+            answer, english = self._judge(self.iwidgets['answer'].toPlainText(),
+                                              self.vocas.loc[self.current_id, 'word'])
+            self._setText({
+                'process': f"Process: {len(self.indexes):02d}/{self.amount_vocas:02d}\n",
+                'word': self.vocas.loc[self.current_id, 'word'].strip(),
+                'spelling': self.vocas.loc[self.current_id, 'spelling'].strip(),
+                'type': self.vocas.loc[self.current_id, 'type'].strip(),
+                'meaning': self.vocas.loc[self.current_id, 'meaning'].strip(),
+                'hint': self.vocas.loc[self.current_id, 'hint'].strip(),
+                'error': str(self.vocas.loc[self.current_id, 'error'])
+            })
+            self._setHtml({
+                'answer': answer, 'english': english
+            })
+        elif self.state == WRONG_SEN:
+            answer, english = self._judge(self.iwidgets['answer'].toPlainText(),
+                                              self.vocas.loc[self.current_id, 'english'])
+            self._setText({
+                'process': f"Process: {len(self.indexes):02d}/{self.amount_vocas:02d}\n",
+                'word': self.vocas.loc[self.current_id, 'word'].strip(),
+                'spelling': self.vocas.loc[self.current_id, 'spelling'].strip(),
+                'type': self.vocas.loc[self.current_id, 'type'].strip(),
+                'meaning': self.vocas.loc[self.current_id, 'meaning'].strip(),
+                'hint': self.vocas.loc[self.current_id, 'hint'].strip(),
+                'error': str(self.vocas.loc[self.current_id, 'error'])
+            })
+            self._setHtml({
+                'answer': answer, 'english': english
+            })
+        elif self.state == COMPLETE:
+            self._clearFrame()
+            self._setText({'button': 'Refresh'})
+            self._saveData()
         
-        self.iprocess.setText(f"Process: {len(self.indexes):02d}/{self.amount_vocas:02d}\n")
-        self.itype.setText(self.vocas['type'][self.current_id])
-        self.ierror.setText(str(self.vocas['error'][self.current_id]))
-        self.imeaning.setText(self.vocas['meaning'][self.current_id])
-        self.ivietnamese_sentence.setText(self.vocas['vietnamese'][self.current_id])
-        self.ihint.setText(self.vocas['hint'][self.current_id])
-        self.ivoca.setText(self.vocas['word'][self.current_id])
-        self.ispelling.setText(self.vocas['spelling'][self.current_id])
-        self.ienglish_sentence.clear()
+        self.iwidgets['answer'].setFocus()
         
-        if self.vocas.loc[self.current_id, 'english'].strip() == "" and not flag:
-            self.ivoca.clear()
-            self.ispelling.clear()
-        
-        self.ianswer.clear()
-        self.ianswer.setFocus()
+    def _updateState(self):
+        if self.current_id == -1: return COMPLETE
+        return IS_WORD if self.vocas.loc[self.current_id, 'english'].strip() == "" else IS_SEN 
         
     def _loadLesson(self):
-        self.vocas = pd.read_csv(PATH + "/vocas.csv")
-        if os.path.exists(PATH + "/review.json"):
-            with open(PATH + "/review.json") as reader:
+        self.vocas = pd.read_csv(PATH + VOCAS)
+        if os.path.exists(PATH + REVIEW):
+            with open(PATH + REVIEW) as reader:
                 self.indexes = json.load(reader)
         else:
             self.indexes = list(self.vocas.sort_values(by=['error']).index)[:50]
@@ -226,6 +265,7 @@ class MainWindow(QMainWindow):
         self.vocas.fillna("", inplace=True)
         self.amount_vocas = min(50, len(self.indexes))
         self.current_id = random.choice(self.indexes)
+        self.state = self._updateState()
         
 
 app = QApplication(sys.argv)
