@@ -107,8 +107,8 @@ class MainWindow(QMainWindow):
         
         
     def _judge(self, panswer, pcorrect):
-        panswer = '\n'.join(panswer.strip().split('|'))
-        pcorrect = '\n'.join(pcorrect.strip().split('|'))
+        panswer = panswer.strip().replace("|", "<br>")
+        pcorrect = pcorrect.strip().replace("|", "<br>")
         answer = panswer.lower()
         correct = pcorrect.lower()
         
@@ -169,9 +169,9 @@ class MainWindow(QMainWindow):
                 self.iwidgets['spelling'].text().strip(), 
                 self.iwidgets['type'].text().strip().lower(), 
                 self.iwidgets['meaning'].text().strip(), 
-                "|".join(self.iwidgets['english'].toPlainText().strip().lower().split("\n")),
-                "|".join(self.iwidgets['hint'].toPlainText().strip().lower().split("\n")),
-                "|".join(self.iwidgets['vietnamese'].toPlainText().strip().lower().split("\n")),
+                self.iwidgets['english'].toPlainText().strip().lower().replace("\n", "|"),
+                self.iwidgets['hint'].toPlainText().strip().replace("\n", "|"),
+                self.iwidgets['vietnamese'].toPlainText().strip().lower().replace("\n", "|"),
                 int(self.iwidgets['error'].text().strip())
             ]
             
@@ -181,6 +181,7 @@ class MainWindow(QMainWindow):
         elif self.state == COMPLETE:
             self._setText({'button':'Update'})
             self._loadLesson()
+            self._updateFrame()
             
     def _setText(self, pdict_widgets):
         for name, value in pdict_widgets.items():
@@ -203,8 +204,8 @@ class MainWindow(QMainWindow):
                 'spelling': self.vocas.loc[self.current_id, 'spelling'].strip(),
                 'type': self.vocas.loc[self.current_id, 'type'].strip(),
                 'meaning': self.vocas.loc[self.current_id, 'meaning'].strip(),
-                'hint': "\n".join(self.vocas.loc[self.current_id, 'hint'].strip().split("|")),
-                'vietnamese': "\n".join(self.vocas.loc[self.current_id, 'vietnamese'].strip().split('|')),
+                'hint': self.vocas.loc[self.current_id, 'hint'].strip().replace("|", "\n"),
+                'vietnamese': self.vocas.loc[self.current_id, 'vietnamese'].strip().replace('|', "\n"),
                 'error': str(self.vocas.loc[self.current_id, 'error'])
             }
             
@@ -237,7 +238,7 @@ class MainWindow(QMainWindow):
                 'spelling': self.vocas.loc[self.current_id, 'spelling'].strip(),
                 'type': self.vocas.loc[self.current_id, 'type'].strip(),
                 'meaning': self.vocas.loc[self.current_id, 'meaning'].strip(),
-                'hint': self.vocas.loc[self.current_id, 'hint'].strip(),
+                'hint': self.vocas.loc[self.current_id, 'hint'].strip().replace("|", "\n"),
                 'error': str(self.vocas.loc[self.current_id, 'error'])
             })
             self._setHtml({
@@ -245,7 +246,7 @@ class MainWindow(QMainWindow):
             })
         elif self.state == COMPLETE:
             self._clearFrame()
-            self._setText({'button': 'Refresh'})
+            self._setText({'button': 'Refresh', "process": '🎉 Done 👍'})
             self._saveData()
         
         self.iwidgets['answer'].setFocus()
