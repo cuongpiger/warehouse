@@ -257,11 +257,16 @@ class MainWindow(QMainWindow):
         
     def _loadLesson(self):
         self.vocas = pd.read_csv(PATH + VOCAS)
+        
         if os.path.exists(PATH + REVIEW):
             with open(PATH + REVIEW) as reader:
                 self.indexes = json.load(reader)
         else:
-            self.indexes = list(self.vocas.sort_values(by=['error']).index)[:50]
+            self.vocas = self.vocas.sample(frac=1)
+            self.vocas['shuffle'] = range(self.vocas.shape[0])
+            self.indexes = list(self.vocas.sort_values(by=['error', 'shuffle']).index)[:50]
+            self.vocas = self.vocas.drop(columns=['shuffle'])
+            self.vocas = self.vocas.sort_index()
 
         self.vocas.fillna("", inplace=True)
         self.amount_vocas = min(50, len(self.indexes))
