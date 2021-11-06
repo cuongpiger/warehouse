@@ -1,0 +1,156 @@
+% Mai The Duy's documents
+%+ ======================================================
+
+\documentclass[14pt,twoside,a4paper, openany]{book}
+\usepackage{amsmath,amsxtra,amssymb,latexsym, amscd,amsthm}
+\usepackage{indentfirst}
+\usepackage{extsizes}
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\pagestyle{fancy}
+\usepackage[mathscr]{eucal}
+\usepackage{mathrsfs}
+\usepackage{makeidx}
+\usepackage{mathabx}
+%%%%%%%%%%%%%%%%%%%%
+\usepackage{boxedminipage}
+\usepackage{tkz-tab}
+\usepackage{fancybox}
+\usepackage{tcolorbox}
+\usepackage[colorlinks=true]{hyperref}
+\hypersetup{urlcolor=blue}
+%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[right=2.5cm,left=2.0cm,top=3.5cm,bottom=1.5cm]{geometry} % căn lề
+\renewcommand{\baselinestretch}{1.15} % giãn dòng
+
+\usepackage{multirow}
+\usepackage{longtable}
+%%%%%%%%%
+\usepackage[utf8]{vietnam}
+\usepackage{color, graphicx}
+\usepackage{maybemath}
+\usepackage{arcs}
+\usepackage{multicol}
+\usepackage{wrapfig}
+\parskip 2pt
+\headsep=12pt
+\renewcommand{\headwidth}{13truecm} % chuẩn
+\renewcommand{\chaptermark}[1]%
+{\markboth{\it #1}{}}
+\renewcommand{\sectionmark}[1]%
+{\markright{\it \thesection\ #1}}
+\lhead[\fancyplain{}{\it \thepage}]%
+{\fancyplain{}{\rightmark}}
+\rhead[\fancyplain{}{\leftmark}]%
+{\fancyplain{}{\it \thepage}}
+\cfoot{}
+\sloppy
+
+\makeindex
+
+
+%]-
+\theoremstyle{definition}
+\newtheorem{definition}{Định nghĩa}[chapter]
+\newtheorem{excercise}{Bài}[chapter]
+\newtheorem{case}{Trường hợp}[chapter]
+\newtheorem{vd}{Ví dụ}[chapter]
+\newtheorem{btt}{Bài tập}[chapter]
+\newtheorem*{remark}{Nhận xét}
+\newtheorem*{note}{Chú ý}
+\newtheorem*{pt}{Phân tích}
+\newtheorem*{pp}{Phương pháp}
+\newtheorem{bt}{Bài toán}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Định lý}[chapter]
+\newtheorem{proposition}{Mệnh đề}[chapter]
+\newtheorem{lemma}{Bổ đề}[chapter]
+\newtheorem{corollary}{Hệ quả}[chapter]
+\newtheorem{property}{Tính chất}[chapter]
+
+\usepackage[tight,vietnam]{minitoc}%
+\renewcommand{\mtctitle}{\ } %dinh nghia lai ten
+\setcounter{minitocdepth}{1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\baselinestretch}{1.2}
+
+\newcommand{\suy}{\Rightarrow}
+\newcommand{\kkhi}{\Leftrightarrow}
+\newcommand{\vt}[1]{\overrightarrow{#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\hop}[1]{\begin{tcolorbox}[colback=cyan!15,colframe=orange!75!white]{#1}\end{tcolorbox}}
+\definecolor{lightgray}{gray}{.95}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{answers}
+\Newassociation{Solution1}{Answer}{TotalSolution}
+\Newassociation{Solution2}{Answer}{TotalSolution}
+\Newassociation{Solution3}{Answer}{TotalSolution}
+\Newassociation{Solution4}{Answer}{TotalSolution}
+
+\makeatletter
+\providecommand{\dang}[1]
+{\noindent\hskip -5pt\textbf{ #1}}
+\def\thickhrulefill{\leavevmode \leaders \hrule height 1ex \hfill \kern \z@}
+\def\@makechapterhead#1{
+	\vspace*{10\p@}
+	{\parindent \z@ \centering \reset@font
+		%\thickhrulefill\quad
+		\scshape {\Large {\sf CHƯƠNG \thechapter}}
+		\quad \hrulefill
+		\par\nobreak
+		\vspace*{0\p@}
+		\interlinepenalty\@M
+		\thickhrulefill
+		\par\nobreak
+		\vspace*{10\p@}
+		\fontsize{20pt}{15pt} \bfseries \selectfont \scshape\MakeUppercase{#1} \par\nobreak
+		\par
+		\vspace*{10\p@}
+		\hrule
+		\vskip 30\p@
+}}
+\def\@makeschapterhead#1{
+	\vspace*{10\p@}
+	{\parindent \z@ \raggedright \reset@font
+		%\thickhrulefill
+		\par\nobreak
+		\vspace*{10\p@}
+		\interlinepenalty\@M
+		%\hrule
+		\vspace*{10\p@}
+		\fontsize{23pt}{15pt} \bfseries {#1}\par\nobreak
+		\par
+		\vspace*{5pt}
+		\hrulefill
+		\vskip 50\p@
+}}
+\providecommand\chapter
+{\if@openright
+	\cleardoublepage\else
+	\clearpage\fi
+	\thispagestyle{fancy}
+	\global\@topnum\z@
+	\@afterindentfalse
+	\secdef\@chapter\@schapter}
+
+\def\m{\mathscr{M}}
+\def\l{\mathscr{L}}
+\def\r{\mathscr{R}}
+\newcommand\abs[1]{|#1|}
+\newcommand\set[1]{\{#1\}}
+\newcommand\norm[1]{||#1||}
+\DeclareMathOperator{\vrai}{vrai}
+
+
+
+
+
+\begin{document}
+	type here
+\end{document}
