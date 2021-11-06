@@ -3,6 +3,7 @@ import sys
 import json
 import pandas as pd
 import random
+import eng_to_ipa as ipa
 from PySide2.QtCore import Qt
 from PySide2.QtGui import QKeySequence, QIcon
 from PySide2.QtWidgets import QApplication, QGridLayout, QLineEdit, QMainWindow, QPushButton, QShortcut, QTextEdit, QLabel, QWidget
@@ -50,6 +51,10 @@ class MainWindow(QMainWindow):
         self.iwidgets['english'].setMaximumHeight(70)
         self.iwidgets['english'].setTabChangesFocus(True)
         
+        self.iwidgets['sen_spelling'] = QTextEdit()
+        self.iwidgets['sen_spelling'].setMaximumHeight(70)
+        self.iwidgets['sen_spelling'].setTabChangesFocus(True)
+        
         self.iwidgets['vietnamese'] = QTextEdit()
         self.iwidgets['vietnamese'].setMaximumHeight(70)
         self.iwidgets['vietnamese'].setTabChangesFocus(True)
@@ -80,8 +85,9 @@ class MainWindow(QMainWindow):
         layout.addWidget(self.iwidgets['vietnamese'], 4, 1, 1, 9)
         layout.addWidget(QLabel("English\nsentence:"), 5, 0)
         layout.addWidget(self.iwidgets['english'], 5, 1, 1, 9)
-        layout.addWidget(QLabel("Your\nanswer:"), 6, 0)
-        layout.addWidget(self.iwidgets['answer'], 6, 1, 1, 9)
+        layout.addWidget(self.iwidgets['sen_spelling'], 6, 1, 1, 9)
+        layout.addWidget(QLabel("Your\nanswer:"), 7, 0)
+        layout.addWidget(self.iwidgets['answer'], 7, 1, 1, 9)
 
         submit_shorcut = QShortcut(QKeySequence('Ctrl+Return'), self)
         submit_shorcut.activated.connect(self._submitAnswer)
@@ -145,7 +151,10 @@ class MainWindow(QMainWindow):
             self._updateFrame()
         elif self.state == IS_SEN:
             answer = "|".join(self.iwidgets['answer'].toPlainText().strip().lower().split("\n"))
-            correct = self.vocas.loc[self.current_id, 'english'].strip().lower().strip()
+            correct = self.vocas.loc[self.current_id, 'english'].strip().lower()
+            
+            if self.vocas.loc[self.current_id, 'sen_spelling'] == "":
+                self.vocas.loc[self.current_id, 'sen_spelling'] = self._updateSentenceSpelling()
             
             if answer == correct:
                 self.vocas.loc[self.current_id, 'error'] += 1
@@ -154,22 +163,28 @@ class MainWindow(QMainWindow):
                 self.state = self._updateState()
             else:
                 self.vocas.loc[self.current_id, 'error'] -= 1
-                self.state = WRONG_SEN
+                self.state = WRONG_SEN    
             
             self._updateFrame()
         elif self.state in (WRONG_WORD, WRONG_SEN):
             self.current_id = self._getNewWord()
             self.state = self._updateState()
             self._updateFrame()
+    
+    def _updateSentenceSpelling(self, pupdate=False):
+        if not pupdate:
+            return ipa.convert(self.vocas.loc[self.current_id, 'english']).replace("|*", "|")
+        return ipa.convert(self.iwidgets['english'].toPlainText().strip().lower().replace("\n", "|")).replace("|*", "|")
         
     def _updateButton(self):
         if self.state in (WRONG_WORD, WRONG_SEN):
-            self.vocas.iloc[self.current_id, 0:8] = [
+            self.vocas.iloc[self.current_id, 0:9] = [
                 self.iwidgets['word'].text().strip().lower(), 
                 self.iwidgets['spelling'].text().strip(), 
                 self.iwidgets['type'].text().strip().lower(), 
                 self.iwidgets['meaning'].text().strip(), 
                 self.iwidgets['english'].toPlainText().strip().lower().replace("\n", "|"),
+                self._updateSentenceSpelling(True).strip().replace("\n", "|"),
                 self.iwidgets['hint'].toPlainText().strip().replace("\n", "|"),
                 self.iwidgets['vietnamese'].toPlainText().strip().lower().replace("\n", "|"),
                 int(self.iwidgets['error'].text().strip())
@@ -192,7 +207,7 @@ class MainWindow(QMainWindow):
             self.iwidgets[name].setHtml(value)       
         
     def _clearFrame(self, plst_widgets = None):
-        if plst_widgets is None: [self.iwidgets[wn].clear() for wn in ['process', 'word', 'type', 'error', 'spelling', 'meaning', 'english', 'vietnamese', 'hint', 'answer']]
+        if plst_widgets is None: [self.iwidgets[wn].clear() for wn in ['process', 'word', 'type', 'error', 'spelling', 'meaning', 'english', 'sen_spelling', 'vietnamese', 'hint', 'answer']]
         else: [self.iwidgets[wn].clear() for wn in plst_widgets]
             
     def _updateFrame(self):
@@ -212,7 +227,7 @@ class MainWindow(QMainWindow):
             if self.state == IS_WORD: [args_dict.update({wn:""}) for wn in ['word', 'spelling']]
             
             self._setText(args_dict)
-            self._clearFrame(('english', 'answer'))
+            self._clearFrame(('english', 'sen_spelling', 'answer'))
             self.iwidgets['button'].setEnabled(False)
         elif self.state == WRONG_WORD:
             answer, english = self._judge(self.iwidgets['answer'].toPlainText(),
@@ -239,7 +254,8 @@ class MainWindow(QMainWindow):
                 'type': self.vocas.loc[self.current_id, 'type'].strip(),
                 'meaning': self.vocas.loc[self.current_id, 'meaning'].strip(),
                 'hint': self.vocas.loc[self.current_id, 'hint'].strip().replace("|", "\n"),
-                'error': str(self.vocas.loc[self.current_id, 'error'])
+                'error': str(self.vocas.loc[self.current_id, 'error']),
+                'sen_spelling': self.vocas.loc[self.current_id, 'sen_spelling'].strip().replace("|", "\n")
             })
             self._setHtml({
                 'answer': answer, 'english': english
