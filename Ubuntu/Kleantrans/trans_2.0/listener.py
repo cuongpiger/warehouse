@@ -3,7 +3,7 @@ from pynput import keyboard
 import os
 import pyperclip
 
-controller = keyboard.Controller()
+# controller = keyboard.Controller()
 
 class ListenerMouse():
     def __init__(self):
@@ -12,11 +12,11 @@ class ListenerMouse():
 
     def on_click(self, x, y, button, pressed):
         if button == mouse.Button.middle and pressed:
-            # os.system("xclip -out -selection primary | xclip -in -selection clipboard")
-            controller.press(keyboard.Key.ctrl)
-            controller.press('c')
-            controller.release('c')
-            controller.release(keyboard.Key.ctrl)
+            os.system("xclip -out -selection primary | xclip -in -selection clipboard")
+            # controller.press(keyboard.Key.ctrl)
+            # controller.press('c')
+            # controller.release('c')
+            # controller.release(keyboard.Key.ctrl)
             pyperclip.copy("$" + pyperclip.paste())
             
 
@@ -50,11 +50,12 @@ class ListenerKeyBoard():
         self.switch = not self.switch
         
     def ctrl_alt_pressed(self):
-        controller.press(keyboard.Key.ctrl)
-        controller.press('c')
-        controller.release('c')
-        controller.release(keyboard.Key.ctrl)
-        pyperclip.copy("$" + pyperclip.paste())
+        os.system("xclip -out -selection primary | xclip -in -selection clipboard")
+        # controller.press(keyboard.Key.ctrl)
+        # controller.press('c')
+        # controller.release('c')
+        # controller.release(keyboard.Key.ctrl)
+        # pyperclip.copy("$" + pyperclip.paste())
         pyperclip.copy("$" + pyperclip.paste())
 
     def for_canonical(self, f):
