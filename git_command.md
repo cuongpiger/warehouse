@@ -11,7 +11,7 @@
 |Xem lịch sử commit (bản tóm tắt)|`git log --oneline`|Nhấn `q` để thoát|
 |Xem lịch sử `n` commit cuối cùng|`git log -<n>`|Nhấn `q` để thoát|
 |Đặt nhánh hiện tại làm default|`git branch --set-upstream-to origin/<branch name>`||
-|Merge `source-branch` vào nhánh chính|`git merge source-branch`||
+|Merge `source-branch` vào nhánh chính|`git merge source-branch`|Nhớ về nhánh `main` trước rồi mới merge nhành `source-branch` vào.|
 |Xóa `source-branch`|`git branch -d source-branch`||
 
 
