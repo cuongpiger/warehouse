@@ -68,6 +68,7 @@ unset __conda_setup
 
 # combo git add commit push
 function gs () {
+  # cmm=${1:-"This is my commit"}
   cmm="$1"
   if test -z "$cmm"
   then
