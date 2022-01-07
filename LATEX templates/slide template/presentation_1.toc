@@ -1,0 +1,8 @@
+\babel@toc {vietnamese}{}
+\beamer@sectionintoc {1}{Bài toán mở đầu}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Mục tiêu}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Các phương pháp truyền thống}{3}{0}{1}
+\beamer@sectionintoc {2}{Thống kê}{3}{0}{2}
+\beamer@sectionintoc {3}{Ứng dụng}{3}{0}{3}
+\beamer@sectionintoc {4}{4. Các loại tấn công chung:}{3}{0}{4}
+\beamer@sectionintoc {5}{5. Biện pháp đối phó:}{3}{0}{5}
