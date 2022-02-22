@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.11.10)  9 FEB 2022 22:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.11.10)  22 FEB 2022 19:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/manhcuong/Temp/tmp/report/main.tex
-(/home/manhcuong/Temp/tmp/report/main.tex
+**"/home/manhcuong/Documents/Warehouse/LATEX templates/report template 2/main.tex"
+(/home/manhcuong/Documents/Warehouse/LATEX templates/report template 2/main.tex
 LaTeX2e <2020-02-02> patch level 2
 L3 programming layer <2020-02-14> (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
@@ -710,33 +710,33 @@ Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count309
 \l__pdf_internal_box=\box70
-) (/home/manhcuong/Temp/tmp/report/main.aux)
+) (/home/manhcuong/Documents/Warehouse/LATEX templates/report template 2/main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 201.
-LaTeX Font Info:    ... okay on input line 201.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 201.
-LaTeX Font Info:    ... okay on input line 201.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 201.
-LaTeX Font Info:    ... okay on input line 201.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 201.
-LaTeX Font Info:    ... okay on input line 201.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 201.
-LaTeX Font Info:    ... okay on input line 201.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 201.
-LaTeX Font Info:    ... okay on input line 201.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 201.
-LaTeX Font Info:    ... okay on input line 201.
-LaTeX Font Info:    Checking defaults for T5/cmr/m/n on input line 201.
-LaTeX Font Info:    ... okay on input line 201.
-LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 201.
-LaTeX Font Info:    Trying to load font information for T3+cmr on input line 201.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 208.
+LaTeX Font Info:    ... okay on input line 208.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 208.
+LaTeX Font Info:    ... okay on input line 208.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 208.
+LaTeX Font Info:    ... okay on input line 208.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 208.
+LaTeX Font Info:    ... okay on input line 208.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 208.
+LaTeX Font Info:    ... okay on input line 208.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 208.
+LaTeX Font Info:    ... okay on input line 208.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 208.
+LaTeX Font Info:    ... okay on input line 208.
+LaTeX Font Info:    Checking defaults for T5/cmr/m/n on input line 208.
+LaTeX Font Info:    ... okay on input line 208.
+LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 208.
+LaTeX Font Info:    Trying to load font information for T3+cmr on input line 208.
  (/usr/share/texmf/tex/latex/tipa/t3cmr.fd
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
-LaTeX Font Info:    ... okay on input line 201.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 201.
-LaTeX Font Info:    ... okay on input line 201.
+LaTeX Font Info:    ... okay on input line 208.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 208.
+LaTeX Font Info:    ... okay on input line 208.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
@@ -761,11 +761,11 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 )) ABD: EveryShipout initializing macros
 
-Package todonotes Warning: The length marginparwidth is less than 2cm and will most likely cause issues with the appearance of inserted todonotes. The issue can be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to loading the todonotes package. on input line 201.
+Package todonotes Warning: The length marginparwidth is less than 2cm and will most likely cause issues with the appearance of inserted todonotes. The issue can be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to loading the todonotes package. on input line 208.
 
 \c@lstlisting=\count316
 \AtBeginShipoutBox=\box72
-Package hyperref Info: Link coloring ON on input line 201.
+Package hyperref Info: Link coloring ON on input line 208.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
@@ -775,10 +775,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count317
 )
-LaTeX Info: Redefining \ref on input line 201.
-LaTeX Info: Redefining \pageref on input line 201.
-LaTeX Info: Redefining \nameref on input line 201.
- (/home/manhcuong/Temp/tmp/report/main.out) (/home/manhcuong/Temp/tmp/report/main.out)
+LaTeX Info: Redefining \ref on input line 208.
+LaTeX Info: Redefining \pageref on input line 208.
+LaTeX Info: Redefining \nameref on input line 208.
 \@outlinefile=\write6
 \openout6 = `main.out'.
 
@@ -817,37 +816,37 @@ LaTeX Info: Redefining \nameref on input line 201.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<./images/logo_hcmus.png, id=47, 120.45pt x 94.6737pt>
+<./images/logo_hcmus.png, id=31, 120.45pt x 94.6737pt>
 File: ./images/logo_hcmus.png Graphic file (type png)
 <use ./images/logo_hcmus.png>
-Package pdftex.def Info: ./images/logo_hcmus.png  used on input line 230.
+Package pdftex.def Info: ./images/logo_hcmus.png  used on input line 237.
 (pdftex.def)             Requested size: 120.44969pt x 94.67346pt.
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./images/logo_hcmus.png>] (/home/manhcuong/Temp/tmp/report/main.toc)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./images/logo_hcmus.png>]
 \tf@toc=\write7
 \openout7 = `main.toc'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 240--241
+Underfull \hbox (badness 10000) in paragraph at lines 247--248
 
  []
 
-LaTeX Font Info:    Trying to load font information for T5+cmtt on input line 242.
+LaTeX Font Info:    Trying to load font information for T5+cmtt on input line 249.
 (/usr/share/texlive/texmf-dist/tex/latex/vntex/t5cmtt.fd
 File: t5cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-Underfull \hbox (badness 10000) in paragraph at lines 245--246
+Underfull \hbox (badness 10000) in paragraph at lines 252--253
 
  []
 
-<./images/sample.png, id=64, 1204.5pt x 803.0pt>
+<./images/sample.png, id=44, 1204.5pt x 803.0pt>
 File: ./images/sample.png Graphic file (type png)
 <use ./images/sample.png>
-Package pdftex.def Info: ./images/sample.png  used on input line 250.
+Package pdftex.def Info: ./images/sample.png  used on input line 257.
 (pdftex.def)             Requested size: 500.484pt x 333.65538pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 254--255
+Underfull \hbox (badness 10000) in paragraph at lines 261--262
 
  []
 
@@ -858,37 +857,60 @@ File: lstlang1.sty 2019/09/10 1.8c listings language file
 )pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.257 \begin{lstlisting}[language=bash]
-                                        [1 <./images/sample.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 276--277
+l.278     \item \texttt
+                       {\color{purple} main\_hadoop.ipynb}: some text. [1 <./images/sample.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 283--284
 
  []
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/09/10 1.8c listings language file
-) [2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 304.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 304.
- (/home/manhcuong/Temp/tmp/report/main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 304.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 304.
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 89EDC46043235F545D4FE10407A4804F;265.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 304.
+)
+
+LaTeX Warning: File `images/01.png' not found on input line 317.
+
+
+/home/manhcuong/Documents/Warehouse/LATEX templates/report template 2/main.tex:317: Package pdftex.def Error: File `images/01.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.317 ...a tương đồng nhau nằm gần nhau.}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[2]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 319.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 319.
+ (/home/manhcuong/Documents/Warehouse/LATEX templates/report template 2/main.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 319.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 319.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  89EDC46043235F545D4FE10407A4804F;265.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 319.
  ) 
 Here is how much of TeX's memory you used:
- 23908 strings out of 481239
- 439910 string characters out of 5920376
- 887506 words of memory out of 5000000
- 38699 multiletter control sequences out of 15000+600000
+ 23933 strings out of 481239
+ 440341 string characters out of 5920376
+ 880283 words of memory out of 5000000
+ 38712 multiletter control sequences out of 15000+600000
  555578 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,7n,99p,976b,1503s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 68i,7n,99p,1016b,1503s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vncsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vntt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vntt12.pfb>
-Output written on /home/manhcuong/Temp/tmp/report/main.pdf (3 pages, 2716068 bytes).
+Output written on "/home/manhcuong/Documents/Warehouse/LATEX templates/report template 2/main.pdf" (3 pages, 2717645 bytes).
 PDF statistics:
- 139 PDF objects out of 1000 (max. 8388607)
- 102 compressed objects within 2 object streams
- 22 named destinations out of 1000 (max. 500000)
- 151 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 125 PDF objects out of 1000 (max. 8388607)
+ 89 compressed objects within 1 object stream
+ 25 named destinations out of 1000 (max. 500000)
+ 119 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -194,10 +194,16 @@
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
 
-
+\newcommand{\twiceIndent}{\hspace{\parindent}}
 \newcommand{\leftIndent}{\setlength{\parindent}{0.6cm}}
 \newcommand{\lleftIndent}{\setlength{\parindent}{1.2cm}}
 \newcommand{\itemsizePaddingLeft}{\setlength{\itemindent}{0.6cm}}
+\newcommand{\includeImage}[3]{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#1\textwidth]{images/#2.png}
+    \def\temp{#3}\ifx\temp\empty\else\caption{#3}\fi
+  \end{figure}}
 
 \begin{document}
 \begin{titlepage}
@@ -307,5 +313,7 @@ import findspark
   \item \textbf{CBOW model}.
   \item \textbf{Skip-gram model}.
 \end{enumerate}
+
+\includeImage{0.4}{01}{Các từ có ý nghĩa tương đồng nhau nằm gần nhau.}
 
 \end{document}

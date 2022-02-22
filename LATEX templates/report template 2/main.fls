@@ -1,10 +1,10 @@
-PWD /home/manhcuong/Temp/tmp/report
+PWD /home/manhcuong/Documents/Warehouse/LATEX templates/report template 2
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT /home/manhcuong/Temp/tmp/report/main.tex
-OUTPUT /home/manhcuong/Temp/tmp/report/main.log
+INPUT /home/manhcuong/Documents/Warehouse/LATEX templates/report template 2/main.tex
+OUTPUT /home/manhcuong/Documents/Warehouse/LATEX templates/report template 2/main.log
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
@@ -179,7 +179,7 @@ INPUT /usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries
 INPUT /usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfadings.code.tex
 INPUT /usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code.tex
 INPUT /usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code.tex
-OUTPUT /home/manhcuong/Temp/tmp/report/main.pdf
+OUTPUT /home/manhcuong/Documents/Warehouse/LATEX templates/report template 2/main.pdf
 INPUT /usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
@@ -252,9 +252,9 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/tools/indentfirst.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/tools/indentfirst.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 INPUT /usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
-INPUT /home/manhcuong/Temp/tmp/report/main.aux
-INPUT /home/manhcuong/Temp/tmp/report/main.aux
-OUTPUT /home/manhcuong/Temp/tmp/report/main.aux
+INPUT /home/manhcuong/Documents/Warehouse/LATEX templates/report template 2/main.aux
+INPUT /home/manhcuong/Documents/Warehouse/LATEX templates/report template 2/main.aux
+OUTPUT /home/manhcuong/Documents/Warehouse/LATEX templates/report template 2/main.aux
 INPUT /usr/share/texmf/tex/latex/tipa/t3cmr.fd
 INPUT /usr/share/texmf/tex/latex/tipa/t3cmr.fd
 INPUT /usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -269,13 +269,7 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
 INPUT /usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 INPUT /usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
-INPUT /home/manhcuong/Temp/tmp/report/main.out
-INPUT /home/manhcuong/Temp/tmp/report/main.out
-INPUT /home/manhcuong/Temp/tmp/report/main.out
-INPUT /home/manhcuong/Temp/tmp/report/main.out
-INPUT /home/manhcuong/Temp/tmp/report/main.out
-INPUT /home/manhcuong/Temp/tmp/report/main.out
-OUTPUT /home/manhcuong/Temp/tmp/report/main.out
+OUTPUT /home/manhcuong/Documents/Warehouse/LATEX templates/report template 2/main.out
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vncsc10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vncsc10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vncsc10.tfm
@@ -296,20 +290,18 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
-INPUT /home/manhcuong/Temp/tmp/report/./images/logo_hcmus.png
+INPUT /home/manhcuong/Documents/Warehouse/LATEX templates/report template 2/./images/logo_hcmus.png
 INPUT ./images/logo_hcmus.png
 INPUT ./images/logo_hcmus.png
 INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vnr17.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vnbx12.tfm
-INPUT /home/manhcuong/Temp/tmp/report/main.toc
-INPUT /home/manhcuong/Temp/tmp/report/main.toc
-OUTPUT /home/manhcuong/Temp/tmp/report/main.toc
+OUTPUT /home/manhcuong/Documents/Warehouse/LATEX templates/report template 2/main.toc
 INPUT /usr/share/texlive/texmf-dist/tex/latex/vntex/t5cmtt.fd
 INPUT /usr/share/texlive/texmf-dist/tex/latex/vntex/t5cmtt.fd
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vntt12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vnbx12.tfm
-INPUT /home/manhcuong/Temp/tmp/report/./images/sample.png
+INPUT /home/manhcuong/Documents/Warehouse/LATEX templates/report template 2/./images/sample.png
 INPUT ./images/sample.png
 INPUT ./images/sample.png
 INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -325,9 +317,9 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vnr8.tfm
 INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-INPUT /home/manhcuong/Temp/tmp/report/main.aux
-INPUT /home/manhcuong/Temp/tmp/report/main.out
-INPUT /home/manhcuong/Temp/tmp/report/main.out
+INPUT /home/manhcuong/Documents/Warehouse/LATEX templates/report template 2/main.aux
+INPUT /home/manhcuong/Documents/Warehouse/LATEX templates/report template 2/main.out
+INPUT /home/manhcuong/Documents/Warehouse/LATEX templates/report template 2/main.out
 INPUT /usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
