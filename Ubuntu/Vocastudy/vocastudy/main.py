@@ -17,6 +17,7 @@ IS_WORD = 1
 WRONG_WORD = 2
 WRONG_SEN = 3
 COMPLETE = 4
+NUM_QUES = 150
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -279,13 +280,13 @@ class MainWindow(QMainWindow):
                 self.indexes = json.load(reader)
         else:
             self.vocas = self.vocas.sample(frac=1)
-            self.vocas['shuffle'] = range(self.vocas.shape[0])
-            self.indexes = list(self.vocas.sort_values(by=['error', 'shuffle']).index)[:50]
+            self.vocas['shuffle'] = random.shuffle(list(range(self.vocas.shape[0])))
+            self.indexes = list(self.vocas.sort_values(by=['error', 'shuffle']).index)[:NUM_QUES]
             self.vocas = self.vocas.drop(columns=['shuffle'])
             self.vocas = self.vocas.sort_index()
 
         self.vocas.fillna("", inplace=True)
-        self.amount_vocas = min(50, len(self.indexes))
+        self.amount_vocas = min(NUM_QUES, len(self.indexes))
         self.current_id = random.choice(self.indexes)
         self.state = self._updateState()
         
