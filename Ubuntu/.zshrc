@@ -142,3 +142,5 @@ function gs () {
   
   git add . && git commit -m "$cmm" && git push
 }
+
+export PATH=$PATH:/usr/local/go/bin
