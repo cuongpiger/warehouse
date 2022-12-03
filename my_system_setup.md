@@ -19,6 +19,15 @@ pip3 install pimg
 pimg ~/Downloads/image.png
 ```
 
+* Alias
+```shell
+# save image
+function si() {
+  name="$1"
+  pimg g "${name}.png"
+}
+```
+
 # 5. Cài đặt MS-SQL lên docker container và kết nối đến CSDL bằng Python
 * **Bước 1**: 
   * Pull image MS-SQL về
@@ -127,7 +136,16 @@ pimg ~/Downloads/image.png
 # 6. Alias cho chuổi lệnh github
 * Mở file `.zshrc` lên và bỏ vào dòng này:
   ```shell
-  alias gd='f(){ git add . && git commit -m "$@" && git push; unset -f f; }; f'
+function gs () {
+  # cmm=${1:-"This is my commit"}
+  cmm="$1"
+  if test -z "$cmm"
+  then
+    cmm="This is Manh Cuong's commit 🌻."
+  fi
+  
+  git add . && git commit -m "$cmm" && git push
+}
   ```
 * Sau đó save lại và mở terminal ghõ lệnh:
   ```shell
@@ -172,3 +190,14 @@ pimg ~/Downloads/image.png
   sudo apt update
   sudo apt install peek
   ```
+# 9. Install Flameshot
+* [https://flameshot.org](https://flameshot.org/)
+
+# 10. Alias kleantrans
+```shell
+# run kleantrans
+function kleantrans() {
+  cd /usr/cuongdm/kleantrans/
+  nohup python3 main.py &>/dev/null &
+}
+```
