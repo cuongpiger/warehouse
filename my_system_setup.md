@@ -201,3 +201,8 @@ function kleantrans() {
   nohup python3 main.py &>/dev/null &
 }
 ```
+# 11. Install some gnome extensions
+* [https://extensions.gnome.org/extension/779/clipboard-indicator](https://extensions.gnome.org/extension/779/clipboard-indicator/)
+* [https://extensions.gnome.org/extension/906/sound-output-device-chooser](https://extensions.gnome.org/extension/906/sound-output-device-chooser/)
+* [https://extensions.gnome.org/extension/1401/bluetooth-quick-connect](https://extensions.gnome.org/extension/1401/bluetooth-quick-connect/)
+* [https://extensions.gnome.org/extension/2182/noannoyance](https://extensions.gnome.org/extension/2182/noannoyance/)
