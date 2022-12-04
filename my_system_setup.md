@@ -230,3 +230,15 @@ function kleantrans() {
 
 # 12. Install Macos Touchpad
 * [https://ubuntuhandbook.org/index.php/2022/06/touchpad-gestures-ubuntu-22-04-xorg](https://ubuntuhandbook.org/index.php/2022/06/touchpad-gestures-ubuntu-22-04-xorg/)
+
+# 13. Alias for Anaconda in ZSHRC file
+  ```bash
+  # >>> conda initialize >>>
+  # !! Contents within this block are managed by 'conda init' !!
+  if [ -f "/home/cuongdm/anaconda3/etc/profile.d/conda.sh" ]; then
+      . "/home/cuongdm/anaconda3/etc/profile.d/conda.sh"
+  else
+      export PATH="/home/cuongdm/anaconda3/bin:$PATH"
+  fi
+  # <<< conda initialize <<<
+  ```
