@@ -227,3 +227,6 @@ function kleantrans() {
 * [https://extensions.gnome.org/extension/906/sound-output-device-chooser](https://extensions.gnome.org/extension/906/sound-output-device-chooser/)
 * [https://extensions.gnome.org/extension/1401/bluetooth-quick-connect](https://extensions.gnome.org/extension/1401/bluetooth-quick-connect/)
 * [https://extensions.gnome.org/extension/2182/noannoyance](https://extensions.gnome.org/extension/2182/noannoyance/)
+
+# 12. Install Macos Touchpad
+* [https://ubuntuhandbook.org/index.php/2022/06/touchpad-gestures-ubuntu-22-04-xorg](https://ubuntuhandbook.org/index.php/2022/06/touchpad-gestures-ubuntu-22-04-xorg/)
