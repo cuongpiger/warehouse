@@ -136,16 +136,16 @@ function si() {
 # 6. Alias cho chuổi lệnh github
 * Mở file `.zshrc` lên và bỏ vào dòng này:
   ```shell
-function gs () {
-  # cmm=${1:-"This is my commit"}
-  cmm="$1"
-  if test -z "$cmm"
-  then
-    cmm="This is Manh Cuong's commit 🌻."
-  fi
-  
-  git add . && git commit -m "$cmm" && git push
-}
+    function gs () {
+    # cmm=${1:-"This is my commit"}
+    cmm="$1"
+    if test -z "$cmm"
+    then
+        cmm="This is Manh Cuong's commit 🌻."
+    fi
+    
+    git add . && git commit -m "$cmm" && git push
+    }
   ```
 * Sau đó save lại và mở terminal ghõ lệnh:
   ```shell
@@ -194,6 +194,27 @@ function gs () {
 * [https://flameshot.org](https://flameshot.org/)
 
 # 10. Alias kleantrans
+* Install translate-shell
+```bash
+sudo apt-get update -y
+sudo apt-get install -y translate-shell
+```
+
+* Install X-Clip
+```bash
+sudo apt-get install xclip
+```
+* Install tkinter
+```bash
+sudo apt-get install python3-tk
+```
+* Install python packages
+```bash
+pip3 install pyperclip==1.8.2
+pip3 install PySide2==5.15.2.1
+pip3 install pynput==1.7.4
+```
+* Alias command
 ```shell
 # run kleantrans
 function kleantrans() {
