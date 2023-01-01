@@ -252,3 +252,7 @@ function kleantrans() {
 
 ## 16. Elight extension for browser
 * [https://drive.google.com/file/d/1xPW-0jYP7cu2E67fHi0dclsGmQdoHHOS/view?usp=sharing](https://drive.google.com/file/d/1xPW-0jYP7cu2E67fHi0dclsGmQdoHHOS/view?usp=sharing)
+
+## 17. Setup Oh-My-ZSH
+* [https://linuxhint.com/install-use-oh-my-zsh/](https://linuxhint.com/install-use-oh-my-zsh/)
+* [https://gist.github.com/dogrocker/1efb8fd9427779c827058f873b94df95](https://gist.github.com/dogrocker/1efb8fd9427779c827058f873b94df95)
