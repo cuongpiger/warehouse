@@ -249,3 +249,6 @@ function kleantrans() {
 
 ## 15. Install and config Git on Ubuntu
 * [https://linuxhint.com/install-git-ubuntu22-04](https://linuxhint.com/install-git-ubuntu22-04/)
+
+## 16. Elight extension for browser
+* [https://drive.google.com/file/d/1xPW-0jYP7cu2E67fHi0dclsGmQdoHHOS/view?usp=sharing](https://drive.google.com/file/d/1xPW-0jYP7cu2E67fHi0dclsGmQdoHHOS/view?usp=sharing)
