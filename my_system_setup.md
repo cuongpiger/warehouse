@@ -242,3 +242,7 @@ function kleantrans() {
   fi
   # <<< conda initialize <<<
   ```
+
+## 14. Cài đặt `ibus-unikey`
+* Installa iBus-Unikey [https://minhng.info/tips/unikey-ubuntu-2204.html](https://minhng.info/tips/unikey-ubuntu-2204.html).
+* Fix error can not type Vietnamese in VNI [click here](https://github.com/BambooEngine/ibus-bamboo/wiki/Kh%C3%B4ng-g%C3%B5-%C4%91%C6%B0%E1%BB%A3c-ti%E1%BA%BFng-vi%E1%BB%87t-tr%C3%AAn-ph%E1%BA%A7n-m%E1%BB%81m-%60abc-xyz%60#ki%E1%BB%83m-tra-bi%E1%BA%BFn-m%C3%B4i-tr%C6%B0%E1%BB%9Dng)
