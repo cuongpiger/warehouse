@@ -256,3 +256,9 @@ function kleantrans() {
 ## 17. Setup Oh-My-ZSH
 * [https://linuxhint.com/install-use-oh-my-zsh/](https://linuxhint.com/install-use-oh-my-zsh/)
 * [https://gist.github.com/dogrocker/1efb8fd9427779c827058f873b94df95](https://gist.github.com/dogrocker/1efb8fd9427779c827058f873b94df95)
+
+# 18. Install goldendict
+* [https://www.howtoinstall.me/ubuntu/18-04/goldendict/](https://www.howtoinstall.me/ubuntu/18-04/goldendict/)
+
+# 19. Install OBS studio
+* [https://www.how2shout.com/linux/install-obs-studio-on-ubuntu-22-04-lts-jammy-linux/](https://www.how2shout.com/linux/install-obs-studio-on-ubuntu-22-04-lts-jammy-linux/)
