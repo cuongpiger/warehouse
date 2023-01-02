@@ -262,3 +262,6 @@ function kleantrans() {
 
 # 19. Install OBS studio
 * [https://www.how2shout.com/linux/install-obs-studio-on-ubuntu-22-04-lts-jammy-linux/](https://www.how2shout.com/linux/install-obs-studio-on-ubuntu-22-04-lts-jammy-linux/)
+
+# 20. Install Java
+* [https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-22-04](https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-22-04)
