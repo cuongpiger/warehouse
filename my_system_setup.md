@@ -226,6 +226,7 @@ function kleantrans() {
 ```bash
 sudo apt install gnome-shell-extensions
 ```
+* [https://extensions.gnome.org/extension/19/user-themes](https://extensions.gnome.org/extension/19/user-themes/)
 * [https://extensions.gnome.org/extension/779/clipboard-indicator](https://extensions.gnome.org/extension/779/clipboard-indicator/)
 * [https://extensions.gnome.org/extension/906/sound-output-device-chooser](https://extensions.gnome.org/extension/906/sound-output-device-chooser/)
 * [https://extensions.gnome.org/extension/1401/bluetooth-quick-connect](https://extensions.gnome.org/extension/1401/bluetooth-quick-connect/)
