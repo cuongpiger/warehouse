@@ -224,7 +224,8 @@ function kleantrans() {
 ```
 # 11. Install some gnome extensions
 ```bash
-sudo apt install gnome-shell-extensions
+sudo apt install gnome-shell-extensions -y
+sudo apt install gnome-tweaks -y
 ```
 * [https://extensions.gnome.org/extension/19/user-themes](https://extensions.gnome.org/extension/19/user-themes/)
 * [https://extensions.gnome.org/extension/779/clipboard-indicator](https://extensions.gnome.org/extension/779/clipboard-indicator/)
