@@ -270,3 +270,6 @@ sudo apt install gnome-tweaks -y
 
 # 20. Install Java
 * [https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-22-04](https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-22-04)
+
+# 21. Install theme and Icons
+* [https://fostips.com/whitesur-theme-make-ubuntu-fedora-macos-big-sur](https://fostips.com/whitesur-theme-make-ubuntu-fedora-macos-big-sur/)
