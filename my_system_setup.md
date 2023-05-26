@@ -275,3 +275,9 @@ sudo apt install gnome-tweaks -y
 
 # 21. Install theme and Icons
 * [https://fostips.com/whitesur-theme-make-ubuntu-fedora-macos-big-sur](https://fostips.com/whitesur-theme-make-ubuntu-fedora-macos-big-sur/)
+
+
+# 22. Change Gnome Desktop workspace
+```bash=
+gsettings set org.gnome.desktop.interface text-scaling-factor 0.85
+```
