@@ -279,5 +279,6 @@ sudo apt install gnome-tweaks -y
 
 # 22. Change Gnome Desktop workspace
 ```bash=
-gsettings set org.gnome.desktop.interface text-scaling-factor 0.85
+gsettings set org.gnome.desktop.interface text-scaling-factor 0.85 && \
+gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
 ```
