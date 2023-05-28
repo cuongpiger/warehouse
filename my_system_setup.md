@@ -136,16 +136,15 @@ function si() {
 # 6. Alias cho chuổi lệnh github
 * Mở file `.zshrc` lên và bỏ vào dòng này:
   ```shell
-    function gs () {
+  function gs() {
     # cmm=${1:-"This is my commit"}
     cmm="$1"
     if test -z "$cmm"
     then
-        cmm="This is Manh Cuong's commit 🌻."
+      cmm="This is Manh Cuong's commit 🌻."
     fi
-    
     git add . && git commit -m "$cmm" && git push
-    }
+  }
   ```
 * Sau đó save lại và mở terminal ghõ lệnh:
   ```shell
@@ -263,6 +262,8 @@ sudo apt install gnome-tweaks -y
 ## 17. Setup Oh-My-ZSH
 * [https://linuxhint.com/install-use-oh-my-zsh/](https://linuxhint.com/install-use-oh-my-zsh/)
 * [https://gist.github.com/dogrocker/1efb8fd9427779c827058f873b94df95](https://gist.github.com/dogrocker/1efb8fd9427779c827058f873b94df95)
+
+* Use the theme `jispwoso`
 
 # 18. Install goldendict
 * [https://www.howtoinstall.me/ubuntu/18-04/goldendict/](https://www.howtoinstall.me/ubuntu/18-04/goldendict/)
