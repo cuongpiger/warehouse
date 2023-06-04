@@ -233,6 +233,7 @@ sudo apt install gnome-tweaks -y
 * [https://extensions.gnome.org/extension/2182/noannoyance](https://extensions.gnome.org/extension/2182/noannoyance/)
 * [https://extensions.gnome.org/extension/1162/emoji-selector](https://extensions.gnome.org/extension/1162/emoji-selector/)
 * [https://extensions.gnome.org/extension/1634/resource-monitor/](https://extensions.gnome.org/extension/1634/resource-monitor/)
+* [https://extensions.gnome.org/extension/3733/tiling-assistant/](https://extensions.gnome.org/extension/3733/tiling-assistant/)
 * [https://extensions.gnome.org/extension/4245/gesture-improvements/](https://extensions.gnome.org/extension/4245/gesture-improvements/)
 
 # 12. Install Macos Touchpad
