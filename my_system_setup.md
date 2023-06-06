@@ -287,3 +287,12 @@ sudo apt install gnome-tweaks -y
 gsettings set org.gnome.desktop.interface text-scaling-factor 0.85 && \
 gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
 ```
+
+# 23. Install Docker
+```bash=
+curl -fsSL https://get.docker.com -o get-docker.sh && \
+sh get-docker.sh && \
+sudo usermod -a -G docker $USER && \
+sudo chmod 666 /var/run/docker.sock && \
+rm get-docker.sh
+```
