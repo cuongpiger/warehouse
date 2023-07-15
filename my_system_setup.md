@@ -88,33 +88,17 @@ function si() {
 * [https://flameshot.org](https://flameshot.org/)
 
 # 10. Alias kleantrans
-* Install translate-shell
-```bash
-sudo apt-get update -y
-sudo apt-get install -y translate-shell
-```
+```bash=
+sudo apt-get update -y && sudo apt-get install -y translate-shell xclip python3-tk && \
+pip3 install pyperclip==1.8.2 PySide2==5.15.2.1 pynput==1.7.4 && \
+cat <<EOF >> ~/.zshrc
 
-* Install X-Clip
-```bash
-sudo apt-get install xclip
-```
-* Install tkinter
-```bash
-sudo apt-get install python3-tk
-```
-* Install python packages
-```bash
-pip3 install pyperclip==1.8.2
-pip3 install PySide2==5.15.2.1
-pip3 install pynput==1.7.4
-```
-* Alias command
-```shell
 # run kleantrans
 function kleantrans() {
   cd /usr/cuongdm/kleantrans/
   nohup python3 main.py &>/dev/null &
 }
+EOF
 ```
 # 11. Install some gnome extensions
 ```bash
