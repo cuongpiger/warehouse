@@ -156,7 +156,9 @@ sudo apt install gnome-tweaks -y
 * [https://www.how2shout.com/linux/install-obs-studio-on-ubuntu-22-04-lts-jammy-linux/](https://www.how2shout.com/linux/install-obs-studio-on-ubuntu-22-04-lts-jammy-linux/)
 
 # 20. Install Java
-* [https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-22-04](https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-22-04)
+```bash=
+sudo apt update && sudo apt install default-jre default-jdk -y
+```
 
 # 21. Install theme and Icons
 * [https://fostips.com/whitesur-theme-make-ubuntu-fedora-macos-big-sur](https://fostips.com/whitesur-theme-make-ubuntu-fedora-macos-big-sur/)
