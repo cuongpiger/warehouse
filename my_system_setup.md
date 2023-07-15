@@ -150,7 +150,9 @@ sudo apt install gnome-tweaks -y
 * Use the theme `jispwoso`
 
 # 18. Install goldendict
-* [https://www.howtoinstall.me/ubuntu/18-04/goldendict/](https://www.howtoinstall.me/ubuntu/18-04/goldendict/)
+```bash=
+sudo apt update && sudo apt install goldendict -y
+```
 
 # 19. Install OBS studio
 * [https://www.how2shout.com/linux/install-obs-studio-on-ubuntu-22-04-lts-jammy-linux/](https://www.how2shout.com/linux/install-obs-studio-on-ubuntu-22-04-lts-jammy-linux/)
