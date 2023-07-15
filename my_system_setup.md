@@ -99,6 +99,7 @@ function kleantrans() {
   nohup python3 main.py &>/dev/null &
 }
 EOF
+source ~/.zshrc
 ```
 # 11. Install some gnome extensions
 ```bash
