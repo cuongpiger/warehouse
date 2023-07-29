@@ -1,7 +1,0 @@
-# install python3 packagespackages
-pip3 install requests pynput PySide2
-
-
-# install translate-shell
-sudo apt-get update -y
-sudo apt-get install -y translate-shell
