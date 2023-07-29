@@ -1,5 +1,17 @@
 #!/bin/bash
 
+####################################################################################################
+# Author: Cuong. Duong Manh
+# Date: 2023/07/29
+#
+# Description: This script is used to setup git. It will do the following tasks:
+#  - Install git CLI
+#  - Setup git config, such as user information
+#  - Setup SSH keys
+#  - Setup alias git command
+# OS: Ubuntu 22.04 LTS
+####################################################################################################
+
 sudo apt update
 sudo apt install git -y
 
