@@ -8,11 +8,19 @@
 # OS: Ubuntu 22.04 LTS
 ####################################################################################################
 
+sudo_pw=$1
+
+if [ -z "$sudo_pw" ]
+then
+  echo "Please provide sudo password!"
+  exit 1
+fi
+
 directory="$HOME/kleantrans"
 dst_dir="/usr/cuongdm/kleantrans"
 
 # install dependencies
-sudo apt-get update -y
+echo "$sudo_pw" | sudo -S apt-get update -y
 sudo apt-get install -y translate-shell xclip python3-tk git python3-pip
 
 pip3 install pyperclip==1.8.2 PySide2==5.15.2.1 pynput==1.7.4

@@ -8,7 +8,14 @@
 # OS: Ubuntu 22.04 LTS
 ####################################################################################################
 
-num_workspace=$1
+sudo_pw=$1
+num_workspace=$2
+
+if [ -z "$sudo_pw" ]
+then
+  echo "Please provide sudo password!"
+  exit 1
+fi
 
 if [ -z "$num_workspace" ]
 then
@@ -25,7 +32,7 @@ gsettings set org.gnome.desktop.wm.preferences num-workspaces $num_workspace
 #   gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$x "[\"<Super>$x\"]"
 # done
 
-sudo apt-get update
+echo "$sudo_pw" | sudo -S apt-get update
 sudo apt-get install xdotool -y
 
 dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-4 "['XF86LaunchB']"

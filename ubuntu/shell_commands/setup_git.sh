@@ -12,7 +12,15 @@
 # OS: Ubuntu 22.04 LTS
 ####################################################################################################
 
-sudo apt update
+sudo_pw=$1
+
+if [ -z "$sudo_pw" ]
+then
+  echo "Please provide sudo password!"
+  exit 1
+fi
+
+echo "$sudo_pw" | sudo -S apt update
 sudo apt install git -y
 
 git config --global user.name "cuongpiger"
