@@ -67,5 +67,3 @@ function gs() {
 }
 EOF
 
-# reload zshrc
-source "$zshrc_file"
