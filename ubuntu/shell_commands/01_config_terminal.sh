@@ -22,3 +22,6 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting docker npm)
 EOF
 
 source $HOME/.zshrc
+
+
+# set ZSH_THEME="jispwoso"
