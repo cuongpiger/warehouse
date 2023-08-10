@@ -13,4 +13,6 @@ Templates
 Videos
 snap
 anaconda3
+bin
+opt
 EOF
