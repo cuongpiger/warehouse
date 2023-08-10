@@ -24,3 +24,11 @@ sudo apt -y install libfuse2 goldendict install default-jre default-jdk flamesho
 sudo add-apt-repository ppa:obsproject/obs-studio --yes
 sudo apt-get update
 sudo apt install ffmpeg obs-studio -y
+
+# install thumbnail for the epub
+sudo add-apt-repository ppa:ubuntuhandbook1/apps --yes
+sudo apt update
+sudo apt install gnome-epub-thumbnailer -y
+
+# install calibre
+sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
