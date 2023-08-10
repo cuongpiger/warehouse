@@ -66,4 +66,3 @@ function gs() {
     git push
 }
 EOF
-

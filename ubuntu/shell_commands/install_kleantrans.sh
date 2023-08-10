@@ -43,6 +43,5 @@ function kleantrans() {
   nohup python3 main.py &>/dev/null &
 }
 EOF
-source ~/.zshrc
 
 rm -rf $directory
