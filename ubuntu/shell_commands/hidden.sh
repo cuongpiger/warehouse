@@ -12,4 +12,5 @@ Public
 Templates
 Videos
 snap
+anaconda3
 EOF
