@@ -119,18 +119,6 @@ sudo apt install gnome-tweaks -y
 # 12. Install Macos Touchpad
 * [https://ubuntuhandbook.org/index.php/2022/06/touchpad-gestures-ubuntu-22-04-xorg](https://ubuntuhandbook.org/index.php/2022/06/touchpad-gestures-ubuntu-22-04-xorg/)
 
-# 13. Alias for Anaconda in ZSHRC file
-  ```bash
-  # >>> conda initialize >>>
-  # !! Contents within this block are managed by 'conda init' !!
-  if [ -f "/home/cuongdm/anaconda3/etc/profile.d/conda.sh" ]; then
-      . "/home/cuongdm/anaconda3/etc/profile.d/conda.sh"
-  else
-      export PATH="/home/cuongdm/anaconda3/bin:$PATH"
-  fi
-  # <<< conda initialize <<<
-  ```
-
 ## 14. Cài đặt `ibus-unikey`
 * Installa iBus-Unikey [https://minhng.info/tips/unikey-ubuntu-2204.html](https://minhng.info/tips/unikey-ubuntu-2204.html).
 * Fix error can not type Vietnamese in VNI [click here](https://github.com/BambooEngine/ibus-bamboo/wiki/Kh%C3%B4ng-g%C3%B5-%C4%91%C6%B0%E1%BB%A3c-ti%E1%BA%BFng-vi%E1%BB%87t-tr%C3%AAn-ph%E1%BA%A7n-m%E1%BB%81m-%60abc-xyz%60#ki%E1%BB%83m-tra-bi%E1%BA%BFn-m%C3%B4i-tr%C6%B0%E1%BB%9Dng)
@@ -156,11 +144,6 @@ sudo apt update && sudo apt install goldendict -y
 
 # 19. Install OBS studio
 * [https://www.how2shout.com/linux/install-obs-studio-on-ubuntu-22-04-lts-jammy-linux/](https://www.how2shout.com/linux/install-obs-studio-on-ubuntu-22-04-lts-jammy-linux/)
-
-# 20. Install Java
-```bash=
-sudo apt update && sudo apt install default-jre default-jdk -y
-```
 
 # 21. Install theme and Icons
 * [https://fostips.com/whitesur-theme-make-ubuntu-fedora-macos-big-sur](https://fostips.com/whitesur-theme-make-ubuntu-fedora-macos-big-sur/)
