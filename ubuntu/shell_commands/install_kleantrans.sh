@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 ####################################################################################################
 # Author: Cuong. Duong Manh
@@ -22,7 +22,6 @@ dst_dir="/usr/cuongdm/kleantrans"
 # install dependencies
 echo "$sudo_pw" | sudo -S apt-get update -y
 sudo apt-get install -y translate-shell xclip python3-tk git python3-pip
-sudo mkdir -p $dst_dir
 
 pip3 install pyperclip==1.8.2 PySide2==5.15.2.1 pynput==1.7.4
 
@@ -46,3 +45,5 @@ function kleantrans() {
 EOF
 
 rm -rf $directory
+
+source $HOME/.zshrc
