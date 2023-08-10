@@ -8,7 +8,14 @@
 # OS: Ubuntu 22.04 LTS
 ####################################################################################################
 
-warehouse_path=$(find $HOME -type d -path '*warehouse/ubuntu/extensions')
+sudo_pw=$1
+
+if [ -z "$sudo_pw" ]; then
+  echo "Please provide sudo password!"
+  exit 1
+fi
+
+warehouse_path=$(echo "$sudo_pw" | sudo -S find $HOME -type d -path '*warehouse/ubuntu/extensions')
 cp -r $warehouse_path $HOME/.local/share/gnome-shell/
 killall -HUP gnome-shell
 
