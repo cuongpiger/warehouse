@@ -18,6 +18,7 @@ fi
 # make sure update the OS before installing something apps
 echo "$sudo_pw" | sudo -S apt update
 
+# phase 1: install Docker
 dst_file="$HOME/Downloads/get-docker.sh"
 
 curl -fsSL https://get.docker.com -o $dst_file && \
