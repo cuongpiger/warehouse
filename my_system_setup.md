@@ -164,19 +164,3 @@ sudo apt update && sudo apt install default-jre default-jdk -y
 
 # 21. Install theme and Icons
 * [https://fostips.com/whitesur-theme-make-ubuntu-fedora-macos-big-sur](https://fostips.com/whitesur-theme-make-ubuntu-fedora-macos-big-sur/)
-
-
-# 22. Change Gnome Desktop workspace
-```bash=
-gsettings set org.gnome.desktop.interface text-scaling-factor 0.85 && \
-gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
-```
-
-# 23. Install Docker
-```bash=
-curl -fsSL https://get.docker.com -o get-docker.sh && \
-sh get-docker.sh && \
-sudo usermod -a -G docker $USER && \
-sudo chmod 666 /var/run/docker.sock && \
-rm get-docker.sh
-```
