@@ -21,7 +21,6 @@ cat >> $HOME/.zshrc <<EOF
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting docker npm)
 EOF
 
+sed -i 's/ZSH_THEME="[^"]*"/ZSH_THEME="jispwoso"/' $HOME/.zshrc
+
 source $HOME/.zshrc
-
-
-# set ZSH_THEME="jispwoso"
