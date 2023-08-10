@@ -25,4 +25,10 @@ rm -r $HOME/.thunderbird
 sudo apt-get update -y
 sudo apt-get upgrade -y
 
+sudo apt-get remove --purge 'libreoffice*' -y
+sudo apt-get clean
+sudo apt-get autoremove
+
+sudo apt update -y
+
 echo "[INFO] Everything is done!"
