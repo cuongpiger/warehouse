@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 ####################################################################################################
 # Author: Cuong. Duong Manh
@@ -8,8 +8,8 @@
 # OS: Ubuntu 22.04 LTS
 ####################################################################################################
 
-sudo_pw=$1
-tar_file=$2
+sudo_pw=$1 # the root user password
+tar_file=$2  # the tar file path of nodejs
 
 if [ -z "$sudo_pw" ]; then
   echo "Please provide sudo password!"
@@ -28,7 +28,7 @@ sudo tar -xJvf $tar_file -C $nodejs_dst
 
 path_nodejs=$(find "$nodejs_dst" -mindepth 1 -maxdepth 1 -type d -print)
 
-echo "export PATH=\$PATH:$path_nodejs/bin" >> $HOME/.profile
-. $HOME/.profile
+echo "export PATH=\$PATH:$path_nodejs/bin" >> $HOME/.zshrc
+source $HOME/.zshrc
 
 echo "DONE! installing nodejs, npm and npx."
