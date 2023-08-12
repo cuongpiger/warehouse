@@ -4,3 +4,4 @@
   |#|Script|Description|Parameters|Note|
   |-|-|-|-|-|
   |1|[50_install_npm.sh](./ubuntu/shell_commands/50_install_npm.sh)|Install `node`, `npm` and `npx`|`root_user_password`, `file_path_of_nodejs_tar.xz_file`|Download the latest NodeJS LTS version at [https://nodejs.org/en/download](https://nodejs.org/en/download)|
+  |2|[45_install_dictionary.sh](./ubuntu/shell_commands/45_install_dictionary.sh)|Configure `goldendict` and install dictionaries|`root_user_password`||
