@@ -11,4 +11,4 @@ fi
 # make sure update the OS before installing something apps
 echo "$sudo_pw" | sudo -S apt update
 
-sudo snap install slack telegram-desktop skype teams-for-linux onlyoffice-desktopeditors postman
+sudo snap install slack telegram-desktop skype teams-for-linux onlyoffice-desktopeditors postman krita kdenlive
