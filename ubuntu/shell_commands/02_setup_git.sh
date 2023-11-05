@@ -22,7 +22,7 @@ fi
 echo "$sudo_pw" | sudo -S apt update
 sudo apt install git -y
 
-git config --global user.name "cuongpiger"
+git config --global user.name "Cuong. Duong Manh"
 git config --global user.email "cuongpigerr@gmail.com"
 
 private_key="$HOME/.ssh/personal_git"
