@@ -1,0 +1,306 @@
+.welcome_box {
+    margin-top: -70px !important;
+    /*padding-top: 50px !important;*/
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.welcome_box .intro_box .intro_msg {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.welcome_box .intro_box .intro_msg > p {
+    font-size: 20px;
+}
+
+.welcome_box .intro_box .list_feature {
+    list-style: none;
+    margin-bottom: 50px;
+    padding: 0px;
+}
+
+.welcome_box .intro_box .list_feature li {
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.welcome_box .intro_box .list_feature li p {
+    font-size: 18px;
+    margin: 0px;
+}
+
+.welcome_box .intro_box .list_feature .game_feature img {
+    width: 75px;
+    margin-top: -6px;
+    margin-bottom: 5px;
+}
+
+.welcome_box .intro_box .list_feature .practice_feature img {
+    width: 60px;
+    background-color: #ffbf24;
+    border-radius: 50%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.welcome_box .intro_box .list_feature .quick_remember_feature img {
+    width: 60px;
+    height: 60px;
+    background-color: #4DD0E1;
+    border-radius: 50%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.welcome_box .intro_box .list_feature .quick_remember_feature .time_icon {
+    width: 60px;
+    height: 60px;
+    background-color: #4DD0E1;
+    border-radius: 50%;
+    margin: auto;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 18px;
+}
+
+.welcome_box .intro_box .btn_learn_now {
+    padding: 8px 55px;
+}
+
+/*announce new version*/
+.announce_new_version {
+    text-align: center;
+}
+
+.announce_new_version .list_feature {
+    display:inline-block;
+    margin: 30px auto;
+    text-align: left;
+}
+
+.announce_new_version .list_feature li {
+    font-size: 20px;
+    display: list-item;
+    list-style-type: disc;
+    list-style-position:outside;
+}
+
+.announce_new_version .btn_active_now {
+    position: relative;
+    box-shadow: 0 0 0 0 rgba(95, 232, 61, 0.7);
+    animation-delay: 1s;
+    animation: pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+@keyframes pulse {
+    to {
+        box-shadow: 0 0 0 30px rgba(232, 76, 61, 0);
+    }
+}
+
+/*topic*/
+.welcome_box .list_topic_box > p {
+    font-size: 23px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.welcome_box .list_topic_box .list_topic {
+    list-style: none;
+    height: 300px;
+    overflow-y: scroll;
+    padding: 0px;
+    margin: 0px;
+}
+
+.welcome_box .list_topic_box .list_topic .topic .topic_container {
+    box-shadow: 5px 5px 5px #888888;
+    border-radius: 10px;
+    position: relative;
+    margin-top: 10px;
+    cursor: pointer;
+    min-height: 215px;
+}
+
+.welcome_box .list_topic_box .list_topic .topic .topic_container img {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    width: 100%;
+}
+
+.welcome_box .list_topic_box .list_topic .topic .topic_container .topic_name {
+    padding: 10px;
+    font-size: 15px;
+}
+
+.welcome_box .list_topic_box .list_topic .topic .topic_container .topic_detail {
+    position: absolute;
+    top: 30px;
+    display: none;
+}
+
+.welcome_box .list_topic_box .list_topic .topic .topic_container_welcome:hover .topic_detail{
+    display: block;
+    color: white;
+    top: 5px;
+}
+
+.welcome_box .list_topic_box .list_topic .topic .topic_container_welcome:hover .topic_lock{
+    display: none;
+}
+
+.welcome_box .list_topic_box .list_topic .topic .topic_container .topic_lock {
+    position: absolute;
+    font-size: 60px;
+    color: white;
+    display: block;
+}
+
+.welcome_box .list_topic_box .list_topic .topic .topic_container:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    border-radius: 10px;
+    background: rgba(6, 7, 46, 0.80);
+}
+
+.welcome_box .list_topic_box .list_topic .topic .topic_container img {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-radius: 50%;
+    width: 100px;
+
+}
+
+.welcome_box .list_topic_box .list_topic .topic .topic_container .topic_detail p {
+    border-radius: 6px;
+    position: relative;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.btn_rounded {
+    border-radius: 25px;
+    font-size: 18px;
+    box-shadow: 5px 5px 5px #888888;
+}
+
+#confirm-topic-box, #confirm-topic-box2, .modal-backdrop {
+    position: absolute;
+    top: 100px;
+}
+
+#confirm-topic-box2 .modal-dialog, #confirm-topic-box .modal-dialog {
+    width: 450px !important;
+}
+
+#confirm-topic-box2 .btn_group button, #confirm-topic-box .btn_group button {
+    margin-right: 10px;
+}
+
+#confirm-topic-box .btn_group .btn_deny, #confirm-topic-box2 .btn_group .btn_deny {
+    color: #ffffff;
+    background-color: #4c4c50;
+}
+
+/*recommend*/
+.recommend_create_account_section > h4 {
+    font-size: 23px;
+    width: 500px;
+    margin: auto;
+    padding: 36px;
+    margin-bottom: 40px;
+    color: #000000;
+}
+
+.recommend_create_account_section > button {
+    margin-bottom: 40px;
+    font-size: 20px;
+}
+
+.btn_skip_create_account {
+    clear: both;
+}
+
+.btn_skip_create_account a {
+    cursor: pointer;
+}
+
+.recommend_create_account_section .btn_login_now {
+    margin: 20px 0;
+}
+
+.recommend_create_account_section .btn_login_now:hover {
+    cursor: pointer;
+}
+
+/*register form*/
+.register_login_form {
+    color: #000000;
+}
+
+.register_login_form > h3 {
+    margin-bottom: 10px;
+}
+
+.register_login_form .suggest_login {
+    margin-bottom: 30px;
+    font-style: italic;
+    color: dodgerblue;
+}
+
+.register_login_form .btn_group {
+    margin-top: 30px;
+    margin-bottom: 0px;
+    padding: 10px;
+}
+
+.register_login_form .btn_group p {
+    margin-top: 10px;
+}
+
+.register_login_form .btn_group p a {
+    cursor: pointer;
+}
+
+.register_login_form .btn-register {
+    padding: 5px 45px;
+    margin-bottom: 10px;
+}
+
+.register_login_form .btn-login {
+    padding: 5px 30px;
+    margin-bottom: 10px;
+}
+
+.register_login_form .message-error {
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.logedin_success p {
+    font-size: 23px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 40px;
+}
+
+/**/
+.recommend_choose_more_topic_section  .btn_group {
+    margin-top: 30px;
+    position: relative;
+}
+
+.recommend_choose_more_topic_section .btn_group .btn_choose_again {
+    position: absolute;
+    left: 50px;
+    color: #ffffff;
+    background-color: #4c4c50;
+}
+
+.recommend_choose_more_topic_section .btn_group .btn_learn_now {
+    position: absolute;
+    right: 50px;
+}

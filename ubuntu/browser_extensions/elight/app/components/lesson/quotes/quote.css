@@ -1,0 +1,253 @@
+.quote_box {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 8px !important;
+    position: relative !important;
+}
+
+.quote_box .btn_translate {
+    background-color: #ffffff;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    padding: 10px;
+    box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+    position: absolute;
+    top: 15px;
+}
+
+.quote_box .btn_translate:hover {
+    cursor: pointer;
+}
+
+.quote_box .btn_translate:active {
+    top: 20px;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
+}
+
+.quote_box .tag {
+    position: absolute;
+    top: -25px;
+    left: 22px;
+    font-size: 20px;
+    color: rgb(34, 119, 214);
+}
+
+.quote_box .quote_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.quote_box .quote_content .first_quote_mark {
+    font-family: PCMyungjo;
+    font-size: 70px;
+}
+
+.quote_box .quote_content .last_quote_mark {
+    font-family: PCMyungjo;
+}
+
+.quote_box .quote_content .quote_vi {
+    color: rgba(12, 99, 214, 1);
+}
+
+.quote_box .quote_content .eng_word {
+    position: relative;
+}
+
+.quote_box .quote_content .eng_word > span:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    color: #ffffff;
+}
+
+.vi_word_modal {
+    position: fixed;
+}
+
+.vi_word_modal > .vi_word_content {
+    width: 200px;
+    height: 185px;
+    background-color: #ffffff;
+    box-shadow: 3px 3px 11px 3px rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    border: 1px solid #cac5c5;
+    padding: 10px;
+}
+
+.vi_word_content > .vi_word_content_lv2 {
+    height: 150px;
+    overflow : scroll;
+}
+
+.vi_word_modal::before {
+    content: "";
+    border-width: 15px 15px 0 0;
+    border-color: #ffffff transparent transparent transparent;
+    border-style: solid;
+    margin-bottom: -15px;
+    position: absolute;
+    left: 10px;
+    bottom: 1px;
+}
+
+.vi_word_modal p {
+    font-size: 18px;
+    font-family: Montserrat-Regular;
+    text-align: left;
+}
+
+.vi_word_modal .eng_word {
+    color: #337ab7;
+    font-size: 25px;
+}
+
+.vi_word_modal .type {
+    font-size: 15px;
+    font-style: italic;
+}
+
+.vi_word_modal .meaning {
+    font-size: 20px;
+}
+
+.vi_word_modal .pronounce {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: 3px 3px 1px 1px #cac5c5;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+.vi_word_modal .pronounce:hover {
+    cursor: pointer;
+}
+
+.vi_word_modal .pronounce:active {
+    top: 12px;
+    right: 12px;
+    box-shadow: 0 0 0 0 #cac5c5;
+}
+
+.vi_word_modal .pronounce i {
+    color: #ffb940;
+    font-size: 20px;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+}
+
+.quote_box .quote_author {
+    font-size: 20px;
+}
+
+.quote_box .btn_quote_group {
+    margin: auto;
+    position: absolute;
+    bottom: -35px;
+    left: 0;
+    height: 70px;
+    width: 100%;
+    text-align: center;
+}
+.group-action {
+    width: 160px;
+    margin: 0 auto;
+    height: 70px;
+}
+
+.quote_box .btn_quote_group > .btn_quote {
+    float: left;
+    width: 70px;
+    height: 70px;
+    background-color: #ffffff;
+    box-shadow: 3px 1px 0 0 rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.quote_box .btn_quote_group .btn_learn {
+    left: 280px;
+    color: #00bfff;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: white;
+    padding: 15px 10px 10px 13px;
+    cursor: pointer;
+    float: right;
+}
+
+.quote_box .btn_quote_group .btn_like {
+    right: 290px;
+    color: #ed0d29;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: white;
+    padding: 17px;
+    cursor: pointer;
+    float: left;
+}
+
+
+.quote_date {
+    font-size: 16px !important;
+    font-weight: 200 !important;
+}
+
+.quote_feedback_icon {
+    width: 25px;
+    height: 25px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+}
+
+.quote_survey_div {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.quote_survey_option {
+    margin-left: -5px;
+}
+
+.quote_survey_label {
+    font-size: 13px;
+    padding-top: 6px;
+}
+
+.quote_arrow_box {
+    min-width: 185px;
+    left: 8px;
+}
+
+.quote_arrow_box:before,
+.quote_arrow_box:after {
+    left: 18px;
+}
+
+.quote_small_span {
+    font-size: 24px !important;
+}
+
+.quote_full_text_translated {
+    font-size: 15px !important;
+    text-align: left !important;
+    font-family: sans-serif !important;
+}
+
+.quote_ajax_loader_img{
+    width: 40%;
+    margin-top: 40px;
+}
+
+.quote_span_no_selection{
+    -webkit-user-select: none;
+}

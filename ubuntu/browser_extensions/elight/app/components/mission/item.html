@@ -1,0 +1,22 @@
+<li class="mission-item" ng-class="{'completed-background': current === total || data.status || (fullStar && fullStar.current/fullStar.total >= 0.8)}" ng-click="toDoMission(type)">
+    <div class="mission-progress-wrapper">
+        <div class="current" ng-class="{'completed': current === total || data.status || (fullStar && fullStar.current/fullStar.total >= 0.8)}"
+             ng-bind="current === total || data.status || (fullStar && fullStar.current/fullStar.total >= 0.8) ? '' : fullStar ? ((fullStar.current/fullStar.total) * 100 | number: 2) + '%' : ((current/total) * 100 | number: 2 ) + '%'"></div>
+        <round-progress
+                max="data.status ? 1 : (fullStar ? fullStar.total : total)"
+                current="data.status ? 1 : (fullStar ? fullStar.current : current)"
+                color="#27ae60"
+                bgcolor="#eaeaea"
+                radius="30"
+                stroke="8"
+                rounded="true"
+                responsive="false"
+                duration="800"
+                animation="easeInOutQuart"
+                animation-delay="0"></round-progress>
+    </div>
+    <ul class="mission-item-detail">
+        <li><h5 class="mission-item-detail" ng-bind="title ? title : 'Chưa có title cho mission này'"></h5></li>
+        <li><p  class="mission-item-date" ng-bind="(day ? day : dateMission) | dateFormat"></p></li>
+    </ul>
+</li>

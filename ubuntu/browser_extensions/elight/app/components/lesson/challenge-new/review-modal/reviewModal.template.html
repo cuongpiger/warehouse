@@ -1,0 +1,65 @@
+<div id="war_flat_card" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" style="color: #000000;" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h2 class="title_h2">{{localesMessage[25][$root.language]}}</h2>
+                <ul class="row">
+                    <li class="col-xs-3" ng-repeat="(key, val) in userWord track by $index" ng-if="val">
+                        <div class="end_card" ng-click="$ctrl.flip(key, val.audio, val.word)" data-item="{{key}}">
+                            <div class="front_card">
+                                <img on-error ng-src="{{val.image}}">
+                                <div class="{{ val.result ? 'right_bg' : 'wrong_bg'}}"></div>
+                                <div>
+                                    <h3>{{val.word}}</h3>
+                                </div>
+                            </div>
+                            <div class="back_card">
+                                <h2>{{val.word}}</h2>
+                                <h3>{{val.phonetic}}</h3>
+                                <h2>{{$root.language === 'vn' ? val.translate : val.translate_por}}</h2>
+                            </div>
+                        </div>
+                        <div class="feedback_div">
+                            <div style="position: relative" tooltip-placement="top" uib-tooltip="Report">
+                                <div class="feedback_icon" ng-click="$ctrl.showFeedbackDiv($index)"></div>
+                                <div class="arrow_box arrow_box_end_war" ng-if="$ctrl.showArrowBox[$index]">
+                                    <div class="feedback_container">
+                                        <div class="survey_div" ng-if="$ctrl.survey">
+                                            <div class="text-center feedback_header"><b>{{localesMessage[26][$root.language]}}</b></div>
+                                            <div class="feedback_content">
+                                                <form id="challenge_survey_form" class="text-center">
+                                                    <div class="elight_survey_option">
+                                                        <input type="checkbox" class="ui_input challenge_checkbox" name="content_error" value="Yes" id="content_error">
+                                                        <label class="elight_survey_label" for="content_error" ng-click="$ctrl.checkDisable()">
+                                                            {{localesMessage[27][$root.language]}}
+                                                        </label>
+                                                    </div>
+                                                    <div class="elight_survey_option">
+                                                        <input type="checkbox" class="ui_input challenge_checkbox" name="image" value="Yes" id="image">
+                                                        <label class="elight_survey_label" for="image" ng-click="$ctrl.checkDisable()">
+                                                            {{localesMessage[28][$root.language]}}
+                                                        </label>
+                                                    </div>
+                                                    <button class="btn elight_send_btn" ng-disabled="$ctrl.disabledSendBtn" ng-click="$ctrl.sendReport(val.word)">Send</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="elight_thank_you text-center" ng-if="!survey">
+                                            <img src="assets/images/thankyou.png" style="width: 50%;">
+                                            <div class="elight_thank_you_text">
+                                                <h4><b>{{localesMessage[29][$root.language]}}</b></h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>

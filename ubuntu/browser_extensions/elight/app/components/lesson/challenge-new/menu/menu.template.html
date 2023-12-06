@@ -1,0 +1,334 @@
+<div class="preparing text-center divide_3_cols full_height">
+  <ul class="bonusAndItemCol full_height">
+    <li class="profile-section full_width">
+      <div class="stat stat_profile full_width">
+        <p class="text-center starting_title profile_title">
+          Profile
+          <span ng-if="$root.loggedIn" class="btn_edit" ng-click="$ctrl.openProfile()">
+            <i class="fa fa-pencil-square" aria-hidden="true"></i>
+          </span>
+        </p>
+        <div class="box_image_profile avatar-container" ng-class="{'has-special-avatar': $root.playerStat.specialAvatar}">
+          <div class="avatar">
+            <img ng-if="!$root.loading_avatar" ng-src="{{$root.playerStat.avatar}}" on-error-avatar alt="{{$root.playerStat.display_name}}}">
+            <img ng-if="$root.loading_avatar" src="../../../assets/images/ajax-loader.gif" class="avatar">
+          </div>
+        </div>
+        <ul>
+          <li ng-if="$root.loggedIn" class="name">{{$root.playerStat.display_name}}</li>
+          <li ng-if="$root.loggedIn && $root.playerStat.school" class="school">
+            {{$root.playerStat.school}}
+          </li>
+          <li class="add_school" ng-click="$ctrl.openProfile()" ng-if="!$root.playerStat.school && $root.language === 'vn'">
+            <span ng-if="$root.loggedIn">Thêm trường học để nhận 1 item</span>
+            <span ng-if="!$root.loggedIn">Đăng nhập để thêm trường học</span>
+          </li>
+          <li>{{$root.playerStat.win_number}} W - {{$root.playerStat.lose_number}} L ({{$root.playerStat.win_rate | number: 0}}%)</li>
+          <li class="info_after_login">
+            <span>Guest ID:</span> {{$ctrl.guest_id}}</li>
+        </ul>
+      </div>
+    </li>
+    <li class="winningBonus full_width">
+      <div class="winningBonus__treasure background_image chest_bonus tooltip_btn" ng-class="{'winningBonus__treasure--openned' : $ctrl.winningBonusOpenned, 'cursor' : $ctrl.bonusStat.gold_chest >= 3}"
+        ng-click="$ctrl.openWinningBonus()">
+        <div class="light_bg" ng-if="$ctrl.bonusStat.gold_chest >= 3"></div>
+        <div class="light">
+          <div class="item_bonus">
+            <span class="challenge_3_weapon_number">3</span>
+          </div>
+        </div>
+        <span class="tooltiptext" ng-bind-html="$ctrl.trustAsHtml(localesMessage[17][$root.language])"></span>
+      </div>
+      <div class="chest-detail-info gold-chest-info">
+        <div class="winningBonus__title starting_title">
+          Gold chest
+        </div>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ $ctrl.bonusStat.gold_chest / 3 * 100 | number }}%;"></div>
+        </div>
+      </div>
+
+      <div class="dailyBonus__treasure background_image chest_bonus tooltip_btn" ng-class="{'dailyBonus__treasure--openned' : $ctrl.dailyBonusOpenned, 'cursor' : $ctrl.remainingTime == '0:00:00'}"
+        ng-click="$ctrl.openDailyBonus()">
+        <div class="light_bg" ng-if="$ctrl.remainingTime == '0:00:00'"></div>
+        <div class="light">
+          <div class="item_bonus"></div>
+        </div>
+        <span class="tooltiptext">
+          <span ng-if="$ctrl.remainingTime == '0:00:00'">{{localesMessage[18][$root.language]}}</span>
+          <span ng-if="$ctrl.remainingTime != '0:00:00'">{{localesMessage[19][$root.language]}} {{$ctrl.remainingTime}}
+            <br> {{localesMessage[20][$root.language]}}</span>
+        </span>
+      </div>
+      <div class="chest-detail-info">
+        <div class="dailyBonus__title starting_title">
+          Silver chest
+        </div>
+        <div class="dailyBonus__remainingTime">
+          {{$ctrl.remainingTime}}
+        </div>
+      </div>
+    </li>
+    <li class="itemsList full_width">
+      <div class="rowList full_width">
+        <div class="item tooltip_btn">
+          <img src="assets/images/war/powerupice.png">
+          <span class="challenge_3_weapon_number">{{ $ctrl.challengeItems.freeze }}</span>
+          <span class="tooltiptext">{{localesMessage[8][$root.language]}}</span>
+        </div>
+        <div class="item tooltip_btn">
+          <img src="assets/images/war/poweruo3.png">
+          <span class="challenge_3_weapon_number">{{ $ctrl.challengeItems.unfreeze }}</span>
+          <span class="tooltiptext">{{localesMessage[9][$root.language]}}</span>
+        </div>
+      </div>
+      <div class="rowList full_width">
+        <div class="item tooltip_btn">
+          <img src="assets/images/war/powerupheart.png">
+          <span class="challenge_3_weapon_number">{{ $ctrl.challengeItems.health }}</span>
+          <span class="tooltiptext">{{localesMessage[11][$root.language]}}</span>
+        </div>
+        <div class="item tooltip_btn right-40">
+          <img src="assets/images/war/powerup1.png">
+          <span class="challenge_3_weapon_number">{{ $ctrl.challengeItems.bomb }}</span>
+          <span class="tooltiptext">{{localesMessage[10][$root.language]}}</span>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="mainMenuCol full_height challenge-invite">
+    <div class="gameTitleBG"></div>
+
+    <!-- Random invite button  -->
+    <div class="row" style="margin-top: -60px">
+      <div class="col-xs-10 col-xs-offset-1 challenge-invite__button-container">
+        <div class="col-xs-6 text-center">
+          <button type="button" class="btn challenge-invite__button challenge-invite__button--red" ng-click="play_game()">PLAY</button>
+        </div>
+        <div class="col-xs-6 challenge-invite__button__title-container">
+          <span>{{localesMessage[21][$root.language]}}</span>
+        </div>
+      </div>
+      <div class="col-xs-10 col-xs-offset-1 challenge-invite__button-container">
+        <div class="col-xs-6 text-center">
+          <button type="button" class="btn challenge-invite__button challenge-invite__button--blue" ng-click="$ctrl.toggleInvitePopup()">INVITE</button>
+        </div>
+        <div class="col-xs-6 challenge-invite__button__title-container">
+          <span>{{localesMessage[22][$root.language]}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="challenge-popup js-challenge-popup">
+      <div class="" ng-click="$ctrl.toggleInvitePopup()">
+        <i class="fa fa-times-circle fa_close_game challenge-popup__close-btn" aria-hidden="true"></i>
+      </div>
+        <form class="search-opponent-form challenge-popup__form">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="col-xs-12 challenge-popup--div-center" style="padding-right: 0px;">
+                <input type="text" pattern="\d*" maxlength="6" title="Enter numbers only." class="form-control challenge-popup__form-invite"
+                  ng-model="$root.searchStr" ng-change="$root.messageError = ''" placeholder="{{localesMessage[23][$root.language]}}"
+                  required/>
+              </div>
+              <div class="col-xs-12 challenge-popup--div-center">
+                <button type="submit" class="btn challenge-popup--button" ng-click="inviteByGuestId()">Invite</button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="challenge-popup__recent-enemies">
+          <h5 class="challenge-popup__recent-enemies__title">{{localesMessage[24][$root.language]}}</h3>
+      <hr class="challenge-popup__recent-enemies__hr">
+      <div class="row">
+        <div class="col-xs-12 challenge-popup__recent-enemies__board-container" ng-repeat="(key,val) in recentOpponents track by val.guest_id">
+          <div class="col-xs-2">
+            <img src="{{val.avatar}}" class="challenge-popup__recent-enemies__avatar" alt="{{val.username}}" on-error-avatar>
+            <div class="challenge-popup__recent-enemies__online-status" ng-class="{
+                                'challenge-popup__recent-enemies__online-status--green' : !val.is_bot && val.status == 1,
+                                'challenge-popup__recent-enemies__online-status--gray' : val.is_bot || val.status == 0,
+                                'challenge-popup__recent-enemies__online-status--yellow' : !val.is_bot && val.status >= 2
+                            }"></div>
+          </div>
+          <div class="col-xs-5 challenge-popup__recent-enemies__info-container">
+            <div>
+              <span>{{val.username ? val.username : "No name"}}</span>
+              <span class="text-muted">
+                <i>{{val.school}}</i>
+              </span>
+            </div>
+          </div>
+          <div class="col-xs-2" style="justify-content : center">
+            <span style="color: #7d4d00;">{{val.score ? val.score : 0}}</span>
+          </div>
+          <div class="col-xs-3">
+            <button class="btn challenge-popup--button" ng-if="!val.is_bot && val.status == 1" ng-click="inviteRecent(val.guest_id)">Invite</button>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+
+    <!-- Tutorial -->
+    <div class="war_guide" ng-click="$ctrl.startTutorial()">?</div>
+
+    <!-- search opponent to invite -->
+
+
+  </div>
+  <div class="leaderboardAndStatCol full_height">
+    <div class="leaderboard full_width">
+      <div class="leaderboard__title starting_title">
+        Leaderboard
+      </div>
+      <season></season>
+      <div class="leaderboard-section">
+        <div class="tab_leaderboard" ng-if="$root.language === 'vn'">
+          <div class="user-tab" ng-class="{'current-tab': !schoolTabOpenning}" ng-click="$ctrl.openUserTap()">
+            User
+          </div>
+          <div class="school-tab" ng-class="{'current-tab': schoolTabOpenning}" ng-click="$ctrl.openSchoolTap()">
+            School
+          </div>
+          <!-- USER TAB -->
+          <div ng-if="!schoolTabOpenning">
+            <div class="col-sm-6 tab" ng-class="{'tab_openning': !userBySchool}" ng-click="$ctrl.openTapRankAllUser()">
+              All
+            </div>
+            <div class="col-sm-6 tab" ng-class="{'tab_openning': userBySchool}" ng-click="$ctrl.openTapRankBySchool()">
+              Schoolmates
+            </div>
+          </div>
+          <!-- SCHOOL TAB -->
+          <div ng-if="schoolTabOpenning && $root.language === 'vn'" class="tab-container">
+            <div class="col-sm-6 tab" ng-class="{'tab_openning': showSchoolScore}" ng-click="$ctrl.openSchoolTap()">
+              Total Wins
+            </div>
+            <div class="col-sm-6 tab" ng-class="{'tab_openning': showSchoolTotalStudent}" ng-click="$ctrl.openSchoolTotalStudentTap()">
+              Total Students
+            </div>
+          </div>
+          <div ng-if="schoolTabOpenning && $root.language != 'vn'">
+            <h4>Not available in your country.</h4>
+          </div>
+        </div>
+
+        <div ng-if="$ctrl.loading_rank || $ctrl.sendingRequest" class="loading"></div>
+        <!-- <div class="leaderboard__values"> -->
+        <ul class="leaderboard__values" ng-if="!schoolTabOpenning">
+          <div ng-if="$ctrl.loading_rank" class="loading"></div>
+          <div class="message" ng-if="$ctrl.messageInRankBySchool && userBySchool">
+            {{$ctrl.messageInRankBySchool}}
+            <div class="add_school" ng-click="$ctrl.openProfile()" ng-if="$root.language == 'vn'">
+              <span ng-if="$root.loggedIn">Thêm trường học</span>
+              <span ng-if="!$root.loggedIn">Đăng nhập để thêm trường học</span>
+            </div>
+          </div>
+          <li class="leaderboard__player" ng-repeat="player in $ctrl.leaderboardValues track by $index" ng-class="{'leaderboard__player--highlight' : player.guest_id == $ctrl.guest_id}"
+            ng-if="$index < 50 && $ctrl.leaderboardValues.length > 0">
+            <div class="leaderboard__rank">
+              {{$index +1}}
+            </div>
+            <div class="leaderboard__displayName custom-display-flex">
+              <div class="avatar">
+                <img src="{{player.avatar}}" on-error-avatar alt="{{player.username}}">
+              </div>
+              <div class="custom-vertical-center">
+                <div>
+                <span class="display_name">{{player.username}}</span>
+                  <br>
+                  <span class="school" ng-if="$root.language === 'vn'">{{player.school_id.school_name}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="leaderboard__win">
+              {{player.score}}
+            </div>
+          </li>
+        </ul>
+        <ul class="leaderboard__values" ng-if="schoolTabOpenning && $root.language === 'vn'">
+          <div ng-if="$ctrl.loading_rank" class="loading"></div>
+          <div ng-if="!$ctrl.messageInRankBySchool">
+            <div ng-if="$ctrl.loading_rank" class="loading"></div>
+            <li class="leaderboard__player" ng-repeat="school in $ctrl.leaderboardSchoolRank track by $index" ng-class="{'leaderboard__player--highlight' : player.guest_id == $ctrl.guest_id}"
+              ng-if="$index < 50">
+              <div class="leaderboard__rank">
+                {{$index +1}}
+              </div>
+              <div class="leaderboard__displayName">
+                <span class="display_name"></span>{{school.school_name}}
+                <br>
+              </div>
+              <div class="leaderboard__win">
+                <span ng-if="showSchoolScore">{{school.score}}</span>
+                <span ng-if="showSchoolTotalStudent">{{school.total}}</span>
+              </div>
+            </li>
+          </div>
+        </ul>
+        <div class="banner-img">
+          <a href="https://elightbook.com/?utm_source=bn&utm_campaign=banner_book_extension">
+            <img class="slider" src="../../../../../assets/images/images-slider/Banner Sách_Extension.png">
+          </a>
+          <a href="https://elight.edu.vn/elight-online-combo/?utm_source=bn&utm_campaign=banner_combo_extension">
+            <img class="slider" src="../../../../../assets/images/images-slider/Banner Combo_Extension.png">
+          </a>
+          <a href="https://elight.edu.vn/khoa-toan-dien-3-trong-1/?utm_source=bn&utm_campaign=banner_EO_extension">
+            <img class="slider" src="../../../../../assets/images/images-slider/Banner EO_Extension.png">
+          </a>
+        </div>
+        <div class="owner-rank">
+          <div class="owner-rank-wrapper">
+            <div class="rank">
+              <span ng-if="!schoolTabOpenning">{{$ctrl.ownerRank.userRank}}</span>
+              <span ng-if="schoolTabOpenning && $root.language==='vn'">{{$ctrl.ownerRank.schoolRank}}</span>
+            </div>
+            <div class="owner-name">
+              <span class="display_name" ng-if="!schoolTabOpenning">{{$ctrl.ownerRank.username}}</span>
+              <span class="display_name" ng-if="schoolTabOpenning && $root.language==='vn'">{{$ctrl.ownerRank.school_name}}</span>
+            </div>
+            <div class="owner-score">
+              <span ng-if="!showSchoolTotalStudent && (!schoolTabOpenning || schoolTabOpenning && $root.language==='vn')">{{$ctrl.ownerRank.score}}</span>
+              <span ng-if="showSchoolTotalStudent">{{$ctrl.ownerRank.total}}</span>
+            </div>
+          </div>
+        </div>
+        <!-- </div> -->
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- popup profile -->
+<div class="modal_custom" ng-if="$ctrl.openProfileBox" id="profile_menu_leaderboard">
+  <div class="black_opacity_profile" ng-click="$ctrl.closeProfile()"></div>
+  <div class="profile-menu profile_menu_leaderboard">
+    <button type="button" class="close" ng-click="$ctrl.closeProfile()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <profile-detail ng-if="$root.loggedIn" open-from="'leaderboard'" login="$root.loggedIn"></profile-detail>
+  </div>
+</div>
+
+<div id="challenge-invite__invite-popup" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

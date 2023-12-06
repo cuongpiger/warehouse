@@ -1,0 +1,23 @@
+<div ng-controller="multipleChooseController">
+    <div class="text-center">
+        <h5>{{localesMessage[9][$root.language]}}</h5>
+        <h2><b>"{{answer.word}}"</b></h2>
+        <div class="sound_div" ng-click="playSound()">
+            <i class="fa fa-play" ng-class="{'fa-pause' : playing, 'fa-play' : !playing}" aria-hidden="true"></i>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 30px;">
+        <div class="col-xs-12">
+            <div class="col-xs-4 text-center" ng-class="{'btn_shake' : val.checked && val.word != answer.word}" ng-repeat="(key,val) in shuffledData">
+                <img class="practice_type_1_img practice_type_3_img trigger-click-{{key + 1}}" on-error class-loading="{{$index}}" ng-class="{'img_click' : !disableButton}" ng-src="{{val.image}}" ng-click="checkResult(val, key)">
+                <img class="loading-image loading-{{$index}}" ng-src="../../../../../../assets/images/ajax-loader.gif" width="20" alt="">
+                <div class="practice_type_1_div practice_type_3_div practice_cover_div" ng-if="val.checked"></div>
+                <div class="practice_type_1_div practice_type_3_div" ng-if="val.checked">
+                    <img class="practice_check_icon" ng-if="val.word == answer.word" style="height: 35px;" src="assets/images/right-check.png">
+                    <img class="practice_check_icon" ng-if="val.word != answer.word" src="assets/images/wrong-check.png">
+                </div>
+                <div class="stt-number">{{key + 1}}</div>
+            </div>
+        </div>
+    </div>
+</div>

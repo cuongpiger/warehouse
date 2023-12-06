@@ -1,0 +1,35 @@
+<!-- <div class="communities_btn" data-toggle="tooltip" data-placement="left" title="Cộng đồng hỏi đáp"></div> -->
+<div class="video_btn" ng-click="$ctrl.clickVideo()"
+     tooltip-placement="left" uib-tooltip="{{$root.language == 'vn' ? 'Thư viện video' : 'Video Library'}}" ng-class="{'pulse_custom' : numberOfNewVideos}">
+    <span class="badge video__badge" ng-if="numberOfNewVideos > 0">{{numberOfNewVideos}}</span>
+    <!--<img class="circle_effect" src="../../../../assets/images/war/circle_effect.png" ng-if="numberOfNewVideos"/>-->
+</div>
+<div id="video_modal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="notification_video">
+                    <ul>
+                        <p class="title_video">Học tiếng Anh qua video</p>
+                        <li ng-repeat="(key, val) in videos | orderBy:'-created_at' track by $index" ng-click="$ctrl.watchVideos(val, key)"
+                            ng-class="{'light_video' : !val.view, 'fist_video' : key == 0}">
+                            <div class="cover_image_video">
+                                <img ng-src="https://api.elight.edu.vn/public/images/video/{{val.poster}}"  alt="">
+                                <div class="icon_play"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
+                            </div>
+
+                            <div class="content_video">
+                                <p>{{val.title}}</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+

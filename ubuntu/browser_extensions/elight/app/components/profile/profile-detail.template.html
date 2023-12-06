@@ -1,0 +1,130 @@
+<div class="profile_box" ng-init="init()">
+    <div class="profile-side-menu" ng-if="login && openFrom=='profile'">
+        <ul>
+            <li class="current-menu">Profile</li>
+            <li ng-click="confirmLogout()">{{localesMessage[0][$root.language]}}</li>
+        </ul>
+    </div>
+
+    <div class="profile-detail" ng-class="{'profile-detail-border-left': openFrom=='profile'}" ng-if="login">
+        <div class="avatar">
+            <div class="default-avatar avatar-centered" ng-if="!user.avatar && !$root.loading_avatar">
+                <i class="fa fa-user profile_btn" aria-hidden="true"></i>
+            </div>
+            <img ng-if="!$root.loading_avatar && user.avatar" id="preview_avatar" ng-src="{{user.avatar}}" on-error-avatar alt="avatar" width="150" />
+            <img ng-if="$root.loading_avatar" src="../../../assets/images/ajax-loader.gif" width="150" />
+            <div class="">
+                <form name="formUpdateAvatar">
+                    <button ngf-select ng-model="picFile" name="file" id="btn-choose-avatar"
+                        accept="image/*" ngf-max-size="1MB" required
+                        ngf-model-invalid="errorFile" ng-click="showModalEditAvatar()" class="fa fa-camera btn-choose-img">
+                    </button>
+
+                    <!-- Modal Custom upload avatar-->
+                    <div id="edit-avatar" class="modal_crop_custom" ng-if="showModalCropImg">
+                        <div class="modal_crop_content_custom">
+                            <div ngf-drop ng-model="picFile" ngf-pattern="image/*" class="cropArea">
+                                <img-crop image="picFile  | ngfDataUrl"
+                                          result-image="croppedDataUrl" ng-init="croppedDataUrl=''">
+                                </img-crop>
+                            </div>
+                            <i ng-show="formUpdateAvatar.file.$error.maxSize" style="color: red;">{{localesMessage[1][$root.language]}} {{errorFile.size / 1000000|number:1}}MB
+                                <br>{{localesMessage[2][$root.language]}}</i>
+                            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                        </div>
+                        <div class="modal_footer_custom">
+                            <button type="button" class="btn btn-default col-xs-4" ng-click="closeModalEditAvatar()">{{localesMessage[3][$root.language]}}</button>
+                            <button ngf-select ng-model="picFile" name="file" id="btn-choose-avatar"
+                                accept="image/*" ngf-max-size="1MB" required
+                                ngf-model-invalid="errorFile" ng-click="showModalEditAvatar()" class="btn btn-primary col-xs-4">
+                                {{localesMessage[4][$root.language]}}
+                            </button>
+                            <button ng-click="upload(croppedDataUrl, picFile.name)" class="btn btn-success col-xs-4">{{localesMessage[5][$root.language]}}</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="text-center username" style="color: #000000">
+                {{user.display_name}}
+            </div>
+        </div>
+        <div class="account-info">
+            <div class="title">
+                {{localesMessage[6][$root.language]}}
+            </div>
+            <div class="message-update">
+                <span class="success" ng-if="messageSuccess && !messageErr">{{messageSuccess}}</span>
+                <span class="err" ng-if="messageErr">{{messageErr}}</span>
+            </div>
+            <div class="account">
+                <form ng-submit="updateProfile()">
+                    <table>
+                        <tr>
+                            <td>{{localesMessage[7][$root.language]}}</td>
+                            <td><input type="text" class="form-control form-fixedWidth" ng-model="user.username" ng-change="enableUpdateProfile = true; checkNameLength(user.username)" maxlength="8" /></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><input type="email" class="form-control form-fixedWidth" ng-model="user.email" ng-change="enableUpdateProfile = false" disabled /></td>
+                        </tr>
+                        <!-- ng-if here -->
+                        <tr ng-if="$root.language === 'vn'">
+                            <td>Khu vực</td>
+                            <td>
+                                <select class="form-control form-fixedWidth" ng-model="userSchoolArea" ng-change="chooseArea(userSchoolArea)">
+                                    <option ng-repeat="area in schoolAreas" value="{{area}}">{{area}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr ng-if="$root.language === 'vn'" tooltip-placement="top" uib-tooltip="Chọn khu vực để chọn trường">
+                            <td>Trường</td>
+                            <td>
+                                <select class="form-control form-fixedWidth" ng-model="user.school" ng-change="getValueOfSchool(user.school); enableUpdateProfile = true">
+                                    <option ng-value=user.school ng-if="!schoolInArea || schoolInArea.length <= 0">
+                                        {{user.school.school_name}}
+                                    </option>
+                                    <option ng-repeat="school in shoolInArea" ng-value="school">{{school.school_name}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="text-center">
+                        <input type="submit" class="btn btn-primary btn_rounded btn-update-profile"
+                            ng-disabled="!enableUpdateProfile" value="{{localesMessage[5][$root.language]}}">
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="logout_success" ng-if="!login">
+        {{localesMessage[8][$root.language]}}
+    </div>
+
+    <div class="modal_custom" ng-if="openConfirmLogout">
+        <div class="backdrop_custom backdrop_custom_confirm" ng-click="closeConfirmLogout()"></div>
+        <div class="modal_content_custom">
+            <p class="text-center">{{localesMessage[9][$root.language]}}</p>
+            <div class="text-center">
+                <button class="btn btn-primary btn_rounded" ng-click="closeConfirmLogout()">{{localesMessage[10][$root.language]}}</button>
+                <button class="btn btn-success btn_rounded" style="width: 78px;" ng-click="logout()">{{localesMessage[11][$root.language]}}</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal_custom" ng-if="showPopupChangeSchool && $root.language === 'vn'">
+        <div class="backdrop_custom backdrop_custom_confirm" ng-click="cancelUpdate()"></div>
+        <div class="modal_content_custom">
+            <p class="text-center">Điểm của bạn sẽ bị mất nếu bạn thay đổi trường trong thời gian diễn ra season.</p>
+            <div class="text-center">
+                <button class="btn btn-success btn_rounded" style="width: 78px;" ng-click="cancelUpdate()">Huỷ</button>
+                <button class="btn btn-primary btn_rounded" ng-click="updateProfile()">Cập nhật</button>
+            </div>
+        </div>
+    </div>
+</div>

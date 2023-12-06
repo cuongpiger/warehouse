@@ -1,0 +1,353 @@
+.profile {
+    color: #fff;
+    position: fixed;
+    top: 20px;
+    right: 15px;
+    font-size: 20px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    width: 40px;
+    background: #5bb85b;
+    height: 40px;
+    overflow: hidden;
+}
+
+.link_login {
+    position: absolute;
+    color: white;
+    padding: 11px;
+    background: #c5c5c56b;
+    border-radius: 29px;
+    right: 9px;
+    top: 20px;
+    cursor: pointer;
+}
+.link_login:hover{
+    color: white;
+}
+.profile .avartar {
+    padding: 0 !important;
+}
+#profile_modal .close{
+    color: #fff;
+}
+#profile_modal .modal-dialog {
+    float: left;
+    position: absolute;
+    top: 40px;
+    right: 15px;
+}
+
+#profile_modal .modal-dialog .profile_box {
+  margin: 0 !important;
+  background-color: rgba(0, 0, 0, 0.85);
+  border: 1px solid #272727;
+  border-radius: 4px !important;
+  padding: 15px;
+}
+
+#profile_modal .modal-dialog .profile_box::after {
+    content: "";
+    border-width: 0 7px 7px 7px;
+    border-color: transparent transparent rgba(0, 0, 0, 0.85) transparent;
+    border-style: solid;
+    position: absolute;
+    margin-top: -6px;
+    top: 0;
+    right: 12px;
+}
+
+#profile_modal .modal-dialog .profile_box::before {
+    content: "";
+    border-width: 0 9px 9px 9px;
+    border-color: transparent transparent #272727 transparent;
+    border-style: solid;
+    position: absolute;
+    margin-top: -8px;
+    top: 0;
+    right: 10px;
+}
+
+#profile_modal .modal-dialog .profile_box button {
+    box-shadow: 0 0 0 0;
+}
+
+login-success {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.loggedin-success-profile p {
+    color: #ffffff;
+}
+
+#profile_modal .modal-dialog .profile_box .login-success p {
+    font-size: 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+#profile_modal .modal-dialog .profile_box .login-success button {
+    box-shadow: 0 0 0 0;
+}
+
+#profile_modal .modal-dialog .profile_box .login_modal .register_login_form {
+    color: #ffffff;
+}
+
+#profile_modal .modal-dialog .profile_box .login_modal .register_login_form .btn-login {
+    box-shadow: 0px 0px 0px #888888;
+}
+
+.profile-menu {
+    position: fixed;
+    top: 75px;
+    z-index: 16;
+    right: 5px;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 4px;
+    border: 1px solid #272727;
+    color: #ffffff;
+    width: auto;
+}
+
+.profile-menu::after {
+    content: "";
+    border-width: 0 7px 7px 7px;
+    border-color: transparent transparent rgb(0, 0, 0) transparent;
+    border-style: solid;
+    position: absolute;
+    margin-top: -6px;
+    top: 0;
+    right: 26px;
+}
+
+.profile-menu::before {
+    content: "";
+    border-width: 0px 9px 9px 9px;
+    border-color: transparent transparent #211f1f transparent;
+    border-style: solid;
+    position: absolute;
+    margin-top: -8px;
+    top: 0;
+    right: 24px;
+}
+
+.message-update .success {
+    color: #00803b;
+    font-size: 17px;
+    text-align: center;
+    max-width: 260px;
+    display: block;
+}
+
+.message-update .err {
+    color: #800800;
+    font-size: 17px;
+    text-align: center;
+    max-width: 260px;
+    display: block;
+}
+.profile-menu .profile-side-menu {
+    float: left;
+}
+
+.profile-menu .profile-side-menu ul li {
+    font-size: 17px;
+    padding: 10px;
+    color: #888888;
+}
+
+.profile-menu .profile-side-menu ul li:hover {
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.current-menu {
+    color: #ffffff !important;
+    border-top-left-radius: 4px;
+}
+
+.profile-menu .profile-detail {
+    float: left;
+    padding: 15px;
+}
+
+.profile-detail-border-left {
+    border-left: 1px solid #ffffff;
+}
+
+.profile-menu .profile-detail .avatar {
+    float: left;
+    border-radius: 4px;
+    padding: 15px 10px;
+    position: relative;
+    background-color: #ffffff;
+    margin-top: 42px;
+}
+
+.profile-menu .profile-detail .avatar .btn-choose-img {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px 1px #888888;
+    padding: 4px 7px;
+    background-color: #ffffff;
+    color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-menu .profile-detail .avatar .btn-choose-img:hover {
+    cursor: pointer;
+}
+
+.profile-menu .profile-detail .avatar img {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+
+.profile-menu .profile-detail .avatar .username {
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+.profile-menu .profile-detail .avatar .default-avatar {
+    border: 1px solid #000000;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    padding: 19px 31px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-menu .profile-detail .avatar .default-avatar i {
+    color: #000000;
+    font-size: 50px;
+}
+
+.profile-menu .profile-detail .account-info {
+    float: left;
+    padding-left: 10px;
+}
+
+.profile-menu .profile-detail .account-info .title {
+    font-size: 20px;
+    text-align: center;
+}
+
+.profile-menu .profile-detail .account-info .account {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.profile-menu .profile-detail .account-info .account table tr td {
+    padding: 5px;
+    font-size: 14px;
+}
+
+.profile-detail .btn-update-profile {
+    box-shadow: unset;
+    margin-top: 10px;
+    outline: none !important;
+}
+
+.logout_success {
+    padding: 10px;
+}
+
+.backdrop_custom_confirm {
+    background-color: #00000094;
+}
+
+.modal_content_custom {
+    background-color: #ffffff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    height: auto;
+    color: #000000;
+    font-size: 20px;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.modal_content_custom button {
+    margin: 0 10px;
+    box-shadow: 2px 3px 3px 0px #888888;
+}
+
+.cropArea {
+    background: #E4E4E4;
+    overflow: hidden;
+    width: 100%;
+    height: 200px;
+    float: left;
+}
+
+.preview_img_cropped {
+    float: right;
+    width: 120px;
+    height: 120px;
+}
+
+.modal_footer_custom {
+    clear: both;
+}
+
+.modal_crop_custom {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 350px;
+    background-color: #ffffff;
+    z-index: 1;
+    padding: 10px;
+}
+
+/* line 1, ../../source/scss/ng-img-crop.scss */
+img-crop {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+/* line 7, ../../source/scss/ng-img-crop.scss */
+img-crop canvas {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  /* mobile webkit */
+}
+
+.form-fixedWidth {
+  width: 327px;
+}
+
+.profile-modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #0000007d;
+    z-index: -1;
+}
+.login-margin-top {
+    margin-top: 130px;
+}

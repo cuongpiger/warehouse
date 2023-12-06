@@ -1,0 +1,181 @@
+<div>
+    <div class="main word_box welcome_box">
+        <div class="intro_box" ng-if="!$root.welcome && ($ctrl.showSection == 'intro' || $root.showWelcome == 'intro') && !$ctrl.announcementActive">
+            <div class="intro_msg">
+                <p class="greeting text-center">Chào mừng bạn đến với <b>Elight Memo</b></p>
+                <p class="greeting text-center"><b>Đăng nhập miễn phí</b> với Elight để mở khóa các tính năng siêu việt</p>
+            </div>
+
+            <ul class="list_feature row">
+                <li class="col-md-4 game_feature">
+                    <div class="text-center">
+                        <div class="game-interact"></div>
+                        <p class="feature_intro"><strong>{{$ctrl.localesMessage[1][$root.language]}} </strong></p>
+                        <p class="feature_intro">{{$ctrl.localesMessage[2][$root.language]}}</p>
+                    </div>
+                </li>
+                <li class="col-md-4 practice_feature">
+                    <div class="text-center">
+                        <div class="game-feature"></div>
+                        <p class="feature_intro"><strong>{{$ctrl.localesMessage[3][$root.language]}} </strong></p>
+                        <p class="feature_intro">{{$ctrl.localesMessage[4][$root.language]}}</p>
+                    </div>
+                </li>
+                <li class="col-md-4 quick_remember_feature">
+                    <div class="text-center">
+                        <div class="game-remember"></div>
+                        <p class="feature_intro"><strong>{{$ctrl.localesMessage[5][$root.language]}}</strong></p>
+                        <p class="feature_intro">{{$ctrl.localesMessage[6][$root.language]}}</p>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="text-center">
+                <div class="row text-center topic">
+                    <div class="col-md-12" ng-click="$ctrl.openProfileModal()" data-dismiss="modal">
+                        <div class="btn-account accounted">
+                            <a class="">Tôi đã có tài khoản tại Elight.edu.vn</a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" data-toggle="modal" data-dismiss="modal" data-target=".login-form-guide">
+                        <div class="btn-account not-yet-account">
+                            <a>Tôi chưa có tài khoản tại Elight.edu.vn</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="announce_new_version" ng-if="!$root.welcome && ($ctrl.showSection == 'intro' || $root.showWelcome == 'intro') && $ctrl.announcementActive">
+            <h2>{{$ctrl.localesMessage[8][$root.language]}} {{$ctrl.version}} với các cập nhật mới hấp dẫn:</h2>
+            <!-- <ul class="list_feature">
+                <li ng-repeat="feature in $ctrl.features track by $index">{{feature}}</li>
+            </ul> -->
+            <div class="list_feature" ng-bind-html="$ctrl.trustAsHtml($ctrl.features)">
+                <!-- {{$ctrl.features}} -->
+            </div>
+            <div class="text-center">
+                 <div class="row text-center topic">
+                    <div class="col-md-12" ng-click="$ctrl.openProfileModal()" data-dismiss="modal">
+                        <div class="btn-account accounted">
+                            <a class="">Tôi đã có tài khoản tại Elight.edu.vn</a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" data-toggle="modal" data-dismiss="modal" data-target=".login-form-guide">
+                        <div class="btn-account not-yet-account">
+                            <a>Tôi chưa có tài khoản tại Elight.edu.vn</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--list topics-->
+        <div class="list_topic_box" ng-if="$ctrl.showSection == 'topic' || $root.showWelcome == 'topic'">
+            <p class="text-center">{{$ctrl.localesMessage[10][$root.language]}}</p>
+            <ul class="list_topic row" id="list_topic_1">
+               <li class="topic col-md-4" ng-repeat="unit in $ctrl.units">
+                        <div class="topic_container topic_container_welcome" ng-click="$ctrl.chooseTopic(unit.id, unit.title)">
+                        <div class="box-progress">
+                            <img class="img-responsive" ng-class="{'brightness-50' : unit.lock === undefined}" ng-src="{{unit.topics[0].words[0].image}}">
+                        </div>
+                        <p class="topic_name text-center" >{{unit.title}}</p>
+                        <div class="topic_lock" ng-class="{'background-gray' : unit.lock === undefined}" ng-if="unit.lock === undefined ">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </div>
+                        <div class="topic_detail" >
+                            <p ng-bind-html="$ctrl.trustAsHtml($root.language === 'vn' ? unit.description : unit.description_por)"></p>
+                        </div>
+                    </div>
+               </li>
+            </ul>
+            <!--modal-->
+            <div class="modal fade .confirm-topic-modal" id="confirm-topic-box" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <h3 class="text-center">{{$ctrl.localesMessage[11][$root.language]}}</h3>
+                            <h3 style="text-align: center;margin: 15px 0 15px;"><strong>"{{$ctrl.unitName}}"</strong></h3>
+                            <p class="text-center">{{$ctrl.localesMessage[12][$root.language]}}</p>
+                            <div class="btn_group text-center">
+                                <button class="btn btn_rounded btn_deny" ng-click="$ctrl.closeConfirmTopicModal(1)">{{$ctrl.localesMessage[13][$root.language]}}</button>
+                                <button class="btn btn_rounded btn-success btn_confirm" ng-click="$ctrl.confirmTopic()">{{$ctrl.localesMessage[14][$root.language]}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--list topics 2-->
+        <div class="list_topic_box" ng-if="$ctrl.showSection == 'topic2' || $root.showWelcome == 'topic2'">
+            <p class="text-center">{{$ctrl.localesMessage[15][$root.language]}}</p>
+            <ul class="list_topic row" id="list_topic_2">
+                <li class="topic col-md-4" ng-repeat="unit in $ctrl.units">
+                    <div class="topic_container topic_container_welcome" ng-click="$ctrl.chooseTopic2(unit.id, unit.title)">
+                        <img class="img-responsive" ng-src="{{unit.topics[0].words[0].image}}">
+                        <p class="topic_name text-center">{{unit.title}}</p>
+                        <div class="topic_lock" ng-if="unit.lock === undefined ">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </div>
+                        <div class="topic_detail">
+                            <!--<p class="text-center">{{unit.description}}</p>-->
+                            <p ng-bind-html="$ctrl.trustAsHtml($root.language === 'vn' ? unit.description : unit.description_por)"></p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <!--modal-->
+            <div class="modal fade .confirm-topic-modal" id="confirm-topic-box2" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <h3 class="text-center">{{$ctrl.localesMessage[11][$root.language]}}</h3>
+                            <h3 style="text-align: center;margin: 15px 0 15px;"><strong>"{{$ctrl.unitName}}"</strong></h3>
+                            <p class="text-center">{{$ctrl.localesMessage[12][$root.language]}}</p>
+                            <div class="btn_group text-center">
+                                <button class="btn btn_rounded btn_deny" ng-click="$ctrl.closeConfirmTopicModal2()">{{$ctrl.localesMessage[13][$root.language]}}</button>
+                                <button class="btn btn_rounded btn-success btn_confirm" ng-click="$ctrl.confirmTopic2()">{{$ctrl.localesMessage[14][$root.language]}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade login-form" ng-if="!login"  tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <login class="login_modal" ng-if="!login" show-section="login-form"></login>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade login-form-guide" ng-if="!login" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog login-margin-top">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h4 class="modal-title text-center text-uppercase">HƯỚNG DẪN TẠO TÀI KHOẢN ĐĂNG NHẬP</h4>
+                    <div class="row text-center" >
+                        <div class="col-md-8"   >
+                            <ul class="list-guide">
+                                <li><b>Bước 1</b>: Vào <a target="_blank" href="https://elight.edu.vn">https://elight.edu.vn</a></li>
+                                <li><b>Bước 2</b>: Click đăng nhập và tạo tài khoản theo hướng dẫn</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="image-cover">
+                                <img src="/assets/images/login/landingpage.png" alt="">
+                                <div class="zoom-view ">
+                                    <img src="/assets/images/login/zoom.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

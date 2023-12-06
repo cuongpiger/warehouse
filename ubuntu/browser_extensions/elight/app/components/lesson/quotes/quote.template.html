@@ -1,0 +1,113 @@
+<div class="main word_box quote_box" ng-class="{'guideline-basic-box background-white' : $root.guideStep == 3 ||  $root.guideStep == 4}">
+	<div class="site-index" style="height: 100%;">
+		<div class="module mod-top-slider" style="height: 100%;">
+			<section class="section" style="height: 100%;">
+				<div class="mode-home" style="height: 100%;">
+					<div class="mod-body" style="height: 100%;">
+						<article style="height: 100%;">
+							<div class="thumnail-relextit relextit quote_innerBox">
+								<div class="btn_translate" on-long-press="$ctrl.translate()" tooltip-placement="right" uib-tooltip="Nhấn và giữ để dịch câu" on-touch-end="$ctrl.cancelTranslate()" long-press-duration="100" prevent-click="true">
+									<i class="fa fa-exchange" aria-hidden="true"></i>
+								</div>
+
+                                <div class="quote_content">
+                                    <h1 class="quote" ng-show="!$ctrl.showQuoteVi" style="position: relative;">
+                                        <div class="tag">
+                                            #{{$ctrl.quote.tag}}
+                                        </div>
+                                        <font class="last_quote_mark" ng-if="$ctrl.quote.tag !== 'newsline'">"</font>
+                                        <span ng-if="$ctrl.quote.type != 'marketing'" class="eng_word quote_span_no_selection" ng-repeat="word in $ctrl.quote.content.split(' ') track by $index" ng-class="{'quote_small_span' : $ctrl.quote.content.split(' ').length > 35}" ng-click="$ctrl.translateWord($event, word)"><span>{{word}}</span> </span>
+                                        <span ng-if="$ctrl.quote.type == 'marketing'" class="eng_word" ng-bind-html="$ctrl.trustAsHtml($ctrl.quote.content)"></span>
+                                        <font class="last_quote_mark" ng-if="$ctrl.quote.tag !== 'newsline'">"</font>
+                                        <div class="vi_word_modal" ng-style="{'top': $ctrl.wordTopPos, 'left': $ctrl.wordLeftPos}" ng-if="$ctrl.showWordTranslated">
+                                            <div class="vi_word_content" ng-if="$ctrl.searching">
+                                                <img class="quote_ajax_loader_img" src="assets/images/ajax-loader.gif">
+                                            </div>
+                                            <div class="vi_word_content" ng-if="!$ctrl.searching">
+                                                <div class="vi_word_content_lv2" ng-if="$ctrl.found">
+                                                    <div ng-if="!$ctrl.wordData.full_text_translated">
+                                                        <p class="eng_word">{{$ctrl.wordData.word}}</p>
+                                                        <!-- <p class="phonetic">/{{$ctrl.wordData.phonetic}}/</p> -->
+                                                        <p class="type">({{$ctrl.wordData.type}})</p>
+                                                        <p class="meaning">{{$ctrl.wordData.translate_vi}}</p>
+                                                        <p class="example">Ex: {{$ctrl.wordData.example[0]}}</p>
+                                                    </div>
+                                                    <div class="vi_word_content_lv2 quote_full_text_translated" ng-if="$ctrl.wordData.full_text_translated" ng-bind-html="$ctrl.trustAsHtml($ctrl.wordData.full_text_translated)"></div>
+                                                    <div class="pronounce" ng-click="$ctrl.pronounce($ctrl.wordData.audio)">
+                                                        <i class="fa fa-volume-up" aria-hidden="true"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="vi_word_content_lv2" ng-if="!$ctrl.found" style="font-family: sans-serif;font-size: 16px;">Không tìm thấy từ này</div>
+                                                <div class="quotation_feedback_div">
+                                                    <div class="feedback_div dictionary_feedback_div">
+                                                        <div style="position: relative" tooltip-placement="top" uib-tooltip="Báo lỗi">
+                                                            <div class="feedback_icon quote_feedback_icon"  ng-click="showFeedbackDiv()"></div>
+                                                            <div class="arrow_box quote_arrow_box" style="display : none;">
+                                                                <div class="feedback_container">
+                                                                    <div class="survey_div quote_survey_div" ng-if="survey">
+                                                                        <div class="text-center feedback_header"><b>Đã có vấn đề gì vậy?</b></div>
+                                                                        <div class="feedback_content" style="margin-top: 15px;">
+                                                                            <form id="survey_dict_form" class="text-center">
+                                                                                <div class="elight_survey_option quote_survey_option">
+                                                                                    <input type="checkbox" class="ui_input" name="content_quote_error" value="Yes" id="content_quote_error">
+                                                                                    <label class="elight_survey_label quote_survey_label" for="content_quote_error" ng-click="checkDisable()">
+                                                                                        Từ dịch chưa chính xác
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="elight_survey_option quote_survey_option">
+                                                                                    <input type="checkbox" class="ui_input" name="translate_quote" value="Yes" id="translate_quote">
+                                                                                    <label class="elight_survey_label quote_survey_label" for="translate_quote" ng-click="checkDisable()">
+                                                                                        Từ này chưa được dịch
+                                                                                    </label>
+                                                                                </div>
+                                                                                <button class="btn elight_send_btn" ng-disabled="disabledSendBtn" ng-click="sendReport()">Gửi</button>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="elight_thank_you text-center" ng-if="!survey">
+                                                                        <img src="assets/images/thankyou.png" style="width: 50%;">
+                                                                        <div class="elight_thank_you_text">
+                                                                            <h4><b>Xin chân thành cảm ơn bạn.</b></h4>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h1>
+
+    								<h1 class="quote quote_vi" style="font-family: sans-serif;" ng-if="$ctrl.quote.type != 'marketing'" ng-show="$ctrl.showQuoteVi" ng-class="{'quote_small_span' : $ctrl.quote.content_vi.length > 140}"><font class="last_quote_mark" ng-if="$ctrl.quote.tag !== 'newsline'">"</font>{{$ctrl.quote.content_vi}}<font class="last_quote_mark" ng-if="$ctrl.quote.tag !== 'newsline'">"</font></h1>
+                                    <h1 class="quote quote_vi" style="font-family: sans-serif;" ng-if="$ctrl.quote.type == 'marketing'" ng-show="$ctrl.showQuoteVi" ng-class="{'quote_small_span' : $ctrl.quote.content_vi.length > 140}"><font class="last_quote_mark" ng-if="$ctrl.quote.tag !== 'newsline'">"</font><span ng-bind-html="$ctrl.trustAsHtml($ctrl.quote.content_vi)"></span><font class="last_quote_mark" ng-if="$ctrl.quote.tag !== 'newsline'">"</font></h1>
+    								<p class="author quote_author">{{$ctrl.quote.author}}</p>
+                                </div>
+                                <div class="quote_date_div">
+                                    <p class="quote_date pull-right"><i>{{$ctrl.quote.Date ? $ctrl.quote.Date : $ctrl.quote.date}}</i></p>
+                                </div>
+
+                                <div class="btn_quote_group">
+                                    <div class="group-action">
+                                        <div class="btn_quote btn_like" ng-click="$ctrl.heart()" tooltip-placement="top" uib-tooltip="Thả tim">
+                                            <i ng-if="!$ctrl.heart_quote"  class="fa fa-heart-o" aria-hidden="true"></i>
+                                            <i ng-if="$ctrl.heart_quote" class="fa fa-heart" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="btn_quote btn_learn" ng-click="$ctrl.learnWord()" tooltip-placement="top" uib-tooltip="Xem thêm câu mới">
+                                            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
+								<!--<button class="btn contribute-button" ng-click="$ctrl.contribute()">Đóng góp nội dung học</button>-->
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+    <div class="love_from_elight">
+        <a target="_blank" ng-href="{{$ctrl.quote.tag == 'newsline' ? 'https://elight.edu.vn/khoa-toan-dien-3-trong-1-extension?utm_source=extension&utm_medium=created&utm_campaign=newsline' : 'https://elight.edu.vn/khoa-toan-dien-3-trong-1-extension?utm_source=extension&utm_medium=created&utm_campaign=quotes'}}">Created by Elight with heart</a>
+    </div>
+</div>
+<div class="bg_heart"></div>

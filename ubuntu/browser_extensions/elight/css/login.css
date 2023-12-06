@@ -1,0 +1,153 @@
+/*        Start Login         */
+.login .modal-content,
+.login #modal-ask-login-again {
+  width: 64%;
+  margin: 0 auto;
+  margin-top: 60px;
+  padding-bottom: 30px;
+}
+.login .wrap .content {
+  margin-left: 0px;
+}
+@media (max-width: 425px) {
+  .login .wrap .login-email-box {
+    padding: 30px 0;
+    border-top: 1px solid #eeeeee;
+  }
+}
+@media (min-width: 768px) {
+  .login .wrap .login-email-box {
+    padding: 12px 30px 20px 20px;
+  }
+}
+.login .wrap .login-email-box h3 {
+  margin-top: -10px;
+  margin-bottom: 40px;
+}
+.login .wrap .login-email-box .form-group {
+  margin-bottom: 30px;
+}
+.login .wrap .login-email-box input {
+  height: 50px;
+  border-left: none;
+}
+.login .wrap .login-email-box span {
+  background: transparent;
+}
+.login .wrap .login-email-box span .active {
+  color: #ffb940;
+}
+.login .wrap .login-email-box .form-sigin i {
+  color: #ffb940;
+}
+.login .wrap .login-email-box i {
+  font-size: 25px;
+}
+.login .wrap .login-email-box .fa-lock {
+  padding: 4px;
+}
+.login .wrap .login-email-box button {
+  height: 50px;
+  background: #ffb940;
+  color: white;
+  font-size: 18px;
+  width: 100%;
+}
+@media (max-width: 425px) {
+  .login .wrap .login-social-box {
+    padding: 40px 0 0;
+  }
+}
+@media (min-width: 768px) {
+  .login .wrap .login-social-box {
+    padding: 40px 0 0;
+  }
+}
+.login .wrap .login-social-box p.or::before {
+  content: "";
+  width: 35%;
+  height: 1px;
+  background: #c4c8d4;
+  position: absolute;
+  left: 17px;
+  top: 20px;
+}
+.login .wrap .login-social-box p.or::after {
+  content: "";
+  width: 35%;
+  height: 1px;
+  background: #c4c8d4;
+  position: absolute;
+  right: 17px;
+  top: 20px;
+}
+@media (max-width: 425px) {
+  .login .wrap .login-social-box p {
+    padding: 10px 15px 15px 15px;
+    margin: 0;
+  }
+}
+@media (min-width: 768px) {
+  .login .wrap .login-social-box p {
+    padding: 10px 15px 15px 15px;
+    margin: 0;
+  }
+}
+.login .wrap .login-social-box p span {
+  margin-left: 15px;
+}
+@media (max-width: 425px) {
+  .login .wrap .login-social-box div {
+    padding: 0 8px 15px;
+  }
+}
+@media (min-width: 768px) {
+  .login .wrap .login-social-box div {
+    padding: 0 50px 15px;
+  }
+}
+@media (width: 1024px) {
+  .login .wrap .login-social-box div {
+    padding: 0 30px 15px;
+  }
+}
+.login .wrap .login-social-box div span {
+  margin-left: 15px;
+  color: black;
+}
+.login .wrap #see-detail-account-vip {
+  float: left;
+  width: 100%;
+  text-align: right;
+  margin-top: 10px;
+}
+.login .message-error,
+.login message-success {
+  margin: 10px 0 -15px;
+}
+.login .message-error {
+  color: red;
+}
+.login a:focus,
+.login a:hover {
+  color: #23527c;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+/*        End Login           */
+#teacher-logined-2 .badge {
+  position: absolute;
+  float: right;
+  z-index: 1000;
+  margin-top: 57%;
+  right: 10px;
+  color: white;
+  background: red;
+  cursor: pointer;
+}
+
+.signup-link {
+  position: relative;
+  top: 8px;
+  margin-bottom: 10px;
+}

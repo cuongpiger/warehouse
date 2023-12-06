@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'neue';
+  src: url("/css/fonts/neue.woff");
+}
+@font-face {
+  font-family: 'neue-bold';
+  src: url("/css/fonts/neue-bold.woff");
+}
+@font-face {
+  font-family: 'Lobster';
+  src: url("/css/fonts/Lobster.otf");
+}
+@font-face {
+  font-family: 'open-sans-light';
+  src: url("/css/fonts/OpenSans-Light.ttf");
+}
+@font-face {
+  font-family: TrajanPro;
+  src: url("/css/fonts/TrajanPro-Regular.ttf");
+}
+.bg_opacity {
+  background-color: rgba(0, 0, 0, 0.6);
+}

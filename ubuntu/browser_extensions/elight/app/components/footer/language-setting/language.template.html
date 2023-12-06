@@ -1,0 +1,31 @@
+<div>
+    <div class="language-setting-container">
+        <img ng-class="{'active' : $ctrl.languageSelected === 'vn'}" ng-click="$ctrl.confirmSelectLanguage('vn')" data-toggle="tooltip" title="Change your language to Vietnamese" ng-src="assets/images/flags/vietnam.png">
+    </div>
+    <div class="language-setting-container">
+        <img ng-class="{'active' : $ctrl.languageSelected === 'por'}" ng-click="$ctrl.confirmSelectLanguage('por')" data-toggle="tooltip" title="Change your language to Portuguese" ng-src="assets/images/flags/brazil.png">
+    </div>
+
+  <div id="language_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="profile_box">
+              <div class="row">
+                <div class="col-xs-12 text-center">
+                  <h4>Choose your language:</h4>
+                </div>
+                <div class="col-xs-12">
+                  <div class="col-xs-3 col-xs-offset-2">
+                    <img class="language-image" ng-class="{'language-image--selected' : $ctrl.languageSelected === 'por'}" src="assets/images/flags/brazil.png" ng-click="$ctrl.selectLanguage('por')">
+                  </div>
+                  <div class="col-xs-3 col-xs-offset-2">
+                    <img class="language-image" ng-class="{'language-image--selected' : $ctrl.languageSelected === 'vn'}" src="assets/images/flags/vietnam.png" ng-click="$ctrl.selectLanguage('vn')">
+                  </div>
+                  <div class="text-center">
+                    <button class="btn btn-primary btn-confirm-language" >Confirm</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

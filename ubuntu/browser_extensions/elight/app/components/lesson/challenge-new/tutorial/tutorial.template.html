@@ -1,0 +1,104 @@
+<div class="challenge_box_child text-center" id="challenge_question_screen">
+    <div>
+        <div class="challenge_your_info row">
+            <div class="col-xs-4" style="padding-right: 0px;">
+                <div class="col-xs-4" style="padding-left: 0px;">
+                    <div class="avatar-container" ng-class="{'has-special-avatar': $root.playerStat.specialAvatar}">
+                        <div class="avatar">
+                            <img ng-src="{{$ctrl.playerStat.avatar}}" on-error-avatar alt="avatar" style="margin: 5px 0 0 5px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-8" style="padding-left: 0px;padding-right: 0px;">
+                    <div class="challenge_3_heart challenge_3_heart_left" style="margin-left: -15px; margin-right: -18px;">
+                        <img src="assets/images/war/heart icon.png">
+                        <img src="assets/images/war/heart icon.png">
+                        <img src="assets/images/war/heart icon.png">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="challenge_clock_timer vertical-center">
+                    <span class="change_score challenge_score_player">{{$root.tutorialCorrect}}</span>
+                    <span class="time">00:30</span>
+                    <span class="change_score challenge_score_bot">0</span>
+                </div>
+            </div>
+            <div class="col-xs-4" style="padding-left: 0px;">
+                <div class="col-xs-8" style="padding-right: 0px;padding-left: 0px;">
+                    <div class="challenge_3_heart challenge_3_heart_right" style="margin-top: 34px;">
+                        <img src="assets/images/war/heart icon.png">
+                        <img src="assets/images/war/heart icon.png">
+                        <img src="assets/images/war/heart icon.png">
+                    </div>
+                </div>
+                <div class="col-xs-4" style="padding-right: 0px;">
+                    <div class="avatar-container" ng-class="{'has-special-avatar': $root.playerStat.specialAvatar}">
+                        <div class="avatar">
+                            <img ng-src="{{$ctrl.AI.imageUrl}}" on-error-avatar alt="avatar" class="thumbnail">
+                            <img src="assets/images/freezed.jpg" class="challenge_opponent_freezed" ng-if="bot.state.freezed">
+                            <div class="challenge_opponent_bombed background_image" ng-show="bot.state.bombed"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="challenge_question_div">
+        <div class="content_question">
+            <span>{{answer.word}}</span>
+            <span class="question_audio challenge_audio" ng-click="$ctrl.playQuestionAudio()">
+					<i class="fa fa-volume-up" aria-hidden="true"></i>
+				</span>
+        </div>
+        <div class="row box_answer">
+            <div ng-class="{
+                'col-xs-10 col-xs-offset-1': question_answers.length == 2,
+                'col-lg-6 col-lg-offset-3 col-xs-10 col-xs-offset-1 challenge_with_4_questions_div': question_answers.length == 4,
+                'col-lg-8 col-lg-offset-2 col-xs-12 challenge_with_6_questions_div': question_answers.length == 6,
+                'col-lg-10 col-lg-offset-1 col-xs-12': question_answers.length == 8,
+                'col-lg-8 col-lg-offset-2 col-xs-10 col-xs-offset-1 challenge_with_12_questions_div': question_answers.length >= 12
+            }">
+                <div style="position: relative;" ng-repeat="(key, val) in question_answers" ng-class="{'col-xs-3 challenge_xs_3' : question_answers.length == 8, 'col-xs-3 challenge_xs_3_12' : question_answers.length >= 12, 'col-xs-6 challenge_xs_6' : question_answers.length == 2 , 'col-xs-6 challenge_xs_6_4' : question_answers.length == 4, 'col-xs-4 challenge_xs_4' : question_answers.length == 6 || question_answers.length == 3}" >
+                    <img ng-src="{{val.image}}" id="{{'tutorial_answer_' + key}}" on-error class="thumbnail challenge_answer_img" ng-click="$ctrl.checkAnswer(val.word, key)">
+                    <div class="challenge_cover_div text-center" ng-if="val.checked || val.enermyCheck">
+                        <img ng-if="val.checked && val.word == answer.word" src="assets/images/war/right-check.png">
+                        <img ng-if="val.checked && val.word != answer.word" src="assets/images/war/wrong-check.png">
+                        <img ng-if="val.enermyCheck" src="assets/images/war/right-check-bot.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--{{usedAbilities}}-->
+    <div class="challenge_3_weapon">
+        <div class="challenge_3_weapon_div challenge_3_ability_freeze" style="cursor: pointer;"
+             data-toggle="tooltip" title="{{localesMessage[8][$root.language]}}">
+            <img src="assets/images/war/powerupice.png" class="challenge_ability_icon"
+                 ng-class="{'disable_skill' : usedAbilities.freeze}">
+            <img src="assets/images/war/shop count.png" class="challenge_3_weapon_number">
+            <span class="challenge_3_weapon_number">1</span>
+        </div>
+        <div class="challenge_3_weapon_div challenge_3_ability_unfreeze" style="cursor: pointer;"
+             data-toggle="tooltip" title="{{localesMessage[9][$root.language]}}">
+            <img src="assets/images/war/poweruo3.png" class="challenge_ability_icon"
+                 ng-class="{'disable_skill' : usedAbilities.unfreeze}">
+            <img src="assets/images/war/shop count.png" class="challenge_3_weapon_number">
+            <span class="challenge_3_weapon_number">1</span>
+        </div>
+        <div class="challenge_3_weapon_div challenge_3_ability_boom" style="cursor: pointer;"
+             data-toggle="tooltip" title="{{localesMessage[10][$root.language]}}">
+            <img src="assets/images/war/powerup1.png" class="challenge_ability_icon"
+                 ng-class="{'disable_skill' : usedAbilities.bomb}">
+            <img src="assets/images/war/shop count.png" class="challenge_3_weapon_number">
+            <span class="challenge_3_weapon_number">1</span>
+        </div>
+        <div class="challenge_3_weapon_div challenge_3_ability_heart" style="cursor: pointer;"
+             data-toggle="tooltip" title="{{localesMessage[11][$root.language]}}">
+            <img src="assets/images/war/powerupheart.png" class="challenge_ability_icon"
+                 ng-class="{'disable_skill' : usedAbilities.heart}">
+            <img src="assets/images/war/shop count.png" class="challenge_3_weapon_number">
+            <span class="challenge_3_weapon_number">1</span>
+        </div>
+    </div>
+</div>

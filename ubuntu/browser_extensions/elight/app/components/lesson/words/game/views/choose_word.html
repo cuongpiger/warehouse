@@ -1,0 +1,26 @@
+<div ng-controller="multipleChooseController">
+    <div class="text-center">
+        <h4>{{localesMessage[10][$root.language]}}</h4>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3 text-center">
+            <img class="practice_type_1_img practice_type_2_img" on-error class-loading="1" ng-src="{{answer.image}}">
+            <img class="loading-image loading-1" ng-src="../../../../../../assets/images/ajax-loader.gif" width="20" alt="">
+        </div>
+        <div class="col-xs-8 col-xs-offset-2 practice_2_button_div">
+            <div class="col-xs-6 text-center" ng-repeat="(key,val) in shuffledData">
+                <button ng-disabled="disableButton"
+                    class="btn practice_2_button trigger-click-{{key + 1}}"
+                    ng-class="{
+                        'practice_btn_right' : val.checked && val.word == answer.word,
+                        'practice_btn_wrong btn_shake' : val.checked && val.word != answer.word,
+                        'button_small_font' : val.word.length >= 15 && val.word.length < 22 ,
+                        'btn_smaller_font' : val.word.length >=22 && val.word.length <= 30,
+                        'btn_super_small_font' : val.word.length > 30} "
+                    ng-click="checkResult(val, key)">
+                    <p class="stt">{{key + 1}}</p>{{val.word}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

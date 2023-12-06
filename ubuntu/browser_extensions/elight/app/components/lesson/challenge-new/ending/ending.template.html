@@ -1,0 +1,84 @@
+<div class="text-center ending_list_score">
+    <!--<div class="challenge_ending_congrat">-->
+    <!--<h1 ng-if="player.state.win" class="image_ending image_win"></h1>-->
+    <!--<h1 ng-if="!player.state.win" class="image_ending image_lose zoomInDown_cus"></h1>-->
+    <!--</div>-->
+    <div class="row list_score">
+        <div class="col-xs-6">
+            <div class="box_player_result" ng-class="{'box_lose_result' : !player.state.win}">
+                <div class="avatar-container" ng-class="{'has-special-avatar': $root.playerStat.specialAvatar}">
+                    <div class="avatar-endgame">
+                        <img ng-src="{{$root.playerStat.avatar}}" on-error-avatar self="owner" alt="{{ player.state.win ? 'avatar' : 'avatar8' }}">
+                    </div>
+                </div>
+            </div>
+            <h4 class="username">{{$root.playerStat.display_name ? $root.playerStat.display_name : 'YOU'}}</h4>
+            <p class="school user-shool" style="min-height: 22px;" ng-class="{'school-empty': !$root.playerStat.school}">{{$root.playerStat.school}}</p>
+
+            <h3 ng-if="player.state.health.length > 0"><div class="bg_heart_1" ng-repeat="(key, val) in player.state.health track by $index"></div></h3>
+            <h3 ng-if="player.state.health.length <= 0" class="zero_heart">
+                <div class="bg_heart_1"><div class="line_delete"></div></div>
+                <div class="bg_heart_1"><div class="line_delete"></div></div>
+                <div class="bg_heart_1"><div class="line_delete"></div></div>
+            </h3>
+            <h3 class="score_num"><small>Score</small> <span>{{$root.correctAnswer}}</span></h3>
+        </div>
+        <div class="col-xs-6">
+            <div ng-if="$root.AI" class="box_player_result" ng-class="player.state.win? 'box_bot_lose_result' : 'box_bot_win_result'">
+                <div class="avatar-container">
+                    <div class="avatar-endgame">
+                        <img ng-src="{{$ctrl.AI.imageUrl}}" on-error-avatar alt="{{ !player.state.win ? 'avatar' : 'avatar8' }}">
+                    </div>
+                </div>
+            </div>
+            <div ng-if="!$root.AI" class="box_player_result" ng-class="player.state.win? 'box_bot_lose_result' : 'box_bot_win_result'">
+                <div class="avatar-container" ng-class="{'has-special-avatar': $root.userAccept.specialAvatar}">
+                    <div class="avatar-endgame">
+                        <img ng-src="{{$root.userAccept.avatar}}" on-error-avatar alt="{{ !player.state.win ? 'avatar' : 'avatar8' }}">
+                    </div>
+                </div>
+            </div>
+			<!-- display in play realtime mode -->
+			<h4 class="username ai" ng-if="!$root.AI">{{$root.userAccept.username ? $root.userAccept.username : $root.language === 'vn' ? 'Đối thủ' : "Opponent"}}</h4>
+			<p ng-if="!$root.AI" class="school user-shool" ng-class="{'school-empty': !$root.userAccept.school}">{{$root.userAccept.school}}</p>
+
+			<!-- display in play with bot mode -->
+			<h4 class="username ai" ng-if="$root.AI">{{AI.AI_name}}</h4>
+			<p ng-if="$root.AI" class="school user-shool">{{AI.school}}</p>
+
+            <h3 ng-if="bot.state.health.length > 0"><div class="bg_heart_1" ng-repeat="(key, val) in bot.state.health track by $index"></div></h3>
+            <h3 ng-if="bot.state.health.length <= 0" class="zero_heart">
+                <div class="bg_heart_1"><div class="line_delete"></div></div>
+                <div class="bg_heart_1"><div class="line_delete"></div></div>
+                <div class="bg_heart_1"><div class="line_delete"></div></div>
+            </h3>
+            <h3 class="score_num"><small>Score</small> <span>{{$root.botCorrectAnswer}}</span></h3>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="text-center" ng-class="{'col-xs-6': !$root.loggedIn, 'col-xs-4' : $root.loggedIn}">
+            <button type="button" class="btn-endgame home challenge-ending-button__auto-scale" ng-click="backScreen()">Homescreen</button>
+        </div>
+        <div ng-class="{'col-xs-6': !$root.loggedIn, 'col-xs-4': $root.loggedIn}">
+            <button class="btn-endgame button-review" data-toggle="modal" data-target="#war_flat_card" ng-click="$ctrl.review_word()">
+                Review
+            </button>
+        </div>
+        <div class="text-center col-xs-4" ng-if="$root.loggedIn">
+            <button type="button" class="btn-endgame btn-again" ng-click="sendRequestRematch()">Play Again</button>
+        </div>
+    </div>
+</div>
+<!--./End ending screen-->
+
+<!-- START BANNER -->
+<div class="banner-war" ng-if="!$ctrl.isCloseBanner">
+    <a ng-click="$ctrl.trackingBanner(1)" ng-if="$ctrl.userBannerType == 0" target="blank" href="https://elight.edu.vn/khoa-toan-dien-3-trong-1-AWD/?utm_source=Extension&utm_medium=endwar"><img src="../../../../assets/images/Banner-01.jpg"/></a>
+    <a ng-click="$ctrl.trackingBanner(2)" ng-if="$ctrl.userBannerType == 1" target="blank" href="https://elight.edu.vn/khoa-toan-dien-3-trong-1-AWD/?utm_source=Extension&utm_medium=endwar"><img src="../../../../assets/images/Banner-02.jpg"/></a>
+</div>
+<!-- END BANNER -->
+
+
+<!--Word Review-->
+
+<!--END Word Review-->

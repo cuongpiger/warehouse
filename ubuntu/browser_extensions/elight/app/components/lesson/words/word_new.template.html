@@ -1,0 +1,64 @@
+<end-game ng-if="$ctrl.ending" words="$ctrl.endingWords" number="3" class-name="class-ending"></end-game>
+<div class="main word_box topic_box class-word" ng-if="!$ctrl.ending">
+    <div class="volume_div" tooltip-placement="top" uib-tooltip="{{$root.volume ? $ctrl.localesMessage[0][$root.language] : $ctrl.localesMessage[1][$root.language] }}">
+        <div class="word_volume" ng-class="{'word_volume_on' : $root.volume, 'word_volume_off' : !$root.volume}" ng-click="$ctrl.toggleVolume()"></div>
+    </div>
+    <div class="round_circle_progress_div">
+        <span class="progress_value" ng-if="$root.progress != 8">{{$ctrl.calculatePercent($root.progress, 8)}}</span>
+        <span class="progress_value" style="left: 18px;" ng-if="$root.progress == 8">{{$ctrl.calculatePercent($root.progress, 8)}}</span>
+        <round-progress
+                max="8"
+                current="$root.progress"
+                color="#149619"
+                bgcolor="#EDEEF4"
+                radius="35"
+                stroke="5"
+                clockwise="true"
+                responsive="false"
+                duration="800"
+                animation="easeInOutQuart"
+                animation-delay="0"></round-progress>
+    </div>
+    <div>
+        <div ng-if="$ctrl.game">
+            <div id="main_flow_box" class="">
+                <game-directive  template="$root.template" class="" data="$ctrl.data" index="$ctrl.index" answer="$ctrl.answer"></game-directive>
+            </div>
+        </div>
+    </div>
+    <div class="feedback_div" ng-if="$root.progress == 0 || $root.progress == 1 || $root.progress == 4">
+        <div style="position: relative" tooltip-placement="top" uib-tooltip="Report">
+            <div class="feedback_icon"  ng-click="$ctrl.showFeedbackDiv()"></div>
+            <div class="arrow_box" style="display : none;">
+                <div class="feedback_container">
+                    <div class="survey_div" ng-if="survey">
+                        <div class="text-center feedback_header"><b>{{$ctrl.localesMessage[2][$root.language]}}</b></div>
+                        <div class="feedback_content">
+                            <form id="survey_form" class="text-center">
+                                <div class="elight_survey_option">
+                                    <input type="checkbox" class="ui_input" name="content_error" value="Yes" id="content_error">
+                                    <label class="elight_survey_label" for="content_error" ng-click="$ctrl.checkDisable()">
+                                        {{$ctrl.localesMessage[3][$root.language]}}
+                                    </label>
+                                </div>
+                                <div class="elight_survey_option">
+                                    <input type="checkbox" class="ui_input" name="image" value="Yes" id="image">
+                                    <label class="elight_survey_label" for="image" ng-click="$ctrl.checkDisable()">
+                                        {{$ctrl.localesMessage[4][$root.language]}}
+                                    </label>
+                                </div>
+                                <button class="btn elight_send_btn" ng-disabled="$ctrl.disabledSend" ng-click="sendReport()">{{$ctrl.localesMessage[5][$root.language]}}</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="elight_thank_you text-center" ng-show="!survey">
+                        <img src="assets/images/thankyou.png" style="width: 50%;">
+                        <div class="elight_thank_you_text">
+                            <h4><b>{{$ctrl.localesMessage[6][$root.language]}}</b></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

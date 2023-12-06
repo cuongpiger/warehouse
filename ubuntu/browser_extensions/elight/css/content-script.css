@@ -1,0 +1,114 @@
+.bufferIcon {
+	background-image: url('/assets/images/elight-128.png');
+	background-size: contain;
+	background-position: center center;
+	background-repeat: no-repeat;
+	height: 25px;
+	width: 25px;
+	position: absolute !important;
+	cursor: pointer;
+	border-radius: 6px;
+	z-index: 10000000;
+}
+
+#dictionary_modal {
+	background-color: navajowhite;
+	position: relative;
+	max-width: 300px;
+	min-width: 100px;
+	line-height: 19px;
+	border-radius: 10px;
+	z-index: 10000000;
+}
+
+.wordAndSave {
+	display: flex;
+	flex-direction: row;
+}
+
+.word {
+	font-size: 15px;
+  font-weight: bold;
+	margin-left: 10px;
+	padding-top: 5px;
+}
+
+.sound {
+	display: flex;
+	flex-direction: row;
+	margin-left: 10px;
+	padding-bottom: 5px;
+}
+
+.audio {
+	background-color: #fff;
+	cursor: pointer;
+	-webkit-border-radius: 50% !important;
+	-moz-border-radius: 50% !important;
+	-o-border-radius: 50% !important;
+	border-radius: 50% !important;
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	-moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  width: 21px;
+  height: 21px;
+  text-align: center;
+}
+
+.audio i {
+	color: #ffb940;
+}
+
+.phonetic {
+	font-style: italic;
+	font-size: 12px;
+	margin-left: 10px;
+}
+
+.meaning {
+	line-height: 17px;
+	padding: 10px;
+}
+
+.meanings {
+	font-size: 13px;
+	margin-left: 10px;
+}
+
+.types {
+	color: #757575;
+	text-transform: capitalize;
+	margin-left: 10px;
+}
+
+.examples {
+	overflow-y: auto;
+	max-height: 150px;
+}
+
+.example {
+	padding-left: 10px;
+}
+
+.example::before {
+	content: "-";
+	margin-left: -3px;
+	position: relative;
+	right: 3px;
+}
+
+.save_btn {
+	margin-top: 5px;
+	margin-left: auto;
+	margin-right: 5px;
+	cursor: pointer;
+	color: #ffbf24;
+	display: flex;
+	background-color: #fff;
+	border-radius: 50%;
+	justify-content: center;
+	align-items: center;
+	height: 25px;
+	width: 25px;
+	font-size: 21px;
+}

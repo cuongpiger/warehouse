@@ -1,0 +1,174 @@
+<!--gợi ý tạo tài khoản-->
+<!-- <div class="main word_box welcome_box"> -->
+  <div class="recommend_create_account_section recommend_create text-center" ng-if="$ctrl.showSection == 'recommend'">
+    <h4 class="text-center title-recommend">{{$ctrl.localesMessage[0][$root.language]}}</h4>
+    <div class="row text-center" >
+      <div class="col-md-12" ng-click="$ctrl.openLoginForm()" data-dismiss="modal">
+        <div class="btn-account accounted">
+          <a class="">Tôi đã có tài khoản tại Elight.edu.vn</a>
+        </div>
+      </div>
+      <div class="col-md-12" data-toggle="modal" data-dismiss="modal" data-target=".login-form-guide">
+        <div class="btn-account not-yet-account">
+          <a>Tôi chưa có tài khoản tại Elight.edu.vn</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--register form-->
+  <div class="register_login_form text-center" ng-if="$ctrl.showSection == 'register-form'">
+    <h3>{{$ctrl.localesMessage[4][$root.language]}}</h3>
+    <div class="row input_group">
+      <form name="signup_form" class="form-horizontal col-md-8 col-md-offset-2">
+        <!-- NOTE: username input -->
+
+        <div>
+          <div class="form-group" ng-class="{ 'has-error' : signup_form.username.$invalid && !signup_form.username.$pristine || ( signup_form.username.$viewValue.length > 15 || signup_form.username.$viewValue.length < 3 ) }">
+            <div class="col-sm-10 col-sm-offset-1">
+              <input ng-model="$ctrl.username" type="username" class="form-control" name="username" placeholder="Username" aria-describedby="ip-username" required>
+            </div>
+          </div>
+          <div class="message-error" ng-show="signup_form.username.$viewValue.length > 15 || signup_form.username.$viewValue.length < 3">{{$ctrl.localesMessage[5][$root.language]}}</div>
+          <div ng-show="form_signup.$submitted || signup_form.username.$touched">
+            <div class="message-error" ng-show="signup_form.username.$error.required">{{$ctrl.localesMessage[6][$root.language]}}</div>
+          </div>
+          <div ng-show="$ctrl.error.errors.display_name != 'undefined' && $ctrl.error.errors.display_name != '' && $ctrl.error.errors.display_name != null">
+            <div class="message-error" > {{ $ctrl.error.errors.display_name['0'] }}</div>
+          </div>
+        </div>
+
+        <!-- NOTE: email input -->
+        <div ng-class="{'has-error': (signup_form.email.$invalid && !signup_form.email.$pristine) || (signup_form.email.$touched && signup_form.email.$error.required)}">
+          <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-1">
+              <input ng-model="$ctrl.emailRegister" type="email" class="form-control" name="email" placeholder="Email" aria-describedby="ip-email" required>
+            </div>
+          </div>
+          <div class="message-error" ng-show="signup_form.email.$error.email">{{$ctrl.localesMessage[7][$root.language]}}</div>
+          <div ng-show="signup_form.$submitted || signup_form.email.$touched">
+            <div class="message-error" ng-show="signup_form.email.$error.required">{{$ctrl.localesMessage[8][$root.language]}}</div>
+
+          </div>
+          <div ng-show="$ctrl.error.errors.email != 'undefined' && $ctrl.error.errors.email != '' && $ctrl.error.errors.email != null">
+            <div class="message-error" > {{ $ctrl.error.errors.email['0'] }}</div>
+          </div>
+        </div>
+
+        <!-- NOTE: password input -->
+        <div>
+          <div class="form-group" ng-class="{ 'has-error' : signup_form.password.$invalid && !signup_form.password.$pristine ||  (signup_form.password.$viewValue.length < 6)}">
+            <div class="col-sm-10 col-sm-offset-1">
+              <input ng-model="$ctrl.passwordRegister" type="password" name="password" class="form-control" id="password_in" placeholder="{{$ctrl.localesMessage[9][$root.language]}}" required="">
+            </div>
+          </div>
+          <div ng-show="signup_form.$submitted || signup_form.password.$touched">
+            <div class="message-error" ng-show="signup_form.password.$error.required">{{$ctrl.localesMessage[10][$root.language]}}</div>
+            <div class="message-error" ng-show="signup_form.password.$viewValue.length < 6">{{$ctrl.localesMessage[11][$root.language]}}</div>
+          </div>
+        </div>
+
+        <!-- NOTE: retype password input -->
+        <div ng-class="{'has-error': (signup_form.re_password.$viewValue != signup_form.password.$viewValue) || (signup_form.re_password.$touched && signup_form.re_password.$error.required)}">
+          <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-1">
+              <input ng-model="$ctrl.re_password" type="password" name="re_password" class="form-control" id="re_password_in" placeholder="{{$ctrl.localesMessage[12][$root.language]}}" required="">
+            </div>
+          </div>
+          <div ng-show="signup_form.$submitted || signup_form.password.$touched">
+            <div class="message-error" ng-show="signup_form.re_password.$viewValue != form_signIn.password.$viewValue"></div>
+          </div>
+        </div>
+        <div class="form-group btn_group" ng-class="{ 'has-error' : signup_form.re_password.$invalid && !signup_form.re_password.$pristine || (signup_form.password.$viewValue != signup_form.re_password.$viewValue) }">
+          <div class="text-center">
+            <button type="submit" ng-disabled="signup_form.$invalid
+                          || (signup_form.password.$viewValue != signup_form.re_password.$viewValue)
+                          || ( signup_form.display_name.$viewValue.length > 15 || signup_form.display_name.$viewValue.length < 3 )
+                          || (signup_form.password.$viewValue.length < 6)" class="btn btn-success btn_rounded btn-register" ng-click="$ctrl.signup($ctrl.username, $ctrl.emailRegister, $ctrl.passwordRegister, $ctrl.re_password)">{{$ctrl.localesMessage[13][$root.language]}} <img
+                    src="../../../assets/images/ajax-loader.gif" height="20" width="20" class="loading-lasest" ng-if="$ctrl.loading"/></button>
+            <p>
+                {{$ctrl.localesMessage[14][$root.language]}} <a ng-click="$ctrl.openLoginForm()">{{$ctrl.localesMessage[15][$root.language]}}</a>
+            </p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!--login form-->
+  <div class="register_login_form login_form_view text-center" ng-if="$ctrl.showSection == 'login-form'" style="    padding-top: 10px;">
+    <h3 style="margin-bottom: 30px;" class="text-uppercase">{{$ctrl.localesMessage[17][$root.language] + ' Elight Extension'}}</h3>
+    <div class="row input_group">
+      <form name="login_form" class="form-horizontal col-md-8 col-md-offset-2">
+
+        <div class="form-group" ng-class="{ 'has-error' : login_form.email.$invalid && !login_form.email.$pristine || (!login_form.email.$error.required && !($ctrl.email | validateEmailDomain)) }">
+          <div class="input-group">
+            <span class="input-group-addon" id="login-email">
+                <i class="fa fa-envelope fa-input" ng-class="{'active' : !login_form.email.$error.required }"></i>
+            </span>
+            <input ng-model="$ctrl.email" type="email" class="form-control" name="email" placeholder="Nhập Email của bạn" required>
+          </div>
+          <div ng-show="login_form.$submitted || login_form.email.$touched">
+            <div class="message-error" ng-show="login_form.email.$error.required">Email không được để trống </div>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : login_form.password.$invalid && !login_form.password.$pristine }">
+          <div class="input-group">
+            <span class="input-group-addon" id="login-password">
+                <i class="fa fa-lock fa-input" ng-class="{'active' : !login_form.password.$error.required }"></i>
+            </span>
+            <input ng-model="$ctrl.password" type="password" class="form-control password-input" name="password" placeholder="Nhập mật khẩu" required>
+          </div>
+          <div ng-show="login_form.password.$touched || error">
+            <div class="message-error" ng-show="login_form.password.$error.required">Passwords không được để trống </div>
+            <div class="message-error" ng-show="error" ng-bind="error"></div>
+          </div>
+          <div class="message-error" ng-if="$ctrl.error">{{$ctrl.error}}</div>
+        </div>
+        <h4 ng-if="$ctrl.messsync" style="margin-top: 0;margin-bottom: -34px;">{{$ctrl.messsync}}</h4>
+        <div class="form-group">
+          <div class="text-center">
+              <button type="submit" class="btn btn-login-account" ng-disabled="login_form.$invalid || isLoading || !($ctrl.email | validateEmailDomain)" ng-click="$ctrl.login($ctrl.email, $ctrl.password)">{{$ctrl.localesMessage[17][$root.language]}} <img
+                    src="../../../assets/images/ajax-loader.gif" height="20" width="20" class="loading-lasest" ng-if="$ctrl.loading"/></button>
+          </div>
+
+        </div>
+      </form>
+    </div>
+    <h5 class="not-account">Nếu bạn không nhớ tài khoản đăng nhập của mình, kiểm tra lại như sau:</h5>
+    <div class="row">
+      <div class="col-xs-4">
+        <h5 class="step-guide">Bước 1: Đăng nhập tại https://elight.edu.vn/</h5>
+        <div class="image-cover">
+          <img src="/assets/images/login/landingpage.png" alt="">
+          <div class="zoom-view ">
+            <img src="/assets/images/login/zoom.png" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <h5 class="step-guide">Bước 2: Vào phần
+          “thông tin cá nhân" </h5>
+        <div class="image-cover">
+          <img src="/assets/images/login/loged.png" alt="">
+          <div class="zoom-view ">
+            <img src="/assets/images/login/zoom1.png" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <h5 class="step-guide">Bước 3: Xem
+          thông tin đăng nhập </h5>
+        <div class="image-cover">
+          <img src="/assets/images/login/profile.png" alt="">
+          <div class="zoom-view ">
+            <img src="/assets/images/login/zoom2.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- </div> -->
+<login-success ng-if="$ctrl.showSection == 'login-success'" class="logedin_success" ng-class="{'loggedin-success-profile': $ctrl.loginFromProfile || $root.openLoginFromOutside}"></login-success>

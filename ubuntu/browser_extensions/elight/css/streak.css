@@ -1,0 +1,358 @@
+.streak_info {
+	position: absolute;
+	right: 0;
+	top: 0;
+	font-size: 20px;
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	z-index: 0;
+}
+
+.streak-day .tooltip-inner {
+	width: 250px !important;
+}
+/**  TODO: Streak Day */
+.streak_cta_button {
+	min-width: 127px;
+	background: #FFCB08;
+	color: #272E6C;
+	font-family: Averta-ExtraBold;
+	border-radius: 100px;
+	box-shadow: 1px 1px 1px #656565;
+	padding: 6px 0 5px;
+	outline: none;
+}
+.streak_cta_button:hover{
+	color: #272E6C;
+	outline: none;
+}
+.streak_cta_button:focus{
+	color: #272E6C;
+	outline: none;
+}
+.streak-day {
+	width: 250px;
+	background: rgba(255, 255, 255, 0.5);
+	margin: 0 60px;
+	border-radius: 7px;
+	text-align: center;
+	height: 130px;
+	position: absolute;
+	top: 360px;
+}
+.streak-banner-img {
+	width: 250px;
+	position: absolute;
+	top: 510px;
+	min-height: 250px;
+	left: 45px;
+	box-sizing: border-box;
+}
+.streak-banner-img .streak-slide {
+	width: 100%;
+}
+.streak_tree {
+	padding: 20px 0 0 0;
+	margin: 8px 0 0 10px;
+	float: left;
+	position: relative;
+}
+.side-left {
+	margin-top: 50px;
+}
+.title-streak {
+	text-shadow: 1px 1px 1px #9c9c9c;
+	width: 160px;
+	float: right;
+	margin-top: 32px;
+}
+.title-streak.on-word {
+	margin-top: 55px;
+}
+.streak_circle {
+	width: 80px;
+	height: 80px;
+	background-color: #b6cf91;
+	border-radius: 50%;
+}
+.streak_cta_button {
+	text-transform: uppercase;
+}
+.streak_tree_image {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	top: 34px;
+	width: 52px;
+	height: 58px;
+	object-fit: contain;
+}
+
+.ending_tree {
+	top: 160px;
+	width: 160px;
+	height: 160px;
+}
+
+.ending_tree_image {
+	width: 100px;
+	height: 150px;
+
+}
+
+.ending_tree_container {
+	display: none;
+	left: 37%;
+	top: -160px;
+}
+
+.streak_title {
+	position: absolute;
+	top: 110px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: none;
+	font-size: 30px;
+	color: #548135;
+	text-align: center;
+	width: 80%;
+}
+
+
+/**
+Progress line*/
+.badge_info {
+	width: 250px;
+	height: 80px;
+	position: fixed;
+	top: 130px;
+	right: 55px;
+	background: rgba(255, 255, 255, .5);
+	border-radius: 10px;
+	cursor: pointer;
+}
+.badge_info .badge_head {
+	height: 100%;
+}
+.badge_info .badge_head .badge_icon {
+	width: 60px;
+	height: 60px;
+	margin: 10px;
+	float: left;
+}
+.badge_info .badge_head .badge_icon img {
+	width: 100%;
+	height: 100%;
+}
+.badge_info .badge_head .text_level {
+	width: 160px;
+	float: left;
+	font-size: 15px;
+	font-weight: 100;
+	margin-top: 10px;
+}
+.badge_info .badge_head .progress {
+	width: 160px;
+	float: left;
+	border-radius: 20px;
+	position: relative;
+	margin-bottom: unset;
+	background-color: #e8e7e7;
+}
+.badge_info .badge_head .progress-bar {
+	background-color: #ffb940;
+	border-radius: 20px;
+}
+.badge_info .badge_head .progress-bar .soccer_process {
+	position: absolute;
+	width: 100%;
+}
+.badgeImageBox {
+	max-height: 45px;
+}
+p.badge_des {
+	font-size: 13px;
+	line-height: 60px;
+	margin-bottom: 0;
+}
+
+/** Ending Progress */
+/** Ending Progress */
+.ending-information {
+	position: relative;
+	width: 335px;
+	height: 290px;
+	margin: 0 auto;
+	top: -178px;
+	text-align: center;
+}
+
+.progress-wrapper {
+	position: relative;
+	width: 150px;
+	margin: 30px auto;
+}
+.progress-wrapper .text_inside {
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: 50%;
+	transform: translateY(-50%) translateX(-50%);
+	z-index: 1;
+	font-size: 40px;
+	color: white;
+}
+.progress-wrapper .foot_circle {
+	left: 45px;
+	top: 50px;
+	width: 50px !important;
+	position: absolute;
+	z-index: 3;
+	transform: rotate(-90deg) translateX(50px) rotate(150deg);
+	animation: myOrbit 0.8s ease-in-out;
+}
+.progress-wrapper .round-progress {
+	background-color: #56CCF2;
+	border-radius: 100px;
+}
+.progress_detail .inprogress .image-end{
+	width: 40px;
+	height: 40px;
+	float: left;
+	margin: -10px 0 0;
+}
+.progress_detail .inprogress .image-end img{
+	width: 100%;
+	border-radius: 50%;
+	border: 1px solid #dadada;
+}
+.progress_detail ul.inprogress li.progress-end .progress {
+	margin: 0;
+	height: 20px;
+	border-radius: 20px;
+	background: #e7e7e7;
+}
+.progress_detail ul.inprogress li.progress-end {
+	position: relative;
+	width: 275px;
+}
+.progress_detail ul.inprogress li.progress-end .progress .progress-bar {
+	line-height: 20px;
+	background: linear-gradient(158deg, #56CCF2, rgba(136, 226, 255, 0.69));
+	box-shadow: unset;
+}
+.progress_detail ul.inprogress li.progress-end .progress .progress-bar .percent{
+	position: absolute;
+	width: 80%;
+}
+.title-level {
+	position: absolute;
+	top: 0;
+	right: -55px;
+	margin-bottom: unset;
+}
+.header-score {
+	font-family: Averta-Bold;
+}
+.bounceIn {
+	-webkit-animation-duration: 0.75s;
+	animation-duration: 0.75s;
+	-webkit-animation-name: bounceIn;
+	animation-name: bounceIn;
+}
+
+@keyframes bounceIn {
+	from,
+	20%,
+	40%,
+	60%,
+	80%,
+	to {
+		-webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+		animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+	}
+
+	0% {
+		opacity: 0;
+		-webkit-transform: scale3d(0.3, 0.3, 0.3);
+		transform: scale3d(0.3, 0.3, 0.3);
+	}
+
+	20% {
+		-webkit-transform: scale3d(1.1, 1.1, 1.1);
+		transform: scale3d(1.1, 1.1, 1.1);
+	}
+
+	40% {
+		-webkit-transform: scale3d(0.9, 0.9, 0.9);
+		transform: scale3d(0.9, 0.9, 0.9);
+	}
+
+	60% {
+		opacity: 1;
+		-webkit-transform: scale3d(1.03, 1.03, 1.03);
+		transform: scale3d(1.03, 1.03, 1.03);
+	}
+
+	80% {
+		-webkit-transform: scale3d(0.97, 0.97, 0.97);
+		transform: scale3d(0.97, 0.97, 0.97);
+	}
+
+	to {
+		opacity: 1;
+		-webkit-transform: scale3d(1, 1, 1);
+		transform: scale3d(1, 1, 1);
+	}
+}
+.pulse {
+	margin: 95px auto 0;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	cursor: pointer;
+	position: relative;
+}
+.pulse:before,
+.pulse:after {
+	content: '';
+	display: block;
+	position: absolute;
+	border-radius: 50%;
+	background: rgba(255, 217, 0, 0.25);
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	left: -20px;
+	right: -20px;
+	top: -20px;
+	bottom: -20px;
+	animation: animatePulse 1.5s linear infinite;
+	opacity: 0;
+}
+.pulse:after {
+	animation-delay: 0.5s ;
+}
+@keyframes animatePulse {
+	0% {
+		transform: scale(0.5);
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		transform: scale(1.2);
+		opacity: 1;
+	}
+}
+.badge_show img {
+	width: 100%;
+	position: absolute;
+	z-index: 4;
+	top: 0;
+	left: 0;
+}
+.margin-title-level {
+	margin-top: 40px;
+	margin-bottom: -40px;
+}

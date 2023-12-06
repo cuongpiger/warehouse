@@ -1,0 +1,44 @@
+<div class="main word_box topic_box class-word video_main">
+    <h3 class="text-center text-averta-bold no-margin">Học tiếng Anh qua video tương tác</h3>
+
+    <div class="video_card"  ng-click="$ctrl.redirectLinkVideo($ctrl.first_video)">
+        <div class="cover_img">
+            <img ng-src="{{$ctrl.url_poster($ctrl.first_video.poster)}}" on-error alt="img-course">
+            <div class="hover_play">
+                <div class="play_icon"></div>
+            </div>
+            <div class="box_description">
+                <div class="title_english text-averta">{{$ctrl.first_video.title}}</div>
+                <div class="title_vietnamese text-averta-light">{{$ctrl.first_video.description}}</div>
+                <div class="video_info">
+                    <div class="time_view text-averta-light">
+                        <i class="fa fa-headphones" aria-hidden="true"></i> {{$ctrl.first_video.watching_times}}
+                        <i class="fa fa-clock-o padding-to-time" aria-hidden="true"></i> {{$ctrl.first_video.time}}
+                    </div>
+                    <div class="type">
+                        <span class="btn_level btn_level_basic" ng-if="$ctrl.first_video.level ==1">Basic</span>
+                        <span class="btn_level btn_level_int" ng-if="$ctrl.first_video.level ==2" >Intermediate</span>
+                        <span class="btn_level" ng-if="$ctrl.first_video.level ==3">Advanced</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row video_card_small">
+        <div class="col-xs-3"  ng-repeat="(key,item) in $ctrl.rest_video">
+            <div class="video_small" ng-if="key < $ctrl.showItem" ng-click="$ctrl.redirectLinkVideo(item)">
+                <img ng-src="{{$ctrl.url_poster(item.poster)}}" alt="img-course">
+                <div class="hover_play">
+                    <div class="play_icon_small"></div>
+                </div>
+                <div class="box_description">
+                    <div class="time_view text-averta-light">
+                        <i class="fa fa-headphones" aria-hidden="true"></i> {{item.watching_times}}
+                        <i class="fa fa-clock-o padding-to-time" aria-hidden="true"></i> {{item.time}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

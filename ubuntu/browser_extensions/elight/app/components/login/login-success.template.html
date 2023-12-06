@@ -1,0 +1,7 @@
+<p ng-if="$root.freeUser == 'freeUser1'" class="announcement free-user-announcement">{{localesMessage[22][$root.language]}}</p>
+<p ng-if="$root.freeUser == 'freeUser2'" class="announcement free-user-announcement">{{localesMessage[23][$root.language]}}</p>
+<p ng-if="$root.freeUser == 'studentAccount'" class="announcement student-announcement">{{localesMessage[24][$root.language]}}</p>
+<div class="text-center">
+    <button ng-if="$root.freeUser == 'freeUser1'" class="btn btn_rounded btn-success" ng-click="chooseTopic()">{{localesMessage[25][$root.language]}}</button>
+    <button ng-if="$root.freeUser == 'studentAccount' || $root.freeUser == 'freeUser2'" class="btn btn_rounded btn-success" ng-click="learn()">{{localesMessage[26][$root.language]}}</button>
+</div>

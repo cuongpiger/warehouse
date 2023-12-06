@@ -1,0 +1,378 @@
+<!--Button Challenge-->
+
+<div class="right-sidebar">
+	<span ng-bind="$ctrl.unitInfor"></span>
+	<div class="course" ng-if="$ctrl.unitInfor" ng-style="{'top': !$ctrl.auth || ($ctrl.auth && $ctrl.auth.actived_code.count_use_code === 0 && $ctrl.auth.actived_code.count_user_courses === 0) ? '130px' : '220px'}">
+		<h5 class="text-uppercase text-center text-bold" ng-bind="$ctrl.unitInfor.title" style="width: 92%"></h5>
+		<i class="fa fa-cog set_btn" style="position: absolute;top: 8px;right: 8px;color: white;cursor: pointer;z-index: 10000;" aria-hidden="true" ng-click="$ctrl.toggleSetting()">
+		</i>
+		<div class="contain_progress_course">
+			<img class="image_unit_course" alt="" ng-src="{{$ctrl.unitInfor.image}}" >
+			<div id="process_unit_course" class="process_unit_course">
+
+			</div>
+		</div>
+		<div class="title_course">
+			<ul class="list-cta">
+				<li class="choose-another-course" ng-click="$ctrl.toggleSetting()"><a >Học 99 chủ đề khác</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="course top-challenge" ng-style="{'top': !$ctrl.auth || ($ctrl.auth && $ctrl.auth.actived_code.count_use_code === 0 && $ctrl.auth.actived_code.count_user_courses === 0) ? '375px' : '465px'}">
+		<h5 class="text-uppercase text-center" style="font-family: Averta-Extrabold;">King of words</h5>
+		<div class="challenge_btn tooltip-challenge"
+			 ng-click="$ctrl.showChallenge()"
+			 ng-class="{'gold-chest-noti': $ctrl.bonusStat.gold_chest >= 3, 'silver-chest-noti': $ctrl.remainingTime == '0:00:00' && $ctrl.bonusStat.gold_chest < 3, 'pulse_custom' : $ctrl.bonusStat.gold_chest >= 3 || $ctrl.remainingTime == '0:00:00'}">
+			<img src="../../../../assets/images/war/chest1.png" ng-if="$ctrl.remainingTime == '0:00:00' && $ctrl.bonusStat.gold_chest < 3">
+			<img src="../../../../assets/images/war/chest3.png" ng-if="$ctrl.bonusStat.gold_chest >= 3">
+			<!--<img class="circle_effect" src="../../../../assets/images/war/circle_effect.png" ng-if="$ctrl.bonusStat.gold_chest >= 3 || $ctrl.remainingTime == '0:00:00'"/>-->
+			<div class="tooltip-hover">
+				<p>{{$ctrl.tooltipMessage}}</p>
+			</div>
+		</div>
+		<button ng-click="$ctrl.showChallenge()" class="text-uppercase btn btn-challenge">{{$ctrl.titleBtn}}</button>
+	</div>
+</div>
+
+
+<!-- START chest noti -->
+<div ng-if="($ctrl.bonusStat.gold_chest >= 3 || $ctrl.remainingTime == '0:00:00') && !$ctrl.isClose">
+	<div class="backdrop_custom" ng-click="$ctrl.closeChestNotiModal()" ng-if="$ctrl.userGroupChestNoti == 0"></div>
+	<div class="" id="chest-noti"
+		 ng-class="{'chest-noti-message-modal': $ctrl.userGroupChestNoti == 0, 'chest-noti-message': $ctrl.userGroupChestNoti == 1, 'gold-chest': $ctrl.bonusStat.gold_chest >= 3, 'silver-chest': $ctrl.remainingTime == '0:00:00' && $ctrl.bonusStat.gold_chest < 3}"
+		 ng-click="$ctrl.showChallenge(); $ctrl.trackingChestNotiPostion()">
+		<button type="button" class="close" style="color: unset" ng-if="$ctrl.userGroupChestNoti == 0" ng-click="$ctrl.closeChestNotiModal()"><span aria-hidden="true">&times;</span></button>
+		<p>{{$ctrl.tooltipMessage}}</p>
+		<div class="chest"></div>
+	</div>
+</div>
+<!-- END chest noti -->
+
+<!-- START CHALLENGE INVITE NOTI -->
+<div ng-if="$root.showChallengeInvited">
+	<div ng-class="{'chest-noti-message-invite challenge-noti-message': $root.showChallengeInvited}">
+		<div ng-if="!$ctrl.opponentStatus">
+			<p ng-bind-html="$ctrl.trustAsHtml($ctrl.messageInvite)"></p>
+			<button ng-click="$ctrl.userAcceptPlay()" ng-disabled="$ctrl.isUserAccept" class="btn btn-danger btn-play"><span>{{localesMessage[0][$root.language]}} (</span><timer countdown="10" interval="1000" finish-callback="$ctrl.finishCountDown()">{{seconds}}</timer><span>)</span></button>
+		</div>
+		<div ng-if="$ctrl.opponentStatus">
+			<p>{{$ctrl.opponentStatus}}</p>
+		</div>
+	</div>
+</div>
+<!-- END CHALLENGE INVITE NOTI -->
+
+<!--START CHALLENGE CUSTOM NOTI-->
+<div ng-if="$root.showNoti">
+	<div class="chest-noti-message-invite challenge-noti-message">
+		<div>
+			<p>{{$root.showNoti}}</p>
+		</div>
+	</div>
+</div>
+<!--END CHALLENGE CUSTOM NOTI-->
+
+<div class="tutorial_cover" ng-if="$root.endTutorial"></div>
+<div class="tutorial_ending text-center" ng-if="$root.endTutorial">
+	<div class="text-center">
+		<h3>{{localesMessage[1][$root.language]}}</h3>
+		<div class="enjoyhint_next_btn" style="position:relative" ng-click="$ctrl.endTutorial()">{{localesMessage[2][$root.language]}}</div>
+	</div>
+</div>
+<div ng-if="$root.random == 3 && $root.challengeScreen == 1" class="m-modal">
+	<div class="black_opacity_div" ng-click="learnWord()"></div>
+	<!--Challenge Screen 1 - Main-->
+	<div id="box_war" class="main word_box challenge_box_3"
+		 ng-class="{'challenge_background_box' : $root.challengeState == 'question' || $root.challengeState == 'result'}" ng-if="connectServer">
+		<!-- NEW Preparing -->
+		<challenge-menu ng-if="$root.challengeState == 'preparing'"></challenge-menu>
+		<!-- /END NEW Preparing -->
+
+		<!--Ready-->
+		<div class="ready challenge_box_child text-center" id="challenge_countdown_screen"
+			 ng-if="$root.challengeState == 'searching' || $root.challengeState == 'new_found' || $root.challengeState == 'loading' || $root.challengeState == 'countdown' || $root.challengeState == 'waitingUser'">
+			<div class="row">
+				<span class="header-banner"></span>
+				<div class="col-xs-12">
+					<div class="col-xs-6 no-pad-mar">
+						<div class="avatar-container" ng-class="{'has-special-avatar': $root.playerStat.specialAvatar}">
+							<div class="avatar">
+								<img ng-src="{{$root.playerStat.avatar}}" on-error-avatar self="owner" alt="avatar-u">
+							</div>
+						</div>
+						<div class="vs-background-before">
+							<span style="color: #000; font-weight: 800; font-size: 26px; font-family: Averta-Extrabold; ">You</span>
+							<p ng-if="$root.language === 'vn'" class="school" tooltip-popup-close-delay='1000' uib-tooltip='{{$root.playerStat.school}}'>{{$root.playerStat.school}}</p>
+						</div>
+					</div>
+					<div class="col-xs-6 no-pad-mar">
+						<div class="found" ng-show="showOpponent">
+							<div class="avatar-container">
+								<div class="avatar">
+									<img ng-src="{{$ctrl.AI.imageUrl}}" on-error-avatar alt="avatar">
+								</div>
+							</div>
+							<div class="vs-background-after">
+								<span style="color: #000; font-weight: 800; font-size: 26px; font-family: Averta-Extrabold;">{{AI.AI_name}}</span>
+								<p ng-if="$root.language === 'vn'" class="school" tooltip-popup-close-delay='1000' uib-tooltip='{{$ctrl.AI.school}}' >{{AI.school}}</p>
+							</div>
+						</div>
+
+						<div class="found" ng-show="!showOpponent && $root.userAccept">
+							<div class="avatar-container" ng-class="{'has-special-avatar': $root.userAccept.specialAvatar}">
+								<div class="avatar">
+                                    <img ng-src="{{$root.userAccept.avatar}}" id="opponent-avatar" on-error-avatar alt="avatar">
+								</div>
+							</div>
+							<div class="vs-background-after">
+								<span style="color: #000; font-weight: 800; font-size: 26px; font-family: Averta-Extrabold;">{{$root.userAccept.username ? $root.userAccept.username : localesMessage[4][$root.language]}}</span>
+								<p ng-if="$root.language === 'vn'" class="school"  tooltip-popup-close-delay='1000' uib-tooltip='{{$root.userAccept.school}}' >{{$root.userAccept.school}}</p>
+								<div class="school"  ng-if="$root.userAccept.waiting" style="white-space: unset">{{$root.userAccept.waiting}}
+									<div class="waiting-spinner">
+										<div class="bounce1"></div>
+										<div class="bounce2"></div>
+										<div class="bounce3"></div>
+									</div>
+								</div>
+								<div ng-if="$root.userAccept.ready && $ctrl.opponentLoadingProgress == 100" class="message-ready">READY</div>
+							</div>
+						</div>
+
+						<div class="avatar-container" ng-if="!showOpponent && !$root.userAccept">
+							<div class="finding spinner thumbnail">
+								<div class="bounce1"></div>
+								<div class="bounce2"></div>
+								<div class="bounce3"></div>
+							</div>
+						</div>
+					</div>
+					<h3 style="margin-top: 10px" ng-if="$root.challengeState != 'countdown'" class="text-center">{{ (($root.challengeState === 'waitingUser') && !showRejectedText()) ? localesMessage[3][$root.language] : '' }}</h3>
+				</div>
+			</div>
+			<div ng-if="showRejectedText()">
+				<span class="mess">
+					{{$root.userAccept.username ? $root.userAccept.username : localesMessage[4][$root.language]}} 
+					{{ $root.userAccept.messageDeny ? $root.userAccept.messageDeny : localesMessage[5][$root.language] }}
+					<a ng-if="!$ctrl.chooseOpponentRandomly" class="invite_again"  ng-click="reInvite()"> {{localesMessage[6][$root.language]}}</a>
+					<a ng-if="$ctrl.chooseOpponentRandomly" class="invite_again"  ng-click="play_game()"> {{localesMessage[7][$root.language]}}</a>
+				</span>
+			</div>
+			<div ng-if="$root.messageError">{{$root.messageError}}</div>
+			<button type="button" style="margin: 10px auto 0;" ng-if="$root.messageError" class="button_3d_2 push_button" ng-click="backScreen()">Home screen</button>
+
+			<button type="button" style="margin: 10px auto 0;" ng-if="!$root.userAccept.waiting && $root.stepInvite > 2 && !$root.userAccept.ready"
+					class="button_3d_2 push_button" ng-click="backScreen()">Home screen</button>
+			<div class="challenge_countdown_text" ng-if="$root.challengeState == 'countdown'">
+				<span>{{countdownTime}}</span>
+			</div>
+		</div>
+		<!--./END Ready-->
+
+		<challenge-tutorial ng-if="$root.challengeState == 'tutorial' && $root.network"></challenge-tutorial>
+
+		<!--Question - Game Screen-->
+		<div class="challenge_box_child text-center" id="challenge_question_screen" ng-if="$root.challengeState == 'question'">
+			<div>
+				<div class="challenge_your_info row">
+					<div class="col-xs-4" style="padding-right: 0px;">
+						<div class="col-xs-4" style="padding-left: 0px;">
+							<div class="avatar-container" ng-class="{'has-special-avatar': $root.playerStat.specialAvatar}">
+								<div class="avatar">
+									<img ng-src="{{$root.playerStat.avatar}}" on-error-avatar self="owner" alt="avatar" style="margin: 5px 0 0 5px;">
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-8" style="padding-left: 0px;padding-right: 0px;">
+							<div class="challenge_3_heart challenge_3_heart_left">
+								<img ng-repeat="(key, val) in player.state.health track by $index" src="assets/images/war/heart icon.png">
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="challenge_clock_timer vertical-center">
+							<span class="change_score challenge_score_player">{{$root.correctAnswer}}</span>
+							<span class="time">00:{{time > 9 ? time : '0' + time}}</span>
+							<span class="change_score challenge_score_bot">{{$root.botCorrectAnswer}}</span>
+							<!-- <span class="change_score challenge_score_bot" ng-if="$root.playRealtimeMode">{{$root.opponentCorrectAnswer}}</span> -->
+						</div>
+					</div>
+					<div class="col-xs-4" style="padding-left: 0px;" ng-if="!$root.playRealtimeMode">
+						<div class="col-xs-8" style="padding-right: 0px;padding-left: 0px;">
+							<div class="challenge_3_heart challenge_3_heart_right">
+								<img ng-repeat="(key, val) in bot.state.health track by $index" src="assets/images/war/heart icon.png" style="margin-top: 15px;">
+							</div>
+						</div>
+						<div class="col-xs-4" style="padding-right: 0px;">
+							<div class="avatar-container">
+								<div class="avatar">
+									<img ng-src="{{$ctrl.AI.imageUrl}}" on-error-avatar alt="avatar">
+									<img src="assets/images/freezed.jpg" class="challenge_opponent_freezed" ng-if="bot.state.freezed">
+								</div>
+							</div>
+							<div class="challenge_opponent_bombed background_image" ng-show="bot.state.bombed"></div>
+						</div>
+					</div>
+					<!-- opponent in play realtime mode -->
+					<div class="col-xs-4" style="padding-left: 0px;" ng-if="$root.playRealtimeMode">
+						<div class="col-xs-8" style="padding-right: 0px;padding-left: 0px;">
+							<div class="challenge_3_heart challenge_3_heart_right">
+								<img ng-repeat="(key, val) in bot.state.health track by $index" src="assets/images/war/heart icon.png" style="margin-top: 15px;">
+							</div>
+						</div>
+						<div class="col-xs-4" style="padding-right: 0px;">
+							<div class="avatar-container" ng-class="{'has-special-avatar': $root.userAccept.specialAvatar}">
+								<div class="avatar">
+									<img ng-src="{{$root.userAccept.avatar}}" on-error-avatar alt="avatar">
+									<img src="assets/images/freezed.jpg" class="challenge_opponent_freezed" ng-if="bot.state.freezed">
+								</div>
+							</div>
+							<div class="challenge_opponent_bombed background_image" ng-show="bot.state.bombed"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="challenge_question_div">
+				<div class="content_question" ng-if="!$root.playRealtimeMode">
+					<span class="qs-content">{{answer[0].word}}</span>
+					<span class="question_audio challenge_audio" ng-click="$ctrl.playQuestionAudio($scope.answer[0].audio)">
+						<i class="fa fa-volume-up" aria-hidden="true"></i>
+					</span>
+				</div>
+				<div class="content_question" ng-if="$root.playRealtimeMode">
+					<span class="qs-content">{{question.word}}</span>
+					<span class="question_audio challenge_audio" ng-click="$ctrl.playQuestionAudio(question.audio)">
+						<i class="fa fa-volume-up" aria-hidden="true"></i>
+					</span>
+				</div>
+				<div class="row box_answer">
+					<div ng-class="{
+						'col-xs-10 col-xs-offset-1': question_answers.length == 2,
+						'col-lg-6 col-lg-offset-3 col-xs-10 col-xs-offset-1 challenge_with_4_questions_div': question_answers.length == 4,
+						'col-lg-8 col-lg-offset-2 col-xs-12 challenge_with_6_questions_div': question_answers.length == 6,
+						'col-lg-10 col-lg-offset-1 col-xs-12': question_answers.length == 8,
+						'col-lg-8 col-lg-offset-2 col-xs-10 col-xs-offset-1 challenge_with_12_questions_div': question_answers.length >= 12
+					}">
+						<div style="position: relative;" ng-repeat="(key, val) in question_answers track by $index" ng-class="{'col-xs-3 challenge_xs_3' : question_answers.length == 8, 'col-xs-3 challenge_xs_3_12' : question_answers.length >= 12, 'col-xs-6 challenge_xs_6' : question_answers.length == 2 , 'col-xs-6 challenge_xs_6_4' : question_answers.length == 4, 'col-xs-4 challenge_xs_4' : question_answers.length == 6 || question_answers.length == 3}">
+							<div class="thumbnail challenge_answer_img"
+								ng-class="{'on-check-answer': $root.playRealtimeMode && val.checked && !$ctrl.displayAnswerResult}"
+								ng-click="$root.playRealtimeMode ? $ctrl.checkAnswerGamePvP(val.word, question.word, key) : $ctrl.checkAnswer(val.word, key)"
+							>
+								<div style="background-image: url(&quot;{{ val.image }}&quot;);">
+									<div class="challenge_cover_div text-center" ng-if="(val.checked || val.enermyCheck) && !$root.playRealtimeMode">
+										<img ng-if="val.checked && val.word == answer[0].word" src="assets/images/war/right-check.png">
+										<img ng-if="val.checked && val.word != answer[0].word" src="assets/images/war/wrong-check.png">
+										<img ng-if="val.enermyCheck" src="assets/images/war/right-check-bot.png">
+									</div>
+									<div class="challenge_cover_div text-center" ng-if="(val.checked || val.enermyCheck) && $root.playRealtimeMode && $ctrl.displayAnswerResult">
+										<img ng-if="val.checked && val.word == question.word" src="assets/images/war/right-check.png">
+										<img ng-if="val.checked && val.word != question.word" src="assets/images/war/wrong-check.png">
+										<img ng-if="val.enermyCheck" src="assets/images/war/right-check-bot.png">
+									</div>
+								</div>
+							</div>
+							<!-- <img ng-src="{{val.image}}" on-error class="thumbnail challenge_answer_img" ng-if="!$root.playRealtimeMode" ng-click="$ctrl.checkAnswer(val.word, key)">
+							<img ng-src="{{val.image}}" ng-class="{'on-check-answer': val.checked && !$ctrl.displayAnswerResult}" on-error class="thumbnail challenge_answer_img" ng-if="$root.playRealtimeMode" ng-click="$ctrl.checkAnswerGamePvP(val.word, question.word, key)">
+							<div class="challenge_cover_div text-center" ng-if="(val.checked || val.enermyCheck) && !$root.playRealtimeMode">
+								<img ng-if="val.checked && val.word == answer[0].word" src="assets/images/war/right-check.png">
+								<img ng-if="val.checked && val.word != answer[0].word" src="assets/images/war/wrong-check.png">
+								<img ng-if="val.enermyCheck" src="assets/images/war/right-check-bot.png">
+							</div>
+							<div class="challenge_cover_div text-center" ng-if="(val.checked || val.enermyCheck) && $root.playRealtimeMode && $ctrl.displayAnswerResult">
+								<img ng-if="val.checked && val.word == question.word" src="assets/images/war/right-check.png">
+								<img ng-if="val.checked && val.word != question.word" src="assets/images/war/wrong-check.png">
+								<img ng-if="val.enermyCheck" src="assets/images/war/right-check-bot.png">
+							</div> -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--{{usedAbilities}}-->
+			<div class="challenge_3_weapon">
+				<div class="challenge_3_weapon_div challenge_3_ability_freeze" style="cursor: pointer;"
+					 data-toggle="tooltip" title="{{localesMessage[8][$root.language]}}" ng-click="$ctrl.useAbility('freeze')">
+					<img src="assets/images/war/powerupice.png" class="challenge_ability_icon"
+						 ng-class="{'disable_skill' : usedAbilities.freeze}">
+					<img src="assets/images/war/shop count.png" class="challenge_3_weapon_number">
+					<span class="challenge_3_weapon_number">{{ $ctrl.challengeItems.freeze }}</span>
+				</div>
+				<div class="challenge_3_weapon_div challenge_3_ability_unfreeze" style="cursor: pointer;"
+					 data-toggle="tooltip" title="{{localesMessage[9][$root.language]}}" ng-click="$ctrl.useAbility('unfreeze')">
+					<img src="assets/images/war/poweruo3.png" class="challenge_ability_icon"
+						 ng-class="{'disable_skill' : usedAbilities.unfreeze}">
+					<img src="assets/images/war/shop count.png" class="challenge_3_weapon_number">
+					<span class="challenge_3_weapon_number">{{ $ctrl.challengeItems.unfreeze }}</span>
+				</div>
+				<div class="challenge_3_weapon_div challenge_3_ability_boom p-num" style="cursor: pointer;"
+					 data-toggle="tooltip" title="{{localesMessage[10][$root.language]}}" ng-click="$ctrl.useAbility('bomb')">
+					<img src="assets/images/war/powerup1.png" class="challenge_ability_icon"
+						 ng-class="{'disable_skill' : usedAbilities.bomb}">
+					<img src="assets/images/war/shop count.png" class="challenge_3_weapon_number">
+					<span class="challenge_3_weapon_number">{{ $ctrl.challengeItems.bomb }}</span>
+				</div>
+				<div class="challenge_3_weapon_div challenge_3_ability_heart" style="cursor: pointer;"
+					 data-toggle="tooltip" title="{{localesMessage[11][$root.language]}}" ng-click="$ctrl.useAbility('health')">
+					<img src="assets/images/war/powerupheart.png" class="challenge_ability_icon"
+						 ng-class="{'disable_skill' : usedAbilities.health}">
+					<img src="assets/images/war/shop count.png" class="challenge_3_weapon_number">
+					<span class="challenge_3_weapon_number">{{ $ctrl.challengeItems.health }}</span>
+				</div>
+			</div>
+		</div>
+		<!--./End question - game screen-->
+
+		<!--Ending Screen-->
+		<challenge-ending ng-if="$root.challengeState == 'result'"></challenge-ending>
+
+		<!-- Game event overlay -->
+		<span class="challenge_freezed_countdown vertical-center" ng-if="player.state.freezed">{{freezedCountdown}}</span>
+		<div class="challenge_freezed_div" ng-if="player.state.freezed"></div>
+		<div class="challenge_boom_div" ng-show="player.state.bombed"></div>
+		<!-- /END Game event overlay -->
+	</div>
+
+	<div id="box_war" class="main word_box challenge_box_3" ng-if="!connectServer">
+		<div class="announce-disconnect">
+			{{localesMessage[12][$root.language]}}
+		</div>
+	</div>
+
+	<div id="victoryModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+		<div class="modal-dialog">
+			<div class="modal-content challenge_victory_modal">
+				<div class="text-center">
+				</div>
+				<div class="row">
+					<div class="col-xs-4 col-xs-offset-4">
+						<div class="challenge_victory_chest chest_bonus"  ng-click="$ctrl.openChest()"
+							 ng-class="{'challenge_victory_chest_gif' : reward}">
+							<div class="light" >
+								<div class="item_bonus"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="text-center">
+					<h3 style="color: orange" ng-if="!reward">{{localesMessage[13][$root.language]}}</h3>
+					<h3 style="color: orange" ng-if="reward">{{localesMessage[14][$root.language]}} {{rewardTitle}}</h3>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="modal fade" id="war__requestLogin" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="text-center" ng-if="!$root.loggedIn">
+						<h2 style="margin: 30px auto">{{localesMessage[15][$root.language]}}</h2>
+						<button class="btn btn-default" data-toggle="modal" data-dismiss="modal">Close</button>
+						<button class="btn btn-primary" ng-click="$ctrl.openLoginForm()" data-toggle="modal" data-target="#profile_modal" data-dismiss="modal">{{localesMessage[16][$root.language]}}</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<challenge-review ng-if="$root.challengeState == 'result'"></challenge-review>

@@ -1,0 +1,86 @@
+<div ng-init="$ctrl.init()">
+    <a class="link_login" data-toggle="modal" data-target=".login-form-ask" ng-if="!user || !$root.auth">Đăng nhập</a>
+    <div class="profile cursor-pointer" ng-if="user || $root.auth" ng-click="$ctrl.openProfileModal()">
+        <i style="padding: 7px 11px;" ng-if="!user.avatar && !$root.auth.avatar" class="fa fa-user profile_btn" aria-hidden="true"></i>
+        <img ng-if="$root.loading_avatar" src="../../../assets/images/ajax-loader.gif" width="38" />
+        <img ng-if="user.avatar && !$root.loading_avatar" on-error-avatar alt="avatar" class="profile_btn avartar" ng-src="{{user.avatar}}" width="38" />
+        <img ng-if="!user.avatar && !$root.loading_avatar && $root.avatar"  on-error-avatar alt="avatar" class="profile_btn avartar" ng-src="{{$root.avatar}}" width="38" />
+    </div>
+
+    <div id="profile_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="profile_box">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade login-form-ask" ng-if="!login"  tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog login-margin-top">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h4 class="modal-title text-center">ĐĂNG NHẬP</h4>
+                    <div class="row text-center" >
+                        <div class="col-md-12" ng-click="$ctrl.openProfileModal()" data-dismiss="modal">
+                            <div class="btn-account accounted">
+                                <a class="">Tôi đã có tài khoản tại Elight.edu.vn</a>
+                            </div>
+                        </div>
+                        <div class="col-md-12" data-toggle="modal" data-dismiss="modal" data-target=".login-form-guide">
+                            <div class="btn-account not-yet-account">
+                                <a>Tôi chưa có tài khoản tại Elight.edu.vn</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade login-form" ng-if="!login"  tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <login class="login_modal" ng-if="!login" show-section="login-form"></login>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Guide-->
+    <div class="modal fade login-form-guide" ng-if="!login"  tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog login-margin-top">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h4 class="modal-title text-center text-uppercase">HƯỚNG DẪN TẠO TÀI KHOẢN ĐĂNG NHẬP</h4>
+                    <div class="row text-center" >
+                        <div class="col-md-8"   >
+                            <ul class="list-guide">
+                                <li><b>Bước 1</b>: Vào <a target="_blank" href="https://elight.edu.vn">https://elight.edu.vn</a></li>
+                                <li><b>Bước 2</b>: Click đăng nhập và tạo tài khoản theo hướng dẫn</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="image-cover">
+                                <img src="/assets/images/login/landingpage.png" alt="">
+                                <div class="zoom-view ">
+                                    <img src="/assets/images/login/zoom.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="profile-menu" ng-if="login && openModal">
+        <div class="profile-modal-backdrop" ng-click="$ctrl.closeProfileModal()"></div>
+        <div class="">
+            <profile-detail open-from="'profile'" login="login"></profile-detail>
+        </div>
+    </div>
+</div>

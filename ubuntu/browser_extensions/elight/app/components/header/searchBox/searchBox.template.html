@@ -1,0 +1,14 @@
+<!-- search bog -->
+<div id="search-box-wrapper">
+		<div id="search-box">
+				<input id="search-input" dir="auto" type="search" tabindex="1"
+							 placeholder="Search Google" class="custom">
+		</div>
+</div>
+<div class="search-suggestion">
+		<ul id="search-suggestion-pad" ng-class="{ 'is-active': $ctrl.listSearch.length > 0 }">
+				<li ng-repeat="(key,search) in $ctrl.listSearch" ng-click="$ctrl.redirect(search);" id="auto-suggest-row{{key}}"
+						ng-class="{ 'selected': key == 0 }">{{search}}
+				</li>
+		</ul>
+</div>

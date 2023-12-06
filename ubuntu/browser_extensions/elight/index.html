@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Học tiếng Anh cùng Elight</title>
+  <link rel="shortut icon" href="assets/images/elight-16.png" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="css/release.min.css">
+  <link href="css/enjoyhint.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="libs/slick/slick/slick.css">
+  <link rel="stylesheet" href="libs/slick/slick/slick-theme.css">
+  <script src="libs/bundle.min.js"></script>
+  <script src="libs/slick/slick/slick.js"></script>
+  <script src="libs/jdk.js"></script>
+  <script src="libs/circle-progress.min.js"></script>
+  <script src="libs/config.min.js"></script>
+  <script src="libs/release.min.js"></script>
+  <script src="libs/enjoyhint.min.js"></script>
+  <script src="libs/sails.io.js" autoconnect="false"></script>
+</head>
+
+<body ng-app="main" ng-controller="mainController">
+  <div class="backgroundp-ex" data-large="{{background}}">
+    <div class="placeholder-background"></div>
+  </div>
+  <audio id="background_music" ng-if="$root.network && $root.random == 1 && $root.isLearn_word" preload="auto" autoplay ng-src="{{$root.backgroundMusic}}"
+    loop></audio>
+  <!--<guideline ng-if="$root.basicGuideline"></guideline>-->
+  <div id="wrap">
+    <div id="page" ng-class="{ 'white' : isQuote }">
+      <header>
+        <navigator></navigator>
+        <search-box></search-box>
+        <setting ng-if="$root.welcome && $root.network"></setting>
+        <profile ng-if="$root.welcome && $root.network"></profile>
+      </header>
+      <welcome ng-if="$root.network && (!$root.welcome || $root.showWelcome == 'topic2')"></welcome>
+      <div class="row" ng-if="$root.network && $root.welcome &&  !$root.showWelcome">
+          <streak></streak>
+          <aki-mission></aki-mission>
+          <quote sample-quote="sample_quote" ng-if="$root.random == 1 && $root.isQuote && $root.language === 'vn'"></quote>
+          <word sample-number="sample_number" ng-if="$root.random == 1 && $root.isLearn_word"></word>
+          <elightube ng-if="$root.random == 1 && $root.elightube"></elightube>
+          <topic ng-if="$root.random == 1 && $root.topic""></topic>
+          <!--<invite-friend></invite-friend>-->
+        <progress-line></progress-line>
+        <challenge-new style="width:50px; text-align: center; padding: 0!important;"></challenge-new>
+          <video-library style="width:50px; display: none;" ng-if="$root.language === 'vn'"></video-library>
+          <notebook ng-if="$root.language==='vn'"></notebook>
+      </div>
+      <div class="main recommend-css word_box welcome_box min-height" ng-if="$root.showWelcome && $root.showWelcome != 'topic2'">
+        <login show-section="recommend"></login>
+      </div>
+      <footer>
+        <div class="version-infor">Version {{version}}</div>
+      </footer>
+    </div>
+  </div>
+  <offline ng-if="!$root.network"></offline>
+  <div style="background: url('{{preload}}'); display: none;"></div>
+</body>
+
+</html>

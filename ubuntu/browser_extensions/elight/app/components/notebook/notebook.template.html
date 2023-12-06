@@ -1,0 +1,297 @@
+<div class="notebook_btn" ng-class="{'right-notebook': $ctrl.user}" >
+    <img class="circle_effect" src="../../../../assets/images/war/circle_effect.png" ng-if="$scope.newNotebook"/>
+</div>
+<div class="yourWord_btn" data-toggle="tooltip" data-placement="left" title="Kho từ vựng của bạn"></div>
+
+<div class="modal fade" id="notebook_modal" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{$root.language === 'vn' ? 'TRA TỪ' : 'TRANSLATE'}}</h4>
+            </div>
+            <div id="notebook_carousel" class="carousel slide" data-interval="false" data-ride="carousel">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active" style="height: 345px !important;">
+                        <div class="modal-body">
+                            <input type="text" class="search_input form-control" focus-me="true">
+                            <button type="button" name="button" class="search_icon btn btn-normal">
+                                <i class="fa fa-search custom-icon"></i>
+                            </button>
+
+                            <div class="notebook_sound dict_sound_div" ng-if="$ctrl.searched && $ctrl.found" ng-click="$ctrl.pronounce($ctrl.wordData.audio)" style="left: auto; right: 30px;">
+                                <i class="fa fa-volume-up" aria-hidden="true"></i>
+                            </div>
+                            <div class="result_phonetic" ng-if="$ctrl.found && !full_text_translated">{{$ctrl.wordData.phonetic}}</div>
+                            <div class="result_meaning dict_result_fixed_height" style="margin-top: 0px;" ng-if="$ctrl.found">
+                                <div ng-if="!full_text_translated">
+                                    <div class="meanings">
+                                        {{$ctrl.wordData.translate_vi}}
+                                    </div>
+                                    <div class="types">
+                                        {{$ctrl.wordData.type}}
+                                    </div>
+                                    <div class="examples elight_dictionary_examples">
+                                        <li ng-repeat="example in $ctrl.wordData.example">{{example}}</li>
+                                    </div>
+                                </div>
+                                <div ng-if="full_text_translated" ng-bind-html="trustAsHtml(full_text_translated)"></div>
+                            </div>
+                            <div class="result_meaning dict_result_fixed_height" ng-if="!$ctrl.found" style="text-align: center; font-size: 30px; font-weight: 500;">{{$ctrl.notFound}}</div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="elight_heart text-center">
+                            <a href="https://elight.edu.vn/khoa-toan-dien-3-trong-1-extension?utm_source=extension&utm_medium=created&utm_campaign=dictionary" target="_blank">Created by Elight with heart!</a>
+                        </div>
+                        <div class="feedback_div dictionary_feedback_div" ng-if="$ctrl.searched && $root.language === 'vn'">
+                            <div style="position: relative" tooltip-placement="top" uib-tooltip="Báo lỗi">
+                                <div class="feedback_icon dictionary_feedback_icon"  ng-click="showFeedbackDiv()"></div>
+                                <div class="arrow_box dictionary_arrow_box" style="display : none;">
+                                    <div class="feedback_container">
+                                        <div class="survey_div" ng-if="survey">
+                                            <div class="text-center feedback_header"><b>ĐÃ CÓ VẤN ĐỀ GÌ VẬY?</b></div>
+                                            <div class="feedback_content">
+                                                <form id="survey_dict_form" class="text-center">
+                                                    <div class="elight_survey_option">
+                                                        <input type="checkbox" class="ui_input" name="phonetic" value="Yes" id="phonetic">
+                                                        <label class="elight_survey_label" for="phonetic" ng-click="checkDisable()">
+                                                            Phiên âm sai
+                                                        </label>
+                                                    </div>
+                                                    <div class="elight_survey_option">
+                                                        <input type="checkbox" class="ui_input" name="translate" value="Yes" id="translate">
+                                                        <label class="elight_survey_label" for="translate" ng-click="checkDisable()">
+                                                            Dịch chưa chính xác
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="elight_survey_option">
+                                                        <input type="checkbox" class="ui_input" name="translate_yet" value="Yes" id="translate_yet">
+                                                        <label class="elight_survey_label" for="translate_yet" ng-click="checkDisable()">
+                                                            Chưa được dịch
+                                                        </label>
+                                                    </div>
+                                                    <button class="btn elight_send_btn" ng-disabled="disabledSendBtn" ng-click="sendReport()">GỬI</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="elight_thank_you text-center" ng-if="!survey">
+                                            <img src="assets/images/thankyou.png" style="width: 50%;">
+                                            <div class="elight_thank_you_text">
+                                                <h4><b>Xin chân thành cảm ơn bạn.</b></h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="modal-body" style="flex-direction: column;">
+                            <div class="email_title">
+                                Bạn hãy điền email để được lưu lại từ nhé
+                            </div>
+                            <form class="email_form" name="email_form" novalidate>
+                                <div class="form-group">
+                                    <div class="email_input">
+                                    <span class="input-group-addon" id="ip-email">
+                                        <i class="fa fa-envelope fa-input"></i>
+                                    </span>
+                                        <input type="email" name="email" class="form-control" placeholder="example@gmail.com" ng-model="$ctrl.email" ng-keyup="$event.keyCode === 13 && $ctrl.submitEmail()" required>
+                                    </div>
+                                </div>
+                                <div ng-if="email_form.$submitted || email_form.email.$touched">
+                                    <div class="message-error" ng-if="email_form.email.$error.required">Email không được để trống</div>
+                                    <div class="message-error" ng-if="email_form.email.$error.email">Email không không đúng định dạng</div>
+                                </div>
+                                <button type="button" name="button" class="btn btn-warning submitEmailButton" ng-click="$ctrl.submitEmail()">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ___ Flash Card___ -->
+<div class="modal fade" id="flashCard_modal" tabindex="-1" role="dialog">
+    <div class="flip_container">
+        <div class="flipper">
+            <div class="front">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content" ng-if="$ctrl.flashCardState == 'test'" ng-click="$ctrl.flip($event)">
+                        <div class="modal-body">
+                            <div class="spinner" ng-if="$ctrl.reminderLoading">
+                                <div class="bounce1"></div>
+                                <div class="bounce2"></div>
+                                <div class="bounce3"></div>
+                            </div>
+                            <div class="reminder_word">
+                                {{$ctrl.flashCardWord.word}}
+                            </div>
+                            <div class="reminder_sound" ng-if="!$ctrl.reminderLoading">
+                                <div class="reminder_phonetic" ng-class="{'no_phonetic' : !$ctrl.flashCardWord.phonetic}">{{$ctrl.flashCardWord.phonetic}}</div>
+                            </div>
+                            <div class="reminder_hint">
+                                Click để xem nghĩa của từ
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-content flashCard_end" ng-if="$ctrl.flashCardState == 'end'">
+                        <div class="modal-body" ng-if="$ctrl.unrememberedWord.length === 0">
+                            <div class="flashcard_save_more_word text-center">
+                                <div style="margin-top:70px;">
+                                    <h4>Bạn hãy lưu thêm {{10 - $ctrl.wordLength}} từ để <br>học bằng Flash Card nhé.</h4>
+                                    <h4>Lưu thêm từ mới <a style="cursor: pointer;" ng-click="$ctrl.toNewWord()">tại đây</a>.</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-body" ng-if="$ctrl.unrememberedWord.length > 0">
+                            <div class="big_ending_mes">Keep Practicing</div>
+                            <div class="ending_mes_unremembered">
+                                {{$ctrl.ending_message}}
+                            </div>
+                            <div class="unrememberedWord">
+                                <div class="wordList" ng-repeat="word in $ctrl.unrememberedWord track by $index" ng-if="!$ctrl.noWord">
+                                    <div class="word_dot"></div>
+                                    <div class="word_content">
+                                        {{word.word}}
+                                    </div>
+                                    <div class="word_content_vi">
+                                        {{word.translated}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-content" ng-if="$ctrl.flashCardState == 'start'">
+                        <div class="flashcard_startingBox">
+                            <div class="practice_starting_icon word_detail_icon_3 background_image icon_shake"></div>
+                            <div class="title">
+                                Are you ready?
+                            </div>
+                            <div class="description">
+                                Chọn mức độ luyện tập
+                            </div>
+                            <button class="btn btn-success easy_btn" ng-click="$ctrl.startFlashcard('easy')">Dễ</button>
+                            <button class="btn btn-warning medium_btn" ng-click="$ctrl.startFlashcard('medium')">Trung bình</button>
+                            <button class="btn btn-danger hard_btn" ng-click="$ctrl.startFlashcard('hard')">Khó</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body" ng-style="{'visibility' : $ctrl.flashCardState == 'test' ? 'visible' : 'hidden'}" ng-click="$ctrl.flip($event)">
+                            <div class="reminder_meaning">
+                                <div class="meanings">
+                                    {{$ctrl.flashCardWord.translated}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="wrong_btn" ng-click="$ctrl.flashCardButton('notRemembered')">
+                                Tôi chưa nhớ được từ này
+                            </div>
+                            <div class="right_btn" ng-click="$ctrl.flashCardButton('remembered')">
+                                Wow, tôi đã nhớ rồi
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ___Your saved word modal___ -->
+<div class="modal fade right" id="yourWord_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header"></div>
+            <div class="modal-body">
+                <div class="ending_circle notebook_circle">
+                    <div class="notebook_circle_text">
+                        <span style="font-size: 40px;">{{$ctrl.total}}</span><br><span>words</span>
+                    </div>
+                    <div class="notebook_circle_star">
+                        <svg id="icon_stars" viewBox="0 0 345 215" width="100%" height="100%">
+                            <title>Artboard 1</title>
+                            <path d="M285.788 40l-5.692 11.52L268 53.68l7.827 9.36L274.404 76l11.384-5.76L298.596 76l-2.846-13.68 9.25-8.64-12.808-2.16L285.788 40zM26.173 76l-2.615 5.44L18 82.46l3.596 4.42-.654 6.12 5.231-2.72L32.058 93l-1.308-6.46L35 82.46l-5.885-1.02L26.173 76zm64.942-1l-7.077 14.4L69 92.1l9.73 11.7-1.768 16.2 14.153-7.2 15.923 7.2-3.538-17.1L115 92.1l-15.923-2.7L91.115 75zm25.308-50l-4.615 9.28L102 36.02l6.346 7.54L107.192 54l9.231-4.64L126.808 54 124.5 42.98l7.5-6.96-10.385-1.74-5.192-9.28zM53.077 133l-7.385 15.04L30 150.86l10.154 12.22L38.308 180l14.769-7.52L69.692 180 66 162.14l12-11.28-16.615-2.82L53.077 133zM230.615 8l-3.077 6.4L221 15.6l4.23 5.2-.768 7.2 6.153-3.2 6.923 3.2L236 20.4l5-4.8-6.923-1.2-3.462-6.4zM199 32l-8 16-17 3 11 13-2 18 16-8 18 8-4-19 13-12-18-3-9-16zm110 97l-8 16.32-17 3.06 11 13.26-2 18.36 16-8.16 18 8.16-4-19.38 13-12.24-18-3.06-9-16.32zm-2.712-41l-1.692 3.52-3.596.66 2.327 2.86-.423 3.96 3.384-1.76 3.808 1.76-.846-4.18 2.75-2.64-3.808-.66-1.904-3.52z" fill-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="notebook_title">
+                    Kho từ vựng của bạn
+                </div>
+
+                <div class="container detail_container">
+                    <div class="row full_height">
+                        <div class="col-sm-4 small_padding_right full_height">
+                            <div class="word_detail_container hover_border">
+                                <div class="word_detail_icon_1 background_image icon_shake"></div>
+                                <div class="word_detail">
+                                    Mới học
+                                </div>
+                                <div class="word_detail_number">
+                                    <span class="badge notebook_badge_font">{{$ctrl.hard}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 small_padding_right small_padding_left full_height">
+                            <div class="word_detail_container hover_border">
+                                <div class="word_detail_icon_2 background_image icon_shake"></div>
+                                <div class="word_detail">
+                                    Đang học
+                                </div>
+                                <div class="word_detail_number">
+                                    <span class="badge badge_medium notebook_badge_font">{{$ctrl.medium}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 small_padding_left full_height">
+                            <div class="word_detail_container hover_border">
+                                <div class="word_detail_icon_3 background_image icon_shake"></div>
+                                <div class="word_detail">
+                                    Thành thạo
+                                </div>
+                                <div class="word_detail_number">
+                                    <span class="badge badge_high notebook_badge_font">{{$ctrl.easy}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="notebook_text">
+                    Luyện tập nhiều hơn để tăng số lượng từ thành thạo
+                </div>
+
+                <div class="notebook_flow_button">
+                    <!-- <div class="notebook_ending_button" ng-click="$ctrl.openFlashCard()">
+                      <div class="ending_icon notebook_icon_flashCard"></div>
+                      <div class="notebook_button_text">
+                        Flash cards
+                      </div>
+                    </div> -->
+
+                    <!--<div class="notebook_ending_button" ng-click="$ctrl.openPractice()">-->
+                    <!--<div class="ending_icon notebook_icon_practice"></div>-->
+                    <!--<div class="notebook_button_text">-->
+                    <!--Luyện tập-->
+                    <!--</div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

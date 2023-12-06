@@ -1,0 +1,93 @@
+<div class="main word_box topic_box class-word" ng-if="$ctrl.loginViewList">
+
+    <a ng-click="$ctrl.unitDetail = false" class="back-course" ng-if="$ctrl.unitDetail"><i class="fa fa-chevron-left"></i> Chọn chủ đề</a>
+    <a ng-click="$ctrl.returnLearnWord()" class="back-course" ng-if="!$ctrl.unitDetail"><i class="fa fa-chevron-left"></i> Quay lại học</a>
+    <h4 class="text-bold text-center no-margin" ng-bind="!$ctrl.unitDetail ?  'CHỌN CHỦ ĐỀ' : $ctrl.unitInfor.title"> </h4>
+    <p class="allOpened" ng-if="$ctrl.allOpened && $ctrl.showing == 'Chủ đề' && !$ctrl.unitDetail"> {{$ctrl.localesMessage[5][$root.language]}}</p>
+    <div class="message-premium text-center" ng-if="$ctrl.messagePremium">
+        <h4 ng-bind="$ctrl.messageHead.first"></h4>
+        <i class="fa fa-times-circle close-message-premium" ng-click="$ctrl.closeMessagePremium()" aria-hidden="true"></i>
+        <button class="btn btn-register-message" ng-click="$ctrl.openRegister($ctrl.messageHead.button)">{{$ctrl.messageHead.button}}</button>
+    </div>
+    <div class="dynamic_setting">
+        <!--Chủ đề-->
+        <ul class="nav nav-pills" ng-if="$root.language === 'vn' && $ctrl.showing == $ctrl.localesMessage[0][$root.language] && !$ctrl.unitDetail">
+            <li class="setting_tab_panel text-center cursor-pointer" ng-class="{'active':  $ctrl.isBasic }" ng-click="$ctrl.changeStatus(true, false, false, false, 1)">
+                <a class="setting_tab_panel_link" data-toggle="pill" >{{$ctrl.localesMessage[6][$root.language]}}</a>
+            </li>
+        </ul>
+        <div class="tab-content" ng-if="$ctrl.showing == $ctrl.localesMessage[0][$root.language]">
+            <!--BASIC WORDS-->
+            <h4 style="margin-left: 15px;" ng-if="$root.language != 'vn'">{{$ctrl.localesMessage[6][$root.language]}}</h4>
+            <div class="tab-pane fade in active" id="basic_word">
+                <ul class="list_topic" ng-if="$ctrl.showing == $ctrl.localesMessage[0][$root.language] && !$ctrl.unitDetail && ( $ctrl.isBasic || $ctrl.isToeic || $ctrl.isGrammar || $ctrl.isCommunication) ">
+                    <li class="topic col-xs-4" ng-if="unit.type == $ctrl.unitType" ng-repeat="unit in $ctrl.units  track by $index">
+                        <div class="topic_container" ng-class="{'active': $ctrl.selectedUnits.indexOf(unit.id) >= 0 && unit.actived }" >
+                            <div ng-click="$ctrl.chooseTopic(unit.id, unit.title)">
+                                <div class="box-progress">
+                                    <img  class="img-responsive" ng-class="{'brightness-50' : unit.lock === undefined}" ng-src="{{unit.topics[0].words[0].image}}">
+                                    <round-progress
+                                            max="unit.total"
+                                            current="unit.learned"
+                                            color="rgb(255, 203, 8)"
+                                            bgcolor="#eaeaea"
+                                            radius="50"
+                                            stroke="6"
+                                            rounded="true"
+                                            responsive="false"
+                                            duration="800"
+                                            animation="easeInOutQuart"
+                                            animation-delay="0"></round-progress>
+                                </div>
+                                <div class="row unit_title_div">
+                                    <div class="col-xs-12 col-xs-offset-1 text-center">
+                                        <p class="topic_name text-center">{{unit.title}}</p></div>
+                                    <div class="check_topic">
+                                        <i class="fa" ng-class="$ctrl.selectedUnits.indexOf(unit.id) >= 0 && unit.actived ? 'fa-check-circle-o active-white' : 'fa-circle-thin gray'" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div class="topic_lock" ng-class="{'background-gray' : unit.lock === undefined}" ng-if="unit.lock === undefined">
+                                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                </div>
+                            </div>
+
+                            <div class="topic_info" ng-click="$ctrl.getDetailUnit(unit.id, unit.title, unit.lock, 1)">
+                                <div class="topic_info_icon" ng-class="{'lock' : unit.lock === undefined }"></div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <!--Chủ đề Detail-->
+                <ul class="list_topic detail" ng-show="$ctrl.showing == $ctrl.localesMessage[0][$root.language] && $ctrl.unitDetail">
+                    <div class="contain_progress_setting">
+                        <img class="image_unit_setting" ng-src="{{$ctrl.unitInfor.image}}" alt="">
+                        <div id="process_unit_setting" class="process_unit_setting"></div>
+                    </div>
+                    <div ng-bind-html="$ctrl.trustAsHtml($ctrl.unitInfor.detail)">
+
+                    </div>
+                    <button ng-if="$ctrl.unitInfor.unlock === undefined && !$ctrl.messagePremium" ng-click="$ctrl.openUnit($ctrl.unitInfor.index)" class="btn btn-open-unit"> {{$ctrl.localesMessage[7][$root.language]}}</button>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main word_box topic_box class-word" ng-if="$ctrl.loginView">
+    <h4 class="text-bold text-center no-margin" style="width: 427px;margin: 25px auto 75px;">Tạo tài khoản để lưu tiến trình học và nhận thêm từ vựng miễn phí </h4>
+    <div class="row text-center topic">
+        <div class="col-md-12" ng-click="$ctrl.openProfileModal()" data-dismiss="modal">
+            <div class="btn-account accounted">
+                <a class="">Tôi đã có tài khoản tại Elight.edu.vn</a>
+            </div>
+        </div>
+        <div class="col-md-12" data-toggle="modal" data-dismiss="modal" data-target=".login-form-guide">
+            <div class="btn-account not-yet-account">
+                <a>Tôi chưa có tài khoản tại Elight.edu.vn</a>
+            </div>
+        </div>
+    </div>
+    <div class="text-center account-after" ng-click="$ctrl.returnLearnWord()">
+        <a>Tôi sẽ tạo tài khoản sau</a>
+    </div>
+</div>

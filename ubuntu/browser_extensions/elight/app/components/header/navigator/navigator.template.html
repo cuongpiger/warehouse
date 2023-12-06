@@ -1,0 +1,26 @@
+<!-- logo and link to elight page -->
+<a class="logo" href="{{$ctrl.logo}}" target="_blank" ng-click="$ctrl.tracking()">
+	<img class="logo-elight" src="../../../../assets/images/logo.png" height="45" width="120"/>
+</a>
+<!-- navigator button -->
+<nav>
+		<a id="lnk_topsites">Most Visited</a>
+		<div class="nav_menu" id="topsites_menu" style="display: none;"></div>
+
+		<!-- <a id="lnk_share">Share</a> -->
+		<!-- <div class="nav_menu" id="share_menu" style="display: none;">
+				<div>
+						<a id="click-ShareFB" href="#"><i
+										style="background-image:url('https://www.google.com/s2/favicons?domain=www.facebook.com');background-size:cover;"></i>Facebook</a>
+				</div>
+				<hr>
+				<div>
+						<a id="click-ShareGG" href="#"><i
+										style="background-image:url('https://www.google.com/s2/favicons?domain=plus.google.com');background-size:cover;"></i>Google+</a>
+				</div>
+		</div> -->
+
+		<a id="click-Rate" ng-show="isShowRating" href="#">Rate</a>
+
+		<a id="click-Update" style="animation: pulse-red 1.5s infinite;" ng-click="update();" ng-show="is_update" href="#">Update New Version</a>
+</nav>

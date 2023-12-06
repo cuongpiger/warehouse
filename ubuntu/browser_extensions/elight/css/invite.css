@@ -1,0 +1,627 @@
+@font-face {
+  font-family: 'neue';
+  src: url("/css/fonts/neue.woff");
+}
+@font-face {
+  font-family: 'neue-bold';
+  src: url("/css/fonts/neue-bold.woff");
+}
+@font-face {
+  font-family: 'Lobster';
+  src: url("/css/fonts/Lobster.otf");
+}
+@font-face {
+  font-family: 'open-sans-light';
+  src: url("/css/fonts/OpenSans-Light.ttf");
+}
+@font-face {
+  font-family: TrajanPro;
+  src: url("/css/fonts/TrajanPro-Regular.ttf");
+}
+.bg_opacity {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.invite_btn {
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 230px;
+  right: 15px;
+  cursor: pointer;
+  background-color: #fa9f2c;
+  background-image: url(../assets/images/invite/invite_icon.png);
+  background-size: 110%;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.invite_btn:hover {
+  transform: scale(1.4);
+}
+.invite_btn .circle_effect_invite {
+  width: 63px !important;
+  height: 63px !important;
+  position: absolute;
+  left: -5px;
+  top: -5px;
+}
+.gift_box_custom {
+  background-position: center;
+  background-size: 100%;
+  display: inline-block;
+}
+.gift_sm_box {
+  background-position: center;
+  background-size: 100%;
+  display: inline-block;
+  width: 27px;
+  height: 30px;
+}
+.gift_md_box {
+  background-position: center;
+  background-size: 100%;
+  display: inline-block;
+  width: 40px;
+  height: 45px;
+}
+.gift_lg_box {
+  background-position: center;
+  background-size: 100%;
+  display: inline-block;
+  width: 150px;
+  height: 165px;
+}
+.blue_gift {
+  background: url('../assets/images/invite/icon_blue.png');
+}
+.green_gift {
+  background: url('../assets/images/invite/icon_green.png');
+}
+.pink_gift {
+  background: url('../assets/images/invite/icon_pink.png');
+}
+.orange_gift {
+  background: url('../assets/images/invite/icon_oj.png');
+}
+.open_blue_gift {
+  background: url('../assets/images/invite/open_blue.png');
+}
+.open_green_gift {
+  background: url('../assets/images/invite/open_green.png');
+}
+.open_pink_gift {
+  background: url('../assets/images/invite/open_pink.png');
+}
+.open_orange_gift {
+  background: url('../assets/images/invite/open_oj.png');
+}
+.close_blue_gift {
+  background: url('../assets/images/invite/close_blue.png');
+}
+.close_green_gift {
+  background: url('../assets/images/invite/close_green.png');
+}
+.close_pink_gift {
+  background: url('../assets/images/invite/close_pink.png');
+}
+.close_orange_gift {
+  background: url('../assets/images/invite/close_oj.png');
+}
+.bg_item_gift {
+  background: url(../assets/images/sunbeam.png) no-repeat;
+}
+.bg_download_book {
+  background: url(../assets/images/invite/Martz90-Circle-Books.png);
+  background-position: center;
+  background-size: 100%;
+  width: 70px;
+  height: 70px;
+}
+#box_invite {
+  width: 700px;
+  height: 440px;
+  margin: 50px auto 0;
+  position: relative;
+  background-color: #fff;
+  padding: 20px;
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  -o-border-radius: 5px !important;
+  border-radius: 5px !important;
+}
+#box_invite .close_invite {
+  color: unset;
+  position: absolute;
+  font-size: 30px;
+  font-weight: lighter;
+}
+#box_invite .invite_title {
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  margin: 10px 0;
+}
+#box_invite .box_progress {
+  position: relative;
+  text-align: center;
+}
+#box_invite .box_progress .time_note {
+  font-style: italic;
+  color: #888888;
+}
+#box_invite .box_progress p {
+  font-size: 14px;
+}
+#box_invite .box_progress .progress {
+  margin-bottom: 10px;
+  margin-right: 10px;
+  width: 580px;
+  display: inline-block;
+}
+#box_invite .box_progress .gift_box {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+#box_invite .box_progress .gift_box span {
+  position: absolute;
+  right: -5px;
+  bottom: -8px;
+}
+#box_invite .invite_description,
+#box_invite .invite_guide {
+  border: 1px solid gainsboro;
+  -webkit-border-radius: 3px !important;
+  -moz-border-radius: 3px !important;
+  -o-border-radius: 3px !important;
+  border-radius: 3px !important;
+}
+#box_invite .invite_description ul {
+  margin: 0;
+}
+#box_invite .invite_description ul li {
+  border: 1px solid gainsboro;
+  padding: 15px;
+}
+#box_invite .invite_description ul li .gift {
+  width: 90px;
+  display: inline-block;
+  position: relative;
+  margin-left: 10px;
+}
+#box_invite .invite_description ul li .gift .fa-heart,
+#box_invite .invite_description ul li .gift .fa-heart-o {
+  font-size: 20px;
+  bottom: 0;
+  left: -10px;
+  position: absolute;
+  z-index: 1;
+}
+#box_invite .invite_description ul li .gift .gift_image {
+  position: relative;
+  background-position: center;
+  background-size: 100%;
+  display: inline-block;
+  width: 27px;
+  height: 30px;
+}
+#box_invite .invite_description ul li .gift .gift_image .gift_note {
+  position: absolute;
+  right: -8px;
+  bottom: -8px;
+  font-size: 20px;
+  cursor: pointer;
+}
+#box_invite .invite_description ul li .gift .fa-male {
+  color: #fa7b21;
+  font-size: 20px;
+}
+#box_invite .invite_guide {
+  padding: 20px;
+  height: 270px;
+  border: 2px solid gainsboro;
+}
+#box_invite .invite_guide .title_invite_guide {
+  margin: 0;
+  font-size: 18px;
+  text-align: center;
+}
+#box_invite .invite_guide ul li {
+  padding: 7px 0;
+}
+#box_invite .invite_guide ul .copy_link {
+  position: relative;
+}
+#box_invite .invite_guide ul .copy_link div {
+  color: #337ab7;
+  cursor: pointer;
+  font-weight: bold;
+  position: relative;
+  z-index: 2;
+  background-color: #fff;
+}
+#box_invite .invite_guide ul .copy_link div:hover {
+  text-decoration: underline;
+}
+#box_invite .invite_guide ul .copy_link p {
+  color: #64a129;
+  font-weight: bold;
+  margin: 0;
+}
+#box_invite .invite_guide ul .copy_link textarea {
+  height: 42px;
+  outline: none !important;
+  position: absolute;
+  left: 0;
+  background-color: #fff;
+  top: 30px;
+  height: 20px;
+  width: 100px;
+}
+#box_invite .fa-heart {
+  color: #F44336;
+}
+#box_invite .invite_num {
+  min-width: 17px;
+  display: inline-block;
+  text-align: right;
+  margin-right: 2px;
+}
+#box_invite .modal_custom {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+#box_invite .modal_custom .modal_back_drop {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  -webkit-border-radius: 4px !important;
+  -moz-border-radius: 4px !important;
+  -o-border-radius: 4px !important;
+  border-radius: 4px !important;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+#box_invite .modal_custom .modal_content {
+  margin: 90px auto 0;
+  position: relative;
+  z-index: 3;
+  background-color: #fff;
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  -o-border-radius: 5px !important;
+  border-radius: 5px !important;
+}
+#box_invite .modal_custom .modal_content h3 {
+  font-size: 18px;
+  margin: 0 0 10px 0;
+}
+#box_invite .modal_custom .item_gift {
+  background: url(../assets/images/sunbeam.png) no-repeat;
+  background-position: center;
+  background-size: 100%;
+  width: 500px;
+  height: 257px;
+}
+#box_invite .modal_custom .item_gift .item_bonus {
+  top: 52%;
+  left: 42%;
+  width: 55px;
+  height: 55px;
+  z-index: 3;
+}
+#box_invite .modal_custom .item_gift .item_bonus .challenge_3_weapon_number {
+  text-align: center;
+}
+#box_invite .modal_custom .item_gift .freeze_item {
+  margin-top: -40px;
+  margin-left: -40px;
+}
+#box_invite .modal_custom .item_gift .un_freeze_item {
+  margin-top: -40px;
+  margin-left: 40px;
+}
+#box_invite .modal_custom .item_gift .boom_item {
+  margin-top: 40px;
+  margin-left: -40px;
+}
+#box_invite .modal_custom .item_gift .heart_item {
+  margin-top: 40px;
+  margin-left: 40px;
+}
+#box_invite .modal_custom .download_book {
+  width: 230px;
+  height: 140px;
+  padding: 20px 35px;
+  text-align: center;
+}
+#box_invite .modal_custom .download_book .bg_download_book {
+  float: left;
+}
+#box_invite .modal_custom .download_book .download {
+  float: right;
+  margin-top: 20px;
+  font-style: italic;
+  text-decoration: underline;
+}
+#box_invite .modal_custom .discount_code {
+  width: 500px;
+  height: 250px;
+  padding: 20px;
+  text-align: center;
+}
+#box_invite .modal_custom .discount_code .guide_text {
+  color: grey;
+  font-style: italic;
+}
+#box_invite .modal_custom .discount_code button {
+  background: linear-gradient(#5FDDFF, #53ADDF);
+  outline: none;
+  border: none;
+  width: 100px;
+  -webkit-border-radius: 15px !important;
+  -moz-border-radius: 15px !important;
+  -o-border-radius: 15px !important;
+  border-radius: 15px !important;
+}
+#box_invite .modal_topic .modal_content_topic {
+  width: 600px;
+  margin: auto;
+  background-color: #ffffff;
+  padding: 10px;
+  margin-top: 35px;
+}
+#box_invite .modal_topic .modal_content_topic ul {
+  overflow: auto;
+  height: 300px;
+  margin: auto;
+  padding: 5px;
+}
+#box_invite .modal_topic .modal_content_topic ul li {
+  border-radius: 4px;
+  margin-top: 5px;
+}
+#box_invite .modal_topic .modal_content_topic ul li .topic_container {
+  position: relative;
+  box-shadow: 1px 1px 6px 1px #888888;
+  border-radius: 4px;
+}
+#box_invite .modal_topic .modal_content_topic ul li .topic_container img {
+  width: 100%;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+#box_invite .modal_topic .modal_content_topic ul li .topic_container .topic_name {
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  padding: 7px;
+}
+#box_invite .modal_topic .modal_content_topic ul li .topic_container .topic_lock {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: #ffffff;
+  transform: translate(-50%, -50%);
+}
+#box_invite .modal_topic .modal_content_topic ul li:hover {
+  transform: scale(1.05, 1.05);
+}
+.blue_gift_box .open_gift {
+  background: url('../assets/images/invite/open_blue.png');
+  background-position: center;
+  background-size: 100%;
+  display: inline-block;
+  width: 150px;
+  height: 165px;
+}
+.blue_gift_box .close_gift {
+  background: url('../assets/images/invite/close_blue.png');
+  background-position: center;
+  background-size: 100%;
+  display: inline-block;
+  width: 150px;
+  height: 165px;
+}
+.green_gift_box .open_gift {
+  background: url('../assets/images/invite/open_green.png');
+  background-position: center;
+  background-size: 100%;
+  display: inline-block;
+  width: 150px;
+  height: 165px;
+}
+.green_gift_box .close_gift {
+  background: url('../assets/images/invite/close_green.png');
+  background-position: center;
+  background-size: 100%;
+  display: inline-block;
+  width: 150px;
+  height: 165px;
+}
+.pink_gift_box .open_gift {
+  background: url('../assets/images/invite/open_pink.png');
+  background-position: center;
+  background-size: 100%;
+  display: inline-block;
+  width: 150px;
+  height: 165px;
+}
+.pink_gift_box .close_gift {
+  background: url('../assets/images/invite/close_pink.png');
+  background-position: center;
+  background-size: 100%;
+  display: inline-block;
+  width: 150px;
+  height: 165px;
+}
+.orange_gift_box .open_gift {
+  background: url('../assets/images/invite/open_oj.png');
+  background-position: center;
+  background-size: 100%;
+  display: inline-block;
+  width: 150px;
+  height: 165px;
+}
+.orange_gift_box .close_gift {
+  background: url('../assets/images/invite/close_oj.png');
+  background-position: center;
+  background-size: 100%;
+  display: inline-block;
+  width: 150px;
+  height: 165px;
+}
+.invite_blue_box .progress {
+  height: 15px;
+  background: linear-gradient(#fff, #f5f5f5);
+  border: 1px solid #ddd;
+  -webkit-border-radius: 10px !important;
+  -moz-border-radius: 10px !important;
+  -o-border-radius: 10px !important;
+  border-radius: 10px !important;
+}
+.invite_blue_box .progress .progress-bar {
+  box-shadow: inset 0 -4px 1px rgba(255, 255, 255, 0.3);
+  background: linear-gradient(#35cbf4, #2dabe3);
+}
+.invite_blue_box .gift_box {
+  background: url('../assets/images/invite/icon_blue.png');
+  background-position: center;
+  background-size: 100%;
+  display: inline-block;
+  width: 40px;
+  height: 45px;
+}
+.invite_green_box .progress {
+  height: 15px;
+  background: linear-gradient(#fff, #f5f5f5);
+  border: 1px solid #ddd;
+  -webkit-border-radius: 10px !important;
+  -moz-border-radius: 10px !important;
+  -o-border-radius: 10px !important;
+  border-radius: 10px !important;
+}
+.invite_green_box .progress .progress-bar {
+  box-shadow: inset 0 -4px 1px rgba(255, 255, 255, 0.3);
+  background: linear-gradient(#c7e088, #a0c860);
+}
+.invite_green_box .gift_box {
+  background: url('../assets/images/invite/icon_green.png');
+  background-position: center;
+  background-size: 100%;
+  display: inline-block;
+  width: 40px;
+  height: 45px;
+}
+.invite_orange_box .progress {
+  height: 15px;
+  background: linear-gradient(#fff, #f5f5f5);
+  border: 1px solid #ddd;
+  -webkit-border-radius: 10px !important;
+  -moz-border-radius: 10px !important;
+  -o-border-radius: 10px !important;
+  border-radius: 10px !important;
+}
+.invite_orange_box .progress .progress-bar {
+  box-shadow: inset 0 -4px 1px rgba(255, 255, 255, 0.3);
+  background: linear-gradient(#f9d382, #ed802c);
+}
+.invite_orange_box .gift_box {
+  background: url('../assets/images/invite/icon_oj.png');
+  background-position: center;
+  background-size: 100%;
+  display: inline-block;
+  width: 40px;
+  height: 45px;
+}
+.invite_pink_box .progress {
+  height: 15px;
+  background: linear-gradient(#fff, #f5f5f5);
+  border: 1px solid #ddd;
+  -webkit-border-radius: 10px !important;
+  -moz-border-radius: 10px !important;
+  -o-border-radius: 10px !important;
+  border-radius: 10px !important;
+}
+.invite_pink_box .progress .progress-bar {
+  box-shadow: inset 0 -4px 1px rgba(255, 255, 255, 0.3);
+  background: linear-gradient(#f386ac, #ec6675);
+}
+.invite_pink_box .gift_box {
+  background: url('../assets/images/invite/icon_pink.png');
+  background-position: center;
+  background-size: 100%;
+  display: inline-block;
+  width: 40px;
+  height: 45px;
+}
+.open_gift,
+.close_gift {
+  position: absolute;
+  left: 50%;
+  margin-left: -75px;
+  margin-top: 65px;
+}
+.btn_close_modal {
+  position: absolute;
+  right: -24px;
+  top: -21px;
+  font-size: 40px;
+  color: #ffb940;
+  cursor: pointer;
+}
+.grey-background {
+  background-color: #888888;
+  opacity: 0.6;
+}
+.shake {
+  animation: shake 2s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+.gift_text {
+  padding-top: 230px;
+  text-align: center;
+}
+.pulse_custom {
+  box-shadow: 0 0 5px 4px #e2e21d, inset 0 0 0 2px yellow;
+  animation: pulseInvite 2s infinite;
+}
+@keyframes pulseInvite {
+  0% {
+    box-shadow: 0 0 5px 4px #e2e21d, inset 0 0 0 2px yellow;
+  }
+  50% {
+    box-shadow: 0 0 5px 10px #e2e21d87, inset 0px 0px 9px 0 yellow;
+  }
+  100% {
+    box-shadow: 0 0 5px 4px #e2e21d, inset 0 0 0 2px yellow;
+  }
+}

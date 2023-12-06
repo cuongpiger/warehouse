@@ -1,0 +1,177 @@
+<div ng-click="$ctrl.openInviteFriend()" class="invite_btn" ng-class="{'pulse_custom' : $ctrl.notiReceiveGift}"
+     tooltip-placement="left" uib-tooltip="{{$root.language == 'vn' ? 'Chia sẻ để nhận quà' : 'Share to your friends'}}">
+    <!--<img class="circle_effect circle_effect_invite" src="../../../assets/images/war/circle_effect.png" ng-if="$ctrl.notiReceiveGift"/>-->
+ </div>
+
+<div ng-if="$root.random == 4 && $root.invite" id="box_invite" class="{{$ctrl.inviteProgres.inviteClass}}">
+    <h2 class="invite_title"> Chia sẻ ứng dụng hữu ích từ Elight với bạn bè và nhận quà</h2>
+    <button class="close close_invite" ng-click="$ctrl.closeInvite()"><span aria-hidden="true">&times;</span></button>
+    <div class="box_progress">
+        <p>Mời {{$ctrl.inviteProgres.addNum}} người bạn để mở hộp quà này</p>
+        <!--{{$ctrl.inviteProgres}}-->
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                 style="width: {{$ctrl.inviteProgres.percentage}}%;"></div>
+        </div>
+        <div class="gift_box">
+            <span>{{$ctrl.inviteProgres.stateProgress}}</span>
+        </div>
+        <p class="time_note">Thời gian còn lại để nhận quà: {{$ctrl.remainingTime}}</p>
+    </div>
+    <div class="row">
+        <div class="col-xs-7">
+            <div class="invite_description">
+                <ul>
+                    <li>
+                        <div class="gift">
+                            <i class="fa fa-heart" aria-hidden="true" ng-if="$ctrl.likeGift_1"></i>
+                            <i class="fa fa-heart-o" aria-hidden="true" ng-if="!$ctrl.likeGift_1" ng-click="$ctrl.likeGift(1)"></i>
+                            <div class="gift_image blue_gift">
+                                <i ng-if="$ctrl.gift_1_received && !$ctrl.gift_1_open" ng-click="$ctrl.openGift(1)" class="fa fa-info-circle gift_note" aria-hidden="true"></i>
+                            </div>
+                            <div class="invite_num">1</div><i class="fa fa-male" aria-hidden="true"></i>
+                        </div> <span style="font-size: 13px;">Bộ 12 items cho game King of the words</span>
+                    </li>
+                    <li>
+                        <div class="gift">
+                            <i class="fa fa-heart" aria-hidden="true" ng-if="$ctrl.likeGift_3"></i>
+                            <i class="fa fa-heart-o" aria-hidden="true" ng-if="!$ctrl.likeGift_3" ng-click="$ctrl.likeGift(3)"></i>
+                            <div class="gift_image pink_gift">
+                                <i ng-if="$ctrl.gift_3_received && !$ctrl.gift_3_open" ng-click="$ctrl.openGift(3)" class="fa fa-info-circle gift_note" aria-hidden="true"></i>
+                            </div>
+                            <div class="invite_num">3</div> <i class="fa fa-male" aria-hidden="true"></i>
+                        </div> 1 bộ tài liệu Tiếng Anh (ebook)
+                    </li>
+                    <li>
+                        <div class="gift">
+                            <i class="fa fa-heart" aria-hidden="true" ng-if="$ctrl.likeGift_6"></i>
+                            <i class="fa fa-heart-o" aria-hidden="true" ng-if="!$ctrl.likeGift_6" ng-click="$ctrl.likeGift(6)"></i>
+                            <div class="gift_image green_gift">
+                                <i ng-if="$ctrl.gift_6_received && !$ctrl.gift_6_open" ng-click="$ctrl.openGift(6)" class="fa fa-info-circle gift_note" aria-hidden="true"></i>
+                            </div>
+                            <div class="invite_num">6</div> <i class="fa fa-male" aria-hidden="true"></i>
+                        </div> 1 chủ đề từ vựng
+                    </li>
+                    <li>
+                        <div class="gift">
+                            <i class="fa fa-heart" aria-hidden="true" ng-if="$ctrl.likeGift_10"></i>
+                            <i class="fa fa-heart-o" aria-hidden="true" ng-if="!$ctrl.likeGift_10" ng-click="$ctrl.likeGift(10)"></i>
+                            <div class="gift_image orange_gift">
+                                <i ng-if="$ctrl.gift_10_received && !$ctrl.gift_10_open" ng-click="$ctrl.openGift(10)" class="fa fa-info-circle gift_note" aria-hidden="true"></i>
+                            </div>
+                            <div class="invite_num">10</div> <i class="fa fa-male" aria-hidden="true"></i>
+                        </div> Quà tặng bí mật của Elight
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-xs-5">
+            <div class="invite_guide">
+                <h3 class="title_invite_guide"><i class="fa fa-question-circle-o" aria-hidden="true"></i> Hướng dẫn</h3>
+                <ul>
+                    <li class="copy_link">1. Copy link này:
+                        <div  ng-click="$ctrl.copyLink()">http://elight.edu.vn/elight-extension/{{$ctrl.guest_id}}</div>
+                        <textarea class="js-copytextarea">http://elight.edu.vn/elight-extension/{{$ctrl.guest_id}}</textarea>
+                        <p>{{$ctrl.copyMsg}}</p>
+                    </li>
+                    <li>2. Gửi cho bạn qua <a href="https://www.facebook.com/" target="_blank" ng-click="$ctrl.openFB()">Facebook</a> hoặc <a href="https://mail.google.com" target="_blank" ng-click="$ctrl.openEmail()">Email</a></li>
+                    <li>3. Bạn bè cài đặt Extension qua lời mời</li>
+                    <li>4. Nhận quà</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--gift box-->
+    <div class="modal_custom" ng-class="{'modal_topic' : $ctrl.giftType == 6}" ng-if="$ctrl.openedGift">
+        <div class="modal_back_drop" ng-click="$ctrl.closeGift()">
+            <!--<i class="fa fa-times-circle btn_close_modal" aria-hidden="true"></i>-->
+        </div>
+        <!--gift box-->
+        <div ng-if="!$ctrl.showGift">
+            <div class="modal_content item_gift" ng-class="$ctrl.classGiftBox">
+                <div id="gift-type" class="close_gift shake" ng-click="$ctrl.unboxGift()"></div>
+                <p class="gift_text">{{$ctrl.giftMessage}}</p>
+            </div>
+        </div>
+        <!--./END gift box-->
+        <div ng-if="$ctrl.showGift">
+            <!--gift item-->
+            <div class="modal_content item_gift blue_gift_box" ng-if="$ctrl.giftType == 1">
+                <div class="chest_bonus">
+                    <div class="item_bonus freeze_item">
+                        <span class="challenge_3_weapon_number">3</span>
+                    </div>
+                    <div class="item_bonus un_freeze_item">
+                        <span class="challenge_3_weapon_number">3</span>
+                    </div>
+                    <div class="item_bonus heart_item">
+                        <span class="challenge_3_weapon_number">3</span>
+                    </div>
+                    <div class="item_bonus boom_item">
+                        <span class="challenge_3_weapon_number">3</span>
+                    </div>
+                </div>
+                <div class="open_gift"></div>
+                <p class="gift_text">Bạn đã nhận được quà</p>
+            </div>
+            <!--./END gift item-->
+            <!--download book-->
+            <div class="modal_content download_book" ng-if="$ctrl.giftType == 3">
+                <h3>Tài liệu tiếng Anh</h3>
+                <div class="bg_download_book"></div>
+                <div class="download">
+                    <a ng-click="$ctrl.downloadBook()" href="{{$ctrl.bookUrl}}" download>Download</a>
+                </div>
+            </div>
+            <!--./END download book-->
+            <!--discount code-->
+            <div class="modal_content discount_code" ng-if="$ctrl.giftType == 10">
+                <h3>Bạn đã nhận được một mã giảm giá 20% khóa học<br> bất kỳ của Elight!</h3>
+                <p class="guide_text">Điền thông tin bên dưới để Elight liên lạc</p>
+                <form ng-submit="$ctrl.addUserInfo()">
+                    <p>{{$ctrl.msg_discount_code}}</p>
+                    <p><label>Tên: <input type="text" name="name" ng-model="$ctrl.inviteUser.name"></label></p>
+                    <p><label>SĐT: <input type="text" name="phone" ng-model="$ctrl.inviteUser.phone"></label></p>
+                    <button class="btn btn-info" ng-disabled="!$ctrl.inviteUser.name || !$ctrl.inviteUser.phone">GỬI</button>
+                </form>
+            </div>
+            <!--./END discount code-->
+            <!--topic-->
+            <div class="modal_content modal_content_topic" ng-if="$ctrl.giftType == 6">
+                <h3 class="text-center">Hãy chọn chủ đề học bạn yêu thích!</h3>
+                <ul class="row" id="list_topic">
+                    <li class="topic col-md-4" ng-repeat="unit in $ctrl.units">
+                        <div class="topic_container" ng-click="$ctrl.chooseTopic(unit.id, unit.title)">
+                            <img class="img-responsive" ng-class="{'brightness-50' : unit.lock === undefined}" ng-src="{{unit.topics[0].words[0].image}}">
+                            <p class="topic_name text-center" ng-class="{'background-gray' : unit.lock === undefined}">{{unit.title}}</p>
+                            <div class="topic_lock" ng-if="unit.lock === undefined ">
+                                <i class="fa fa-lock" aria-hidden="true"></i>
+                            </div>
+                            <div class="topic_detail">
+                                <p ng-bind-html="$ctrl.trustAsHtml(unit.description)"></p>
+                            </div>
+                        </div>
+                    </li>
+                    <h3 style="margin-top: 100px;font-size: 30px;" ng-if="!$ctrl.units"> {{$ctrl.messageFullUnit}}</h3>
+                </ul>
+                <!--modal-->
+                <div class="modal fade .confirm-topic-modal" id="confirm-topic-box" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <h3 class="text-center">Bạn đã chọn chủ đề</h3>
+                                <h3 style="text-align: center;margin: 15px 0 15px;"><strong>"{{$ctrl.unitName}}"</strong></h3>
+                                <p class="text-center">Chủ đề học không được thay đổi trong toàn bộ quá trình học</p>
+                                <div class="btn_group text-center">
+                                    <button class="btn btn_rounded btn_deny" ng-click="$ctrl.closeConfirmTopicModal(1)">Chọn lại</button>
+                                    <button class="btn btn_rounded btn-success btn_confirm" ng-click="$ctrl.confirmTopic()">Xác nhận</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--./END topic-->
+        </div>
+    </div>
+</div>

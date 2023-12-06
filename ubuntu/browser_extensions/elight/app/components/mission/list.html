@@ -1,0 +1,10 @@
+<div class="mission-container">
+    <h5 class="mission-header">
+        Thử thách hôm nay
+    </h5>
+    <div class="mission-content">
+        <ul class="list-mission">
+            <aki-mission-item ng-repeat="task in mission" data="task" current="{{task.current ? task.current : 0}}" total="{{task.total ? task.total : 1}}" type="{{task.type}}" title="{{task.title}}" description="{{task.description}}"></aki-mission-item>
+        </ul>
+    </div>
+</div>

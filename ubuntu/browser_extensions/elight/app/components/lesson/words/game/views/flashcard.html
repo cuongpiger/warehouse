@@ -1,0 +1,48 @@
+<div ng-controller="flashcardController">
+    <div class="row" style="margin-top:-10px;">
+        <div class="col-xs-6 col-xs-offset-3 topic_flashcard_container flipper guide_flip text-center">
+            <div class="flashcard_div text-center topic_flashcard_front topic_front cursor-pointer" ng-click="flip()">
+                <div ng-class="{'new_word': !data[0].old, 'old_word': data[0].old}" class="newWordTag"></div>
+                <img class="topic_flashcard" on-error class-loading = "1" src="{{data[0].image}}">
+                <div class="flashcard_image_cover"></div>
+                <img class="loading-image loading-1" ng-src="../../../../../../assets/images/ajax-loader.gif" width="20" alt="">
+                <div class="text-center">
+                    <h3 ng-if="data[0].word.length < 16" style="font-size: 18px;">{{data[0].word}}</h3>
+                    <h3 ng-if="data[0].word.length >= 16 && data[0].word.length <= 24" style="font-size: 18px;">{{data[0].word}}</h3>
+                    <h3 ng-if="data[0].word.length > 24" style="font-size: 18px;">{{data[0].word}}</h3>
+                </div>
+            </div>
+            <div class="topic_flashcard_back topic_back flipped" >
+                <div ng-class="{'new_word': !data[0].old, 'old_word': data[0].old}" class="newWordTag"></div>
+                <div class="view_audio">
+                    <div class="box-audio" ng-click="playAudio()">
+                        <i class="fa" ng-class="classAudio" ></i>
+                    </div>
+                </div>
+                <div ng-click="flip()" style="height: 99%">
+                    <div class="text-center topic_content">
+                        <h2 class="flashcard_word" ng-if="data[0].word.length < 14"><b>{{data[0].word}}</b></h2>
+                        <h2 class="flashcard_word" ng-if="data[0].word.length >= 14" style="font-size: 22px;"><b>{{data[0].word}}</b></h2>
+                        <h4><i>{{data[0].phonetic}}</i></h4>
+                        <div ng-if="$root.language === 'vn'">
+                          <h2 class="flashcard_translate" ng-if="data[0].translate.length < 20">{{data[0].translate}}</h2>
+                          <h2 class="flashcard_translate" ng-if="data[0].translate.length >= 20" style="font-size: 22px;">{{data[0].translate}}</h2>
+                        </div>
+                        <div ng-if="$root.language === 'por'">
+                          <h2 class="flashcard_translate" ng-if="data[0].translate.length < 20">{{data[0].translate_por}}</h2>
+                          <h2 class="flashcard_translate" ng-if="data[0].translate.length >= 20" style="font-size: 22px;">{{data[0].translate_por}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h4 class="guide-text-flip">{{localesMessage[7][$root.language]}}</h4>
+    <div class="text-center row flashcard_btn_div">
+        <div class="col-xs-8 col-xs-offset-2">
+            <div class="col-xs-6 col-xs-offset-3" >
+                <button class="btn btn_learn_flashcard" ng-class="{'continue-disabled' : activeContinue }" ng-disabled="activeContinue" ng-click="nextStep()">{{localesMessage[8][$root.language]}}</button>
+            </div>
+        </div>
+    </div>
+</div>

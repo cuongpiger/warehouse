@@ -1,0 +1,119 @@
+<div class="end-game {{$ctrl.className}}">
+    <div class="background_light_beam">
+        <img src="../../../../assets/images/endgame/sunbeam.png"/>
+    </div>
+    <h3 class="animate-congratulation  text-center"></h3>
+    <ul class="list-card">
+        <li class="card animate_one">
+            <div class="card-detail">
+                <div class="content-image">
+                    <img ng-src="{{$ctrl.words[0].image}}" width="120" alt="">
+                    <h4 ng-class="{'small_font_size' : $ctrl.words[0].word.length > 15}">{{$ctrl.words[0].word}}</h4>
+                </div>
+            </div>
+        </li>
+        <li class="card animate_two">
+            <div class="card-detail">
+                <div class="content-image">
+                    <img ng-src="{{$ctrl.words[1].image}}" width="120" alt="">
+                    <h4 ng-class="{'small_font_size' : $ctrl.words[1].word.length > 15}">{{$ctrl.words[1].word}}</h4>
+                </div>
+            </div>
+        </li>
+        <li class="card animate_three">
+            <div class="card-detail">
+                <div class="content-image">
+                    <img ng-src="{{$ctrl.words[2].image}}" width="120" alt="">
+                    <h4 ng-class="{'small_font_size' : $ctrl.words[2].word.length > 15}">{{$ctrl.words[2].word}}</h4>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <!-- NOTE: streak -->
+    <div class="streak_title streak--fadeIn">
+      {{$ctrl.streakData.congrat}}
+    </div>
+    <div class="streak_tree ending_tree_container streak--fadeIn">
+      <div class="streak_circle ending_tree">
+        <round-progress
+          max="$ctrl.streakData.max"
+          current="$ctrl.streak"
+          color="#149619"
+          bgcolor="#fefefd"
+          radius="100"
+          stroke="15"
+          clockwise="true"
+          responsive="true"
+          duration="1200"
+          animation="easeInOutQuart"
+          animation-delay="0"></round-progress>
+      </div>
+      <img ng-src="{{$ctrl.streakData.image}}" class="streak_tree_image ending_tree_image" alt="">
+    </div>
+    <!-- NOTE: end streak -->
+    <div class="contain_progress">
+        <div class="unit_image notebook-end">
+            <h5 class="title-unit">{{unit.title}}</h5>
+            <img class="image-unit" ng-src="{{unit.image}}" alt="">
+        </div>
+        <div id="process_unit" class="process_unit">
+        </div>
+    </div>
+    <div class="ending-information">
+        <!--<h4 class="text-center header-score bounceIn" ng-class="{'margin-title-level' : showNextTitle}" ng-if="showTitle">{{titleEnd}}</h4>-->
+        <div class="text-center">
+            <div class="progress-wrapper bounceIn" ng-if="showScore">
+                <div class="text_inside">{{timesCorrect}}/8</div>
+                <img ng-src="assets/images/endgame/star.png" alt="" class="foot_circle"
+                     style="transform: rotate({{-90+timesCorrect/8*360 + 'deg'}}) translateX(75px) rotate(150deg); transition: all 7s ease-in-out;">
+                <round-progress
+                        max="8"
+                        current="timesCorrect"
+                        color="#2f2f87"
+                        bgcolor="#f5f5f5"
+                        radius="75"
+                        stroke="6"
+                        clockwise="true"
+                        responsive="false"
+                        rounded="true"
+                        duration="800"
+                        animation="easeInOutQuart"
+                        animation-delay="0"></round-progress>
+
+            </div>
+            <div class="badge_show zoomIn" ng-if="showNextTitle">
+                <div class="pulse">
+                    <img class="" ng-src="{{showNextTitle.image}}" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="progress_detail bounceIn" ng-if="showProgress">
+            <ul class="inprogress">
+                <li class="image-end">
+                    <img on-error="avarta" ng-src="{{$ctrl.auth.avatar}}" >
+                </li>
+                <li class="progress-end">
+                    <uib-progressbar max="1" value="badge ? (($ctrl.auth.total_score? $ctrl.auth.total_score: 0 ) - badge.min_star)/(badge.max_star - badge.min_star) : 0">
+                        <span class="percent"> {{($ctrl.auth.total_score? $ctrl.auth.total_score: 0 ) - badge.min_star}} / {{badge.max_star - badge.min_star}} <i class="fa fa-star"></i></span>
+                    </uib-progressbar>
+                    <p class="title-level">Level {{badge.level}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--<div class="text-center call-to-action" >-->
+        <!--<a class="link_FreeUser" ng-click="$ctrl.trackingFreeUser($ctrl.freeUser.url, $ctrl.freeUser.title)">{{$ctrl.freeUser.title}}</a>-->
+    <!--</div>-->
+    <div class="text-center contain-continue" >
+        <button class="btn learn-continue" ng-click="nextGame()">{{$root.language === 'vn' ? 'HỌC TIẾP' : 'Continue'}}</button>
+    </div>
+
+	<!-- START BANNER -->
+	<div class="banner" ng-if="!$ctrl.isClose">
+	    <div class="close_btn" ng-click="$ctrl.closeBanner()"><span aria-hidden="true">&times;</span></div>
+		<a ng-click="$ctrl.trackingBanner(1)" ng-if="$ctrl.userBannerType == 0" target="blank" href="https://elight.edu.vn/khoa-toan-dien-3-trong-1-trial-extension/?utm_source=Extension&utm_medium=endgame"><img src="../../../../assets/images/Banner-01.jpg"/></a>
+		<a ng-click="$ctrl.trackingBanner(2)" ng-if="$ctrl.userBannerType == 1" target="blank" href="https://elight.edu.vn/khoa-toan-dien-3-trong-1-trial-extension/?utm_source=Extension&utm_medium=endgame"><img src="../../../../assets/images/Banner-02.jpg"/></a>
+	</div>
+	<!-- END BANNER -->
+
+</div>

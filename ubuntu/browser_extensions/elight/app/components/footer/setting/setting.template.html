@@ -1,0 +1,103 @@
+<div class="new_setting" ng-class="{'fix-right': $ctrl.user }" tooltip-placement="bottom" uib-tooltip="{{$root.language == 'vn' ? 'Cài đặt' : 'Setting'}}">
+    <i class="fa fa-cog set_btn" aria-hidden="true" ng-click="$ctrl.toggleSetting()"></i>
+</div>
+
+<div id="setting_modal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width: 850px;">
+        <!-- Modal content-->
+        <div class="welcome_box setting_box setting_block_box" ng-if="openSettingModal">
+            <!--<ul class="setting_nav">-->
+            <!--<li>Chọn chủ đề</li>-->
+            <!--</ul>-->
+            <div class="setting_content_box list_topic_box">
+                <div class="col-xs-2 setting_category_option">
+                    <div class="setting_option vertical_center" ng-if="$root.language === 'vn'" ng-click="$ctrl.toCategory($ctrl.localesMessage[3][$root.language])">
+                        <span ng-class="{'white_title' : $ctrl.showing == $ctrl.localesMessage[3][$root.language]}">{{$ctrl.localesMessage[3][$root.language]}}</span>
+                    </div>
+                    <div class="setting_option vertical_center" ng-click="$ctrl.toCategory($ctrl.localesMessage[1][$root.language])">
+                        <span ng-class="{'white_title' : $ctrl.showing == $ctrl.localesMessage[1][$root.language]}">{{$ctrl.localesMessage[1][$root.language]}}</span>
+                    </div>
+                    <div class="setting_option vertical_center" ng-click="$ctrl.toCategory($ctrl.localesMessage[2][$root.language])">
+                        <span ng-class="{'white_title' : $ctrl.showing == $ctrl.localesMessage[2][$root.language]}">{{$ctrl.localesMessage[2][$root.language]}}</span>
+                    </div>
+
+                    <language-setting></language-setting>
+                </div>
+                <div class="col-xs-10 setting_content_right_box">
+                    <h3 class="title_setting" ng-if="!$ctrl.unitDetail && !$ctrl.thankYouCard">{{$ctrl.showing}}</h3>
+                    <div class="dynamic_setting">
+                        <!--Góp ý-->
+                        <div class="setting_feedback_div" ng-if="$ctrl.showing == $ctrl.localesMessage[1][$root.language] && !$ctrl.thankYouCard">
+                            <form name="form_feedback" novalidate>
+                                <h5 class="text-muted" style="margin: -10px 0 10px 0;">{{$ctrl.localesMessage[8][$root.language]}}</h5>
+                                <div class="form-group"  ng-class="{ 'has-error' : form_feedback.email.$invalid && !form_feedback.email.$pristine }">
+                                    <input type="email" ng-model="$ctrl.form_feedback.email" name="email" class="form-control" id="feedback-email" placeholder="Email" required>
+                                    <small id="emailHelp" ng-show="form_feedback.email.$error.email " class="form-text message-error">{{$ctrl.localesMessage[9][$root.language]}}</small>
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="feedback_content" ng-model="$ctrl.form_feedback.content" id="feedback-content" class="feedback-content" placeholder="{{$ctrl.localesMessage[10][$root.language]}}" required></textarea>
+                                </div>
+                                <button ng-click="$ctrl.sendFeedback()" ng-disabled="form_feedback.$invalid || $ctrl.loading" style="border-radius: 50px;" type="submit" class="btn btn-primary">{{$ctrl.localesMessage[11][$root.language]}}
+                                    <img src="../../../../assets/images/ajax-loader.gif" height="20" width="20" class="loading-lasest" ng-if="$ctrl.loading"/>
+                                </button>
+                            </form>
+                        </div>
+
+                        <!--Hỗ trợ -->
+                        <div class="setting_feedback_div" ng-if="$ctrl.showing == $ctrl.localesMessage[2][$root.language] && !$ctrl.thankYouCard">
+                            <form name="form_support" novalidate>
+                                <h5 class="text-muted" style="margin: -10px 0 10px 0;">{{$ctrl.localesMessage[12][$root.language]}}</h5>
+                                <div class="form-group" ng-class="{ 'has-error' : form_support.name.$invalid && !form_support.name.$pristine }">
+                                    <input type="text" name="name" ng-model="$ctrl.form_support.name" class="form-control" id="support-name" placeholder="{{$ctrl.localesMessage[13][$root.language]}}" required>
+                                </div>
+                                <div class="form-group" ng-class="{ 'has-error' : form_support.email.$invalid && !form_support.email.$pristine && form_support.email.$error.email}">
+                                    <input type="email" name="email" class="form-control" ng-model="$ctrl.form_support.email" id="support-email" placeholder="Email" required>
+                                    <small ng-show="form_support.email.$error.email " class="form-text message-error">{{$ctrl.localesMessage[9][$root.language]}}</small>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="phone" class="form-control" ng-model="$ctrl.form_support.phone" id="support-phone" placeholder="{{$ctrl.localesMessage[14][$root.language]}}">
+                                </div>
+                                <div class="form-group" ng-class="{ 'has-error' : form_support.problem_support.$invalid && !form_support.problem_support.$pristine }">
+                                    <textarea name="problem_support" id="" ng-model="$ctrl.form_support.content" placeholder="{{$ctrl.localesMessage[15][$root.language]}}" class="problem-support" required></textarea>
+                                </div>
+                                <button ng-click="$ctrl.sendSupport()" ng-disabled="form_support.$invalid || $ctrl.loading" type="submit" class="btn btn-primary" style="border-radius: 50px;">{{$ctrl.localesMessage[11][$root.language]}}
+                                    <img src="../../../../assets/images/ajax-loader.gif" height="20" width="20" class="loading-lasest" ng-if="$ctrl.loading"/>
+                                </button>
+                            </form>
+                        </div>
+
+                        <!--Thank you send support -->
+                        <div class="setting_feedback_div" ng-if="($ctrl.showing == $ctrl.localesMessage[2][$root.language] || $ctrl.showing == $ctrl.localesMessage[1][$root.language]) && $ctrl.thankYouCard">
+                            <h3 class="text-center">
+                                <i class="fa fa-smile-o fa-5x" aria-hidden="true"></i>
+                            </h3>
+                            <h4 class="text-center">{{$ctrl.localesMessage[16][$root.language]}} <span class="font-logo">eLight</span></h4>
+                            <ul class="link-social">
+                                <li>
+                                    <a href="https://www.facebook.com/Elight.LearningEnglish" target="_blank">Facebook</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.youtube.com/channel/UCjsIuhbtDQny5lv4B2b2VOg" target="_blank">Youtube</a>
+                                </li>
+                                <li>
+                                    <a href="https://elight.edu.vn/khoa-toan-dien-3-trong-1-extension/?utm_source=extension&utm_medium=setting" target="_blank">Website</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!--Thông tin-->
+                        <div class="setting_information_div" ng-if="$ctrl.showing == $ctrl.localesMessage[3][$root.language]">
+                            <div class="version_detail" ng-repeat="history in $ctrl.updateHistory track by $index">
+                                <p class="text-muted">{{history.date}}</p>
+                                <h4>{{history.version}}</h4>
+                                <div class="detail-history" ng-bind-html="$ctrl.trustAsHtml(history.description)"></div>
+                            </div>
+
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+

@@ -1,0 +1,36 @@
+<div ng-if="$root.loggedIn" class="streak-day" ng-class="{'streak-day-on-quotation' : $root.isQuote, 'down-for-task': ( $ctrl.auth.actived_code.count_use_code === 0 && $ctrl.auth.actived_code.count_user_courses === 0)}">
+    <div class="streak_info" tooltip-placement="auto top" uib-tooltip="{{$ctrl.streakData.info}}">
+        <i class="fa fa-info-circle" aria-hidden="true"></i>
+    </div>
+    <div class="streak_tree">
+        <div class="streak_circle">
+            <round-progress
+                    max="$ctrl.streakData.max"
+                    current="$ctrl.streak.day"
+                    color="#149619"
+                    bgcolor="#fefefd"
+                    radius="100"
+                    stroke="15"
+                    clockwise="true"
+                    responsive="true"
+                    duration="{{$ctrl.animationDuration}}"
+                    animation="easeInOutQuart"
+                    animation-delay="0"></round-progress>
+        </div>
+        <img ng-src="{{$ctrl.streakData.image}}" class="streak_tree_image word_tree_image" alt="">
+    </div>
+    <h4 class="title-streak" ng-class="{'on-word': !($root.isQuote || $root.elightube)}">{{$ctrl.streak_text}} day streak</h4>
+    <button class="btn streak_cta_button" ng-if="$root.isQuote || $root.elightube || $root.topic" ng-click="$ctrl.toLearningWord()">
+        {{$ctrl.todayStreak ? 'Learn word' : 'Water me!!'}}</button>
+</div>
+<div class="streak-banner-img" ng-class="{ 'anonymous' : !$root.loggedIn }">
+    <a href="https://elightbook.com/?utm_source=bn&utm_campaign=banner_book_extension">
+        <img class="streak-slide" src="../../../../../assets/images/images-slider/Banner Sách_Extension.png">
+    </a>
+    <a href="https://elight.edu.vn/elight-online-combo/?utm_source=bn&utm_campaign=banner_combo_extension">
+        <img class="streak-slide" src="../../../../../assets/images/images-slider/Banner Combo_Extension.png">
+    </a>
+    <a href="https://elight.edu.vn/khoa-toan-dien-3-trong-1/?utm_source=bn&utm_campaign=banner_EO_extension">
+        <img class="streak-slide" src="../../../../../assets/images/images-slider/Banner EO_Extension.png">
+    </a>
+</div>

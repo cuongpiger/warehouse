@@ -1,0 +1,40 @@
+<div class="badge_info" data-toggle="modal" data-target="#badge_board" ng-if="!error" >
+    <div class="badge_head text-center">
+        <div ng-if="auth.actived_code.count_use_code || auth.actived_code.count_user_courses || (auth && !showbtnBuyCode) " class="badge_icon">
+            <img ng-src="{{$root.badge.image}}" class="badgeImage flashImage"/>
+        </div>
+        <div class="text_level"><span class="mobile_text_level">Level {{$root.badge.level}}</span></div>
+        <div class="progress progress_line mobile_progress_line">
+            <div class="progress-bar progress-bar-striped" role="progressbar"  aria-valuemin="0" aria-valuemax="100"
+                 aria-valuenow="{{(auth.total_score - $root.badge.min_star)/($root.badge.max_star - $root.badge.min_star)*100}}"
+                 ng-style="{'width': (auth.total_score - $root.badge.min_star)/($root.badge.max_star - $root.badge.min_star)*100 + '%'}">
+                <div class="soccer_process">
+                    {{auth.total_score - $root.badge.min_star}} / {{$root.badge.max_star - $root.badge.min_star}} <i class="fa fa-star"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="badge_board" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <a class="akira-close" data-dismiss="modal" aria-label="Close"></a>
+            <h4 class="text-center"><b>Bảng danh hiệu</b></h4>
+            <hr>
+            <div class="modal-body">
+                <div class="row">
+                    <div ng-repeat="(i,v) in all_score_badges | orderBy : 'position' track by $index">
+                        <div class="col-xs-4 text-center">
+                            <img class="badgeImageBox" ng-src="{{v.image}}">
+                        </div>
+                        <div class="col-xs-8">
+                            <p class="badge_des"><strong>{{v.content}}</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
