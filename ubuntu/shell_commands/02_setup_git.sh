@@ -55,13 +55,13 @@ cat >>"$zshrc_file" <<EOF
 function gs() {
   # cmm=\${1:-"This is my commit"}
   cmm="\$1"
-  if test -z "$cmm"
+  if test -z "\$cmm"
   then
     cmm="This is Manh Cuong's commit 🌻."
   fi
     
   git add .
-  git commit -m "$cmm"
+  git commit -m "\$cmm"
   git push
 }
 EOF
