@@ -2,7 +2,7 @@
 
 # Clean all unnecessary branches in git, except main and the active branches
 # OS: All
-function cleanBranches() {
+function gitCleanBranches() {
   git branch | grep -vE "$(git symbolic-ref --short HEAD)|main" | xargs -n 1 git branch -D
 }
 
