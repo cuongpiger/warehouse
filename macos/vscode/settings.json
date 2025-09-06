@@ -1,0 +1,302 @@
+{
+  "editor.suggestSelection": "first",
+  "editor.cursorStyle": "line",
+  "editor.cursorBlinking": "expand",
+  "editor.renderWhitespace": "all",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "code-runner.runInTerminal": true,
+  "extensions.ignoreRecommendations": true,
+  "workbench.startupEditor": "newUntitledFile",
+  "explorer.confirmDelete": false,
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false
+  },
+  "explorer.confirmDragAndDrop": false,
+  "python.languageServer": "Pylance",
+  "python.autoComplete.extraPaths": ["/usr/bin/python3"],
+  "jupyter.askForKernelRestart": false,
+  // Controls the font family.
+  "editor.fontFamily": "monospace",
+
+  // Controls the font size.
+  "editor.fontWeight": "500", // Regular
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[js]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false
+  },
+  "[proto3]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "zxh404.vscode-proto3",
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false
+  },
+  "[javascriptreact]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false
+  },
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false
+  },
+  "[shellscript]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false
+  },
+  "editor.fontSize": 14,
+  "files.autoSave": "afterDelay",
+  "python.analysis.extraPaths": ["/usr/bin/python3"],
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportMissingImports": "none",
+    "reportUndefinedVariable": "none"
+  },
+  "editor.linkedEditing": true,
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "notebook.lineNumbers": "on",
+  "notebook.cellFocusIndicator": "border",
+  "editor.parameterHints.enabled": false,
+  "editor.rulers": [100],
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "redhat.telemetry.enabled": false,
+  "git.autofetch": true,
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": true,
+    "scminput": false,
+    "yaml": true,
+    "python": true,
+    "go": true,
+    "javascript": true
+  },
+  "markdown-preview-enhanced.previewTheme": "github-light.css",
+  "files.associations": {
+    "*.html": "html"
+  },
+  "python.analysis.typeCheckingMode": "basic",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "vsicons.dontShowNewVersionMessage": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "security.workspace.trust.untrustedFiles": "open",
+  "editor.detectIndentation": false,
+  "[dockercompose]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "mdb.confirmRunAll": false,
+  "thunder-client.saveToWorkspace": true,
+  "[md][markdown]": {
+    "editor.tabSize": 2
+  },
+  "git.enableSmartCommit": true,
+  "hediet.vscode-drawio.resizeImages": null,
+  "[python]": {
+    "editor.formatOnType": true,
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "workbench.editorAssociations": {
+    "*.copilotmd": "vscode.markdown.preview.editor",
+    "*.png": "luna.editor",
+    "*.yml": "default"
+  },
+  "git.ignoreLegacyWarning": true,
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "remote.SSH.connectTimeout": 60,
+  "remote.SSH.configFile": "~/.ssh/config",
+  "remote.SSH.defaultForwardedPorts": [],
+  "notebook.output.scrolling": true,
+  "window.titleBarStyle": "custom",
+  "tabnine.experimentalAutoImports": true,
+  "explorer.autoReveal": true,
+  "editor.inlineSuggest.suppressSuggestions": true,
+  "github.copilot.editor.enableAutoCompletions": true,
+  "configurations": [
+    {
+      "name": "My Application",
+      "type": "go",
+      "request": "launch",
+      "mode": "debug",
+      "envFile": "${workspaceFolder}/.env",
+      "cwd": "${workspaceFolder}"
+    }
+  ],
+  "vs-kubernetes": {
+    "vs-kubernetes.kubeconfig": "/Users/cuong.duong/Me/git-cuongpiger/secret/kubeconfig/vinhnt8-aigateway.txt",
+    "vs-kubernetes.knownKubeconfigs": [
+      "/mnt/vayne/vks-kubeconfig/dev.yaml",
+      "/Users/cuong.duong/Me/git-cuongpiger/secret/kubeconfig/vinhnt8-aigateway.txt",
+      "/Users/cuong.duong/.kube/config"
+    ],
+    "vscode-kubernetes.helm-path-linux": "/home/cuongdm/.local/state/vs-kubernetes/tools/helm/linux-amd64/helm",
+    "vscode-kubernetes.kubectl-path-linux": "/home/cuongdm/.local/state/vs-kubernetes/tools/kubectl/kubectl",
+    "vscode-kubernetes.minikube-path-linux": "/home/cuongdm/.local/state/vs-kubernetes/tools/minikube/linux-amd64/minikube",
+    "vscode-kubernetes.helm-path-mac": "/Users/cuong.duong/.vs-kubernetes/tools/helm/darwin-arm64/helm",
+    "vscode-kubernetes.minikube-path-mac": "/Users/cuong.duong/.vs-kubernetes/tools/minikube/darwin-arm64/minikube"
+  },
+  "editor.minimap.size": "fill",
+  "editor.minimap.showSlider": "always",
+  "editor.minimap.enabled": false,
+  "database-client.autoSync": true,
+  "markdown-preview-enhanced.enablePreviewZenMode": false,
+  "vscode-pets.theme": "forest",
+  "vscode-pets.petSize": "medium",
+  "vscode-pets.throwBallWithMouse": true,
+  "[go]": {
+    "editor.insertSpaces": false,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "notebook.formatOnSave.enabled": true,
+  "notebook.formatOnCellExecution": true,
+  "C_Cpp.intelliSenseEngine": "disabled",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "yaml.schemas": {
+    "/Users/cuong.duong/.vscode/extensions/continue.continue-1.0.10-darwin-arm64/config-yaml-schema.json": [
+      ".continue/**/*.yaml"
+    ],
+    "/Users/cuongdm8499/.vscode/extensions/continue.continue-1.0.14-darwin-arm64/config-yaml-schema.json": [
+      ".continue/**/*.yaml"
+    ],
+    "/Users/cuong.duong/.vscode/extensions/continue.continue-1.0.14-darwin-arm64/config-yaml-schema.json": [
+      ".continue/**/*.yaml"
+    ],
+    "/Users/cuong.duong/.vscode/extensions/continue.continue-1.0.15-darwin-arm64/config-yaml-schema.json": [
+      ".continue/**/*.yaml"
+    ],
+    "/Users/cuongdm8499/.vscode/extensions/continue.continue-1.0.15-darwin-arm64/config-yaml-schema.json": [
+      ".continue/**/*.yaml"
+    ]
+  },
+  "docker.extension.enableComposeLanguageServer": false,
+  "peacock.favoriteColors": [
+    {
+      "name": "Angular Red",
+      "value": "#dd0531"
+    },
+    {
+      "name": "Azure Blue",
+      "value": "#007fff"
+    },
+    {
+      "name": "JavaScript Yellow",
+      "value": "#f9e64f"
+    },
+    {
+      "name": "Mandalorian Blue",
+      "value": "#1857a4"
+    },
+    {
+      "name": "Node Green",
+      "value": "#215732"
+    },
+    {
+      "name": "React Blue",
+      "value": "#61dafb"
+    },
+    {
+      "name": "Something Different",
+      "value": "#832561"
+    },
+    {
+      "name": "Svelte Orange",
+      "value": "#ff3d00"
+    },
+    {
+      "name": "Vue Green",
+      "value": "#42b883"
+    },
+    {
+      "name": "Dark Purple",
+      "value": "#332D56"
+    },
+    {
+      "name": "Light Dark Purple",
+      "value": "#3D365C"
+    }
+  ],
+  "chat.instructionsFilesLocations": {
+    ".github/instructions": true,
+    "/var/folders/l8/9y9g5s855fl6rj6l013fh8b80000gp/T/postman-http-request-post-response.instructions.md": true,
+    "/var/folders/l8/9y9g5s855fl6rj6l013fh8b80000gp/T/postman-http-request-pre-request.instructions.md": true,
+    "/var/folders/gq/c9fw94sn7h54jkfy5ydg9m8h0000gn/T/postman-http-request-post-response.instructions.md": true,
+    "/var/folders/gq/c9fw94sn7h54jkfy5ydg9m8h0000gn/T/postman-http-request-pre-request.instructions.md": true,
+    "/var/folders/gq/c9fw94sn7h54jkfy5ydg9m8h0000gn/T/postman-collections-post-response.instructions.md": true,
+    "/var/folders/gq/c9fw94sn7h54jkfy5ydg9m8h0000gn/T/postman-collections-pre-request.instructions.md": true,
+    "/var/folders/gq/c9fw94sn7h54jkfy5ydg9m8h0000gn/T/postman-folder-post-response.instructions.md": true,
+    "/var/folders/gq/c9fw94sn7h54jkfy5ydg9m8h0000gn/T/postman-folder-pre-request.instructions.md": true,
+    "/var/folders/l8/9y9g5s855fl6rj6l013fh8b80000gp/T/postman-collections-post-response.instructions.md": true,
+    "/var/folders/l8/9y9g5s855fl6rj6l013fh8b80000gp/T/postman-collections-pre-request.instructions.md": true,
+    "/var/folders/l8/9y9g5s855fl6rj6l013fh8b80000gp/T/postman-folder-post-response.instructions.md": true,
+    "/var/folders/l8/9y9g5s855fl6rj6l013fh8b80000gp/T/postman-folder-pre-request.instructions.md": true
+  },
+  "go.toolsManagement.autoUpdate": true,
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#52497c",
+    "activityBar.background": "#52497c",
+    "sash.hoverBorder": "#52497c",
+    "statusBar.background": "#3d365c",
+    "statusBarItem.hoverBackground": "#52497c",
+    "statusBarItem.remoteBackground": "#3d365c",
+    "titleBar.activeBackground": "#3d365c",
+    "titleBar.inactiveBackground": "#3d365c99",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#281b18",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#e7e7e799",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "workbench.colorTheme": "Atom One Dark",
+  "workbench.iconTheme": "vscode-icons",
+  "github.copilot.nextEditSuggestions.enabled": true,
+
+  // =================================== TERMINAL CONFIGURATIONS ===================================
+  "terminal.integrated.fontSize": 14, // Set terminal font size to 14
+  "terminal.integrated.enableMultiLinePasteWarning": "auto",
+  "terminal.integrated.fontFamily": "PowerlineSymbols",
+  "terminal.integrated.inheritEnv": false,
+  "terminal.integrated.defaultProfile.linux": "zsh"
+}
